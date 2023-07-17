@@ -17,9 +17,9 @@ order: 4
 
 ### Achieved Certifications:
 
- [<img align="middle" alt="CCNP Security" width="100px" src="https://images.youracclaim.com/size/110x110/images/cd769843-4907-4d1a-9702-0512eb87ae6e/cisco_ccnp_security.png" />][CCNPSec]
- [<img align="middle" alt="CCNA Security" width="100px" src="https://images.youracclaim.com/size/110x110/images/23ae0d10-85d7-415a-a6c0-0e2919040628/cisco_ccna_security.png" />][CCNASec]
- [<img align="middle" alt="CCNA" width="100px" src="https://images.youracclaim.com/size/110x110/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png" />][CCNA]
+ <img align="middle" alt="CCNP Security" width="100px" src="https://images.youracclaim.com/size/110x110/images/cd769843-4907-4d1a-9702-0512eb87ae6e/cisco_ccnp_security.png" />
+ <img align="middle" alt="CCNA Security" width="100px" src="https://images.youracclaim.com/size/110x110/images/23ae0d10-85d7-415a-a6c0-0e2919040628/cisco_ccna_security.png" />
+ <img align="middle" alt="CCNA" width="100px" src="https://images.youracclaim.com/size/110x110/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png" />
 
 ### Next Goals:
 
@@ -40,8 +40,8 @@ order: 4
 
 ### Connect with me:
 
-[<img align="left" alt="HashNode" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website]
-[<img align="left" alt="Angel | YouTube" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />][youtube]
-[<img align="left" alt="Angel | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />][twitter]
-[<img align="left" alt="Angel | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
-[<img align="left" alt="Angel | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+<img align="left" alt="HashNode" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />
+<img align="left" alt="Angel | YouTube" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />
+<img align="left" alt="Angel | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />
+<img align="left" alt="Angel | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
+<img align="left" alt="Angel | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />
