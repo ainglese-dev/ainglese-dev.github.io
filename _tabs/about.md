@@ -4,26 +4,37 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
-
-
 ### Hi there my name is Angel ! 👋
-- 🔭 I’m currently working on Cisco CCNP ENARSI and CCNA DEVNET Certifications
+- 🔭 I’m currently working on Cisco CCNP DCCOR and CCNA DEVNET Certifications
 - 🌱 I’m currently learning a lot of things!
 - 👯 I’m looking to collaborate on small projects
 - 🤔 I’m looking for help with: Ansible, PyaTS, Netbox and APIs.
 - ⚡ Fun fact: Not an native english speaker, but I can spell Contratulazion very well.
 
-### Achieved Certifications:
+## Achieved valid Certifications:
 
- <img align="middle" alt="CCNP Security" width="100px" src="https://images.youracclaim.com/size/110x110/images/cd769843-4907-4d1a-9702-0512eb87ae6e/cisco_ccnp_security.png" />
- <img align="middle" alt="CCNA Security" width="100px" src="https://images.youracclaim.com/size/110x110/images/23ae0d10-85d7-415a-a6c0-0e2919040628/cisco_ccna_security.png" />
- <img align="middle" alt="CCNA" width="100px" src="https://images.youracclaim.com/size/110x110/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png" />
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="9e7e2d3d-eceb-4151-b863-b86be82ba14a" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="6fa3874d-0d72-4f57-ab23-43d787db0af2" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-### Next Goals:
+### Specializations - Security:
 
-<img align="middle" alt="HTML5" width="100px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="72bc93c4-fbb3-4423-adea-af66cf26973b" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="5eaa0499-2690-4a1f-80ad-a3fd016b61a4" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="65418f87-98c8-4708-a934-e5a7073ccd64" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="ecf308f0-eb77-436e-a9cd-c148d2b01a49" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="a3eb43be-d7b2-47ab-a840-3da84b055ada" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+### Specializations - Enterprise:
+
+<div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="4228cab9-7e36-4a71-bf1f-a5714282e5f1" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+
+
+
+
+## Next Goals:
+
+<img align="middle" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
 
 ### Languages and Tools:
 
@@ -45,3 +56,4 @@ order: 4
 <img align="left" alt="Angel | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />
 <img align="left" alt="Angel | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
 <img align="left" alt="Angel | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />
+
