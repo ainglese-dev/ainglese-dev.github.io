@@ -36,24 +36,18 @@ order: 4
 
 <img align="middle" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
 
-### Languages and Tools:
-
-<img align="left" alt="VIM" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/vim/vim.png" />
-<img align="left" alt="Linux" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/linux/linux.png" />
-<img align="left" alt="Bash" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bash/bash.png" />
-<img align="left" alt="Python" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" />
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-<img align="left" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
-<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
-<img align="left" alt="Terminal" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />
-
-<br>
-
 ### Connect with me:
 
-<img align="left" alt="HashNode" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />
-<img align="left" alt="Angel | YouTube" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />
-<img align="left" alt="Angel | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />
-<img align="left" alt="Angel | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
-<img align="left" alt="Angel | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />
-
+<br>
+<p>
+  <a href="https://www.youtube.com/channel/UCCBILszPMsrqOFPDHbVepaA"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/youtube.svg" />
+  </a>
+  <a href="https://twitter.com/IngleseAngel"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/twitter.svg" />
+  </a>
+  <a href="mailto:ainglese@notyet.com"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/gmail.svg" />
+  </a>
+  <a href="https://www.linkedin.com/in/ingleseangel"><img align="left" width="24px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/linkedin.svg"  />
+  </a>
+    <a href="https://github.com/ainglese-dev"><img align="left" width="24px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/github.svg"  />
+  </a>
+</p>
