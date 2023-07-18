@@ -37,14 +37,3 @@ order: 4
 <img align="middle" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
 
 ### Connect with me:
-
-  <a href="https://www.youtube.com/channel/UCCBILszPMsrqOFPDHbVepaA"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/youtube.svg" />
-  </a>
-  <a href="https://twitter.com/IngleseAngel"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/twitter.svg" />
-  </a>
-  <a href="mailto:ainglese@notyet.com"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/gmail.svg" />
-  </a>
-  <a href="https://www.linkedin.com/in/ingleseangel"><img align="left" width="24px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/linkedin.svg"  />
-  </a>
-    <a href="https://github.com/ainglese-dev"><img align="left" width="24px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/github.svg"  />
-  </a>
