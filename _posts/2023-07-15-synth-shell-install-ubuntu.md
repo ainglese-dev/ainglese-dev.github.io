@@ -126,8 +126,8 @@ Igualmente podemos elimiar los archivos residuales generados por los scripts:
 > rm -r ~/.config/synth-shell/
 ```
 
-[def1]: ../assets/img/default_ubuntu_shell.png
-[def2]: ../assets/img/synth-shell-example.png
-[img3]: ../assets/img/synth-shell-assistance.png
-[img4]: ../assets/img/color-palette-bash.png
-[img5]: ../assets/img/unisnstall-example.png
+[def1]: ../../assets/img/default_ubuntu_shell.png
+[def2]: ../../assets/img/synth-shell-example.png
+[img3]: ../../assets/img/synth-shell-assistance.png
+[img4]: ../../assets/img/color-palette-bash.png
+[img5]: ../../assets/img/unisnstall-example.png
