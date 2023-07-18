@@ -38,7 +38,6 @@ order: 4
 
 ### Connect with me:
 
-<br>
 <p>
   <a href="https://www.youtube.com/channel/UCCBILszPMsrqOFPDHbVepaA"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/youtube.svg" />
   </a>
