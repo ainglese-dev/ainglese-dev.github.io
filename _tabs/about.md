@@ -38,7 +38,6 @@ order: 4
 
 ### Connect with me:
 
-<p>
   <a href="https://www.youtube.com/channel/UCCBILszPMsrqOFPDHbVepaA"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/youtube.svg" />
   </a>
   <a href="https://twitter.com/IngleseAngel"><img align="left" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@6.7.0/icons/twitter.svg" />
@@ -49,4 +48,3 @@ order: 4
   </a>
     <a href="https://github.com/ainglese-dev"><img align="left" width="24px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/github.svg"  />
   </a>
-</p>
