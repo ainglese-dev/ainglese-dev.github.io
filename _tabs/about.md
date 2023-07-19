@@ -37,3 +37,15 @@ order: 4
 <img align="middle" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
 
 ### Connect with me:
+
+
+[<img align="left" alt="HashNode" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website]
+[<img align="left" alt="Angel | YouTube" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />][youtube]
+[<img align="left" alt="Angel | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />][twitter]
+[<img align="left" alt="Angel | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
+[<img align="left" alt="Angel | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+
+[website]: https://blog.ainglese.me/
+[twitter]: https://twitter.com/IngleseAngel
+[youtube]: https://www.youtube.com/channel/UCCBILszPMsrqOFPDHbVepaA
+[linkedin]: https://www.linkedin.com/in/ingleseangel/
