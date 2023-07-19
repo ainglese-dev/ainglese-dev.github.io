@@ -25,24 +25,23 @@ order: 4
 <div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="a3eb43be-d7b2-47ab-a840-3da84b055ada" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 ### Specializations - Enterprise:
-
+<p style="text-align: center;">
 <div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="4228cab9-7e36-4a71-bf1f-a5714282e5f1" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-
-
-
-
+</p>
 
 ## Next Goals:
-
-<img align="middle" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
+<p style="text-align: center;">
+<img align="center" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
+</p>
 
 ### Connect with me:
 
-
+<p style="text-align: center;">
 [<img align="center" alt="Angel | blog" width="26px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website]
 [<img align="center" alt="Angel | YouTube" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />][youtube]
 [<img align="center" alt="Angel | Twitter" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />][twitter]
 [<img align="center" alt="Angel | LinkedIn" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
+</p>
 
 [website]: https://blog.ainglese.me/
 [twitter]: https://twitter.com/IngleseAngel
