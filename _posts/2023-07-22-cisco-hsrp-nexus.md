@@ -2,7 +2,7 @@
 title: Esenciales de HSRP en Cisco Nexus
 date: 2023-07-22 00:00:00 -05:00
 categories: [Cisco, CCNP, DCCOR]
-tags: [devasc, ccna, ccnp, windows, nexus, ]     # TAG names should always be lowercase
+tags: [devasc, ccna, ccnp, windows, nexus]     # TAG names should always be lowercase
 ---
 **Esenciales de HSRP en Cisco Nexus**
 
