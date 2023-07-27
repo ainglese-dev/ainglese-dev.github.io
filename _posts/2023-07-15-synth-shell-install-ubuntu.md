@@ -1,6 +1,10 @@
 ---
 title: Instalemos Synth Shell en ubuntu 
 date: 2023-07-15 00:00:00 -05:00
+image:
+  path: "/assets/img/synth-shell-example.png"
+  src: "/assets/img/synth-shell-example.png"
+  alt: Desuperpacking Meta Android Superpacked APKs
 categories: [linux, ubuntu, shell, bash, scripting]
 tags: [Linux, Ubuntu, Shell, bash, scripting, synth-shell]     # TAG names should always be lowercase
 ---
