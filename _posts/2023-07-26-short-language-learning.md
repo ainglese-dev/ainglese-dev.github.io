@@ -16,19 +16,25 @@ Learning a language in just four weeks can be challenging, but with a focused st
 > My personal goal is: Brasilian, Italian, German since I already know english.
 {: .prompt-info }
 
+<br>
+
 ```mermaid
-  gantt
-    title 4-Week Brazilian Portuguese Study Plan
-    Section Week 1
-    Basics and Fundamentals :a, 2023-08-01, 7d
-    Section Week 2
-    Grammar and Sentence Construct :a, 2023-08-08, 7d
-    Section Week 3
-    Listening and Speaking Practice :a, 2023-08-15, 7d
-    Section Week 4
-    Reading and Writing Proficiency :a, 2023-08-22, 7d
+gantt
+  title 4-Week Brazilian Portuguese Study Plan
+  Section Week 1
+  Basics and Fundamentals :a, 2023-08-01, 7d
+  Section Week 2
+  Grammar and Sentence Construct :a, 2023-08-08, 7d
+  Section Week 3
+  Listening and Speaking Practice :a, 2023-08-15, 7d
+  Section Week 4
+  Reading and Writing Proficiency :a, 2023-08-22, 7d
 ```
+
+<br>
+
 ---
+
 **Week 1: Basics and Fundamentals**
 
 - **Time Commitment:** 1-2 hours daily
