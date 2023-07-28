@@ -7,6 +7,7 @@ image:
   alt: leanring languages
 categories: [Languages]
 tags: [italian, brazilian, german]     # TAG names should always be lowercase
+mermaid: true
 ---
 
 **Learn a language in 4 weeks, adjusted plan 🇧🇷**
@@ -29,16 +30,6 @@ gantt
   Listening and Speaking Practice :a, 2023-08-15, 7d
   Section Week 4
   Reading and Writing Proficiency :a, 2023-08-22, 7d
-```
-
-## Testing GANTT
-
-```mermaid
- gantt
-  title  Adding GANTT diagram functionality to mermaid
-  apple :a, 2017-07-20, 1w
-  banana :crit, b, 2017-07-23, 1d
-  cherry :active, c, after b a, 1d
 ```
 
 ---
