@@ -19,17 +19,13 @@ Learning a language in just four weeks can be challenging, but with a focused st
 ```mermaid
   gantt
     title 4-Week Brazilian Portuguese Study Plan
-
-    section Week 1
+    Section Week 1
     Basics and Fundamentals :a, 2023-08-01, 7d
-
-    section Week 2
+    Section Week 2
     Grammar and Sentence Construct :a, 2023-08-08, 7d
-
-    section Week 3
+    Section Week 3
     Listening and Speaking Practice :a, 2023-08-15, 7d
-
-    section Week 4
+    Section Week 4
     Reading and Writing Proficiency :a, 2023-08-22, 7d
 ```
 ---
@@ -63,6 +59,7 @@ Learning a language in just four weeks can be challenging, but with a focused st
 
   - Days 8-12: Study grammar rules for verb conjugation (present tense) and sentence structure.
   - Days 13-14: Practice simple conversations and basic questions with a language partner or tutor.
+  
 ---
 
 **Week 3: Listening and Speaking Practice**
@@ -78,6 +75,7 @@ Learning a language in just four weeks can be challenging, but with a focused st
 
   - Days 15-17: Focus on improving listening skills with audio content.
   - Days 18-21: Engage in speaking practice regularly, focusing on fluency rather than perfection.
+
 ---
 
 **Week 4: Reading and Writing Proficiency**
