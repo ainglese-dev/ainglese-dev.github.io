@@ -21,18 +21,18 @@ Learning a language in just four weeks can be challenging, but with a focused st
     title 4-Week Brazilian Portuguese Study Plan
 
     section Week 1
-    Basics and Fundamentals: 2023-08-01, 7d
+    Basics and Fundamentals :a, 2023-08-01, 7d
 
     section Week 2
-    Grammar and Sentence Construct: 2023-08-08, 7d
+    Grammar and Sentence Construct :a, 2023-08-08, 7d
 
     section Week 3
-    Listening and Speaking Practice: 2023-08-15, 7d
+    Listening and Speaking Practice :a, 2023-08-15, 7d
 
     section Week 4
-    Reading and Writing Proficiency: 2023-08-22, 7d
+    Reading and Writing Proficiency :a, 2023-08-22, 7d
 ```
-
+---
 **Week 1: Basics and Fundamentals**
 
 - **Time Commitment:** 1-2 hours daily
@@ -48,6 +48,8 @@ Learning a language in just four weeks can be challenging, but with a focused st
   - Days 4-6: Learn numbers, colors, and essential everyday vocabulary.
   - Days 7: Review and reinforce what you've learned during the week.
 
+---
+
 **Week 2: Grammar and Sentence Construction**
 
 - **Time Commitment:** 1-2 hours daily
@@ -61,6 +63,7 @@ Learning a language in just four weeks can be challenging, but with a focused st
 
   - Days 8-12: Study grammar rules for verb conjugation (present tense) and sentence structure.
   - Days 13-14: Practice simple conversations and basic questions with a language partner or tutor.
+---
 
 **Week 3: Listening and Speaking Practice**
 
@@ -75,6 +78,7 @@ Learning a language in just four weeks can be challenging, but with a focused st
 
   - Days 15-17: Focus on improving listening skills with audio content.
   - Days 18-21: Engage in speaking practice regularly, focusing on fluency rather than perfection.
+---
 
 **Week 4: Reading and Writing Proficiency**
 
@@ -90,6 +94,8 @@ Learning a language in just four weeks can be challenging, but with a focused st
   - Days 22-24: Read and comprehend short texts, focusing on new vocabulary and expressions.
   - Days 25-27: Practice writing short paragraphs or journal entries in Brazilian Portuguese.
   - Day 28: Review all aspects of your learning and identify areas for further improvement.
+
+---
 
 **Tips:**
 
