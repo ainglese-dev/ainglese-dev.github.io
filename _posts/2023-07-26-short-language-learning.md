@@ -13,17 +13,17 @@ tags: [italian, brazilian, german]     # TAG names should always be lowercase
 
 Learning a language in just four weeks can be challenging, but with a focused study plan and consistent effort, you can make significant progress. Keep in mind that language learning is an ongoing process, and four weeks will provide a foundation for further improvement. Below is a 4-week study plan to learn Brazilian Portuguese (or any other language):
 
-> _My personal goal is: Brasilian, Italian, German_ since I already know english {: .prompt-info }
+> My personal goal is: Brasilian, Italian, German since I already know english {: .prompt-info }
 
 ```mermaid
-gantt
+  gantt
     title 4-Week Brazilian Portuguese Study Plan
 
     section Week 1
     Basics and Fundamentals: 2023-08-01, 7d
 
     section Week 2
-    Grammar and Sentence Construction: 2023-08-08, 7d
+    Grammar and Sentence Construct: 2023-08-08, 7d
 
     section Week 3
     Listening and Speaking Practice: 2023-08-15, 7d
