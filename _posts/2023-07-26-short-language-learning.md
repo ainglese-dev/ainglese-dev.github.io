@@ -16,7 +16,7 @@ Learning a language in just four weeks can be challenging, but with a focused st
 > My personal goal is: Brasilian, Italian, German since I already know english.
 {: .prompt-info }
 
-<br>
+## Learning timeline
 
 ```mermaid
 gantt
@@ -31,7 +31,15 @@ gantt
   Reading and Writing Proficiency :a, 2023-08-22, 7d
 ```
 
-<br>
+## Testing GANTT
+
+```mermaid
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+```
 
 ---
 
