@@ -25,7 +25,7 @@ gantt
   Section Week 1
   Basics and Fundamentals :a, 2023-08-01, 7d
   Section Week 2
-  Grammar and Sentence Construct :a, 2023-08-08, 7d
+  Grammar and Sentence :a, 2023-08-08, 7d
   Section Week 3
   Listening and Speaking Practice :a, 2023-08-15, 7d
   Section Week 4
