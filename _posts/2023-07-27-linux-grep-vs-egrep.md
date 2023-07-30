@@ -5,7 +5,7 @@ image:
   path: "/assets/img/linux-on-a-router.png"
   src: "/assets/img/linux-on-a-router.png"
   alt: linux on a router
-categories: [Linux, CLI]
+categories: [linux, CLI]
 tags: [grep, egrep, linux]     # TAG names should always be lowercase
 ---
 
