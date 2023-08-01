@@ -2,8 +2,8 @@
 title: Profundizando en la Monitorización del Tráfico de Red SPAN, RSPAN y ERSPAN
 date: 2023-07-30 00:00:00 -05:00
 image:
-  path: "/assets/img/00003-3396673131.png"
-  src: "/assets/img/00003-3396673131.png"
+  path: "/assets/img/00005-3291037043.png"
+  src: "/assets/img/00005-3291037043.png"
   alt: SPAN cisco nexus
 categories: [Cisco, CCNP, Nexus]
 tags: [cisco, nexus, automation]     # TAG names should always be lowercase
