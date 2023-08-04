@@ -13,8 +13,8 @@ order: 4
 
 ### Published projects:
 
-Meraki to Mindmaps: [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/AngelIV23/Meraki-To-MindMaps)
-Cisco FMC Excel from API JSON: [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/AngelIV23/cisco-fmc-excel-from-json)
+Meraki to Mindmaps: [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/AngelIV23/Meraki-To-MindMaps)<br>
+Cisco FMC Excel from API JSON: [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/AngelIV23/cisco-fmc-excel-from-json)<br>
 
 ## Achieved valid Certifications:
 
@@ -39,9 +39,7 @@ Cisco FMC Excel from API JSON: [![published](https://static.production.devnetclo
 
 ## Next Goals:
 
-<img align="center" alt="HTML5" width="150px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" />
-
-<img align="center" alt="HTML5" width="150px" src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Advanced-Networking-Specialty_badge.e09a4e04210dd4dd57ace21344af66986d4b4dc7.png" />
+<img align="center" alt="HTML5" width="100px" src="https://images.youracclaim.com/images/e21e94f7-feec-4717-9687-ac150b213f64/Cisco_DevNetAsst_600.png" /><img align="center" alt="HTML5" width="100px" src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Advanced-Networking-Specialty_badge.e09a4e04210dd4dd57ace21344af66986d4b4dc7.png" />
 
 
 
