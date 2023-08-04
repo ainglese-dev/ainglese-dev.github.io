@@ -11,6 +11,11 @@ order: 4
 - 🤔 I’m looking for help with: Ansible, PyaTS, Netbox and APIs.
 - ⚡ Fun fact: Not an native english speaker, but I can spell Contratulazion very well 😉
 
+### Published projects:
+
+Meraki to Mindmaps: [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/AngelIV23/Meraki-To-MindMaps)
+Cisco FMC Excel from API JSON: [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/AngelIV23/cisco-fmc-excel-from-json)
+
 ## Achieved valid Certifications:
 
 <div data-iframe-width="150" data-iframe-height="250" data-share-badge-id="9e7e2d3d-eceb-4151-b863-b86be82ba14a" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
