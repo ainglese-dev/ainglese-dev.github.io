@@ -71,8 +71,6 @@ hsrp <numero_de_grupo> timers <hello_tiempo> <hold_tiempo>
 
 Reemplaza `<hello_tiempo>` con el intervalo en segundos entre los mensajes de hello (por defecto 3 segundos) y `<hold_tiempo>` con el tiempo en segundos que un router esperará para considerar que el router activo ha fallado (por defecto 10 segundos).
 
-{% include adsense.html %}
-
 + __Paso 8:__ _Salir y guardar la configuración_
 
 Después de haber realizado todas las configuraciones, asegúrate de salir del modo de configuración y guardar los cambios en la configuración de arranque:
@@ -87,3 +85,6 @@ copy running-config startup-config
 **Referencias**
 
 - Cisco Nexus 9000 Series NX-OS Unicast Routing Configuration Guide, Release 9.3(x): [enlace](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/unicast/configuration/guide/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x_chapter_010010.html)
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
+     crossorigin="anonymous"></script>

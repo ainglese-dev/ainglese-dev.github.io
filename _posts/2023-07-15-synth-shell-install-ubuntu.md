@@ -130,8 +130,8 @@ Igualmente podemos elimiar los archivos residuales generados por los scripts:
 > rm -r ~/.config/synth-shell/
 ```
 
-{% include adsense.html %}
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
+     crossorigin="anonymous"></script>
 
 [def1]: ../../assets/img/default_ubuntu_shell.png
 [def2]: ../../assets/img/synth-shell-example.png

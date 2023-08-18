@@ -3,4 +3,7 @@ layout: tags
 icon: fas fa-tags
 order: 2
 ---
-{% include adsense.html %}
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
+     crossorigin="anonymous"></script>

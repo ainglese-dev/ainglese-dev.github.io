@@ -189,3 +189,6 @@ Recuerda reemplazar `tu_inventario.txt` con el nombre de tu archivo de inventari
 # Conclusión
 
 La correcta configuración del zoning en switches Cisco MDS y Nexus es fundamental para asegurar un rendimiento óptimo y una gestión eficiente de la red de almacenamiento. Mediante el uso de alias y zonas, es posible agrupar y aislar dispositivos según sus necesidades, lo que garantiza un entorno seguro y organizado. Recuerda siempre verificar y guardar la configuración después de realizar cambios importantes. Con esta guía, estás listo para mejorar la eficiencia y la seguridad de tu infraestructura de almacenamiento Fiber Channel. ¡Buena configuración!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
+     crossorigin="anonymous"></script>

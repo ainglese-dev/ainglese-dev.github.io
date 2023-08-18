@@ -27,8 +27,6 @@ Antes de configurar el dominio vPC, asegúrate de habilitar la función vPC en a
 ```
 switch(config)# feature vpc
 ```
-{% include adsense.html %}
-
 
 + **Paso 4: Crear el dominio vPC**<br>
 Ahora, crearemos el dominio vPC y asignaremos el número de dominio deseado. Este número debe ser el mismo en ambos switches Nexus:
@@ -100,3 +98,6 @@ Siguiendo estos pasos y buenas prácticas, estarás en camino de configurar un d
 **Referencias**
 
 - Understand and Configure Nexus 9000 vPC with Best Practices: [enlace](https://www.cisco.com/c/en/us/support/docs/switches/nexus-9000-series-switches/218333-understand-and-configure-nexus-9000-vpc.html)
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
+     crossorigin="anonymous"></script>

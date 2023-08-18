@@ -153,3 +153,6 @@ Asegúrate de tener acceso SSH habilitado en el switch Nexus y de que las creden
 
 
 En resumen, la configuración de NetFlow en los switches Cisco Nexus ofrece una visibilidad profunda y en tiempo real del tráfico de red, lo que permite tomar decisiones más informadas y resolver problemas de manera eficiente. Esta tecnología es fundamental para mantener la seguridad, el rendimiento y la eficiencia en cualquier infraestructura de red. ¡Empieza a utilizar NetFlow y potencia tu gestión de red!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
+     crossorigin="anonymous"></script>
