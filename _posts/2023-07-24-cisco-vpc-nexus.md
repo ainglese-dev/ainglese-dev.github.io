@@ -27,6 +27,8 @@ Antes de configurar el dominio vPC, asegúrate de habilitar la función vPC en a
 ```
 switch(config)# feature vpc
 ```
+{% include adsense.html %}
+
 
 + **Paso 4: Crear el dominio vPC**<br>
 Ahora, crearemos el dominio vPC y asignaremos el número de dominio deseado. Este número debe ser el mismo en ambos switches Nexus:

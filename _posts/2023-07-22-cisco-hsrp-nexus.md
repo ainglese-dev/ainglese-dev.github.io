@@ -71,6 +71,8 @@ hsrp <numero_de_grupo> timers <hello_tiempo> <hold_tiempo>
 
 Reemplaza `<hello_tiempo>` con el intervalo en segundos entre los mensajes de hello (por defecto 3 segundos) y `<hold_tiempo>` con el tiempo en segundos que un router esperará para considerar que el router activo ha fallado (por defecto 10 segundos).
 
+{% include adsense.html %}
+
 + __Paso 8:__ _Salir y guardar la configuración_
 
 Después de haber realizado todas las configuraciones, asegúrate de salir del modo de configuración y guardar los cambios en la configuración de arranque:
