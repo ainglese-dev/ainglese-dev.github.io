@@ -135,4 +135,5 @@ Igualmente podemos elimiar los archivos residuales generados por los scripts:
 [img3]: ../../assets/img/synth-shell-assistance.png
 [img4]: ../../assets/img/color-palette-bash.png
 [img5]: ../../assets/img/unisnstall-example.png
-    {% include adsense.html %}
+    
+{% include adsense.html %}
