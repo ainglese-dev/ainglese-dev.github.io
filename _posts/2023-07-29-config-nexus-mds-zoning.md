@@ -48,6 +48,9 @@ Antes de comenzar la configuración del zoning, asegúrate de tener acceso al sw
    show fcalias
    ```
 
+{% include adsense-inarticlead.html %}
+
+
 ## IV. Creación de Zonas
 
 1. Verifica la lista actual de zonas utilizando el siguiente comando:
@@ -73,7 +76,9 @@ Antes de comenzar la configuración del zoning, asegúrate de tener acceso al sw
    show zone
    ```
 
+
 ## V. Activación del Zoning
+
 
 1. Activa el zoning en el switch utilizando el siguiente comando:
    ```

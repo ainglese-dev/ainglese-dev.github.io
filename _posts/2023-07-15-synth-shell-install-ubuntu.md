@@ -70,6 +70,8 @@ Paso 3. Aseguramos que el setup es ejecutable y continuamos con la instalacion:
 
 ```
 
+{% include adsense-inarticlead.html %}
+
 Dependiendo como vaya corriendo el script, vas a ver un cuestionario relevante a una nueva instalacion que te permitira definir lo que va a instalar, yo acepte todo por defecto, quizas querras leer que si te beneficia y que no:
 
 ![Synth-shell assistance][img3]

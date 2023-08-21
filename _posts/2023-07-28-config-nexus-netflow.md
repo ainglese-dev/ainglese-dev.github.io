@@ -68,6 +68,9 @@ switch# show flow monitor MONITOR_NAME
 
 Con esto, has configurado NetFlow en tu switch Cisco Nexus y estás listo para aprovechar sus ventajas.
 
+{% include adsense-inarticlead.html %}
+
+
 ## **5 Ejemplos Clásicos de Uso para NetFlow**
 
 1. **Monitoreo del tráfico y Análisis de Ancho de Banda:**

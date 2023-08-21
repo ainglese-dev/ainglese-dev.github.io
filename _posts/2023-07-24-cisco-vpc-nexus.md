@@ -51,6 +51,8 @@ En el contexto del dominio vPC, especifica la dirección IP que configuraste en 
 switch(config-vpc-domain)# peer-keepalive destination <dirección_IP_peer_switch>
 ```
 
+{% include adsense-inarticlead.html %}
+
 + **Paso 7: Crear el PortChannel vPC**<br>
 El siguiente paso es crear el PortChannel vPC que se extenderá entre los switches Nexus. El número del PortChannel debe ser el mismo en ambos switches:
 

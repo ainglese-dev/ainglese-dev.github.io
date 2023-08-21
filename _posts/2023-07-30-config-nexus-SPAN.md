@@ -43,6 +43,9 @@ switch(config-monitor)# destination interface <interfaz-destino>
 switch(config-monitor)# filter access-group <nombre-SPAN-ACL>
 ```
 
+{% include adsense-inarticlead.html %}
+
+
 4. Salga del modo de configuración y habilite la sesión de SPAN:
 
 ```

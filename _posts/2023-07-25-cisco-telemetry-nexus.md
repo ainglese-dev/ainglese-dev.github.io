@@ -44,6 +44,8 @@ Una vez que tienes un grupo de sensores, debes configurar los sensores específi
 switch(config-telemetry-grp)# sensor 100
 switch(config-telemetry-sensor)# path sys/cpu/5sec
 ```
+{% include adsense-inarticlead.html %}
+
 
 **Paso 6: Asociar un grupo de sensores con un destino**<br>
 Después de configurar los sensores, debes asociar el grupo de sensores con el destino de telemetría que configuraste anteriormente:

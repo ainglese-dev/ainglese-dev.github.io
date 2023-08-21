@@ -9,6 +9,9 @@ categories: [linux, CLI]
 tags: [grep, egrep, linux]     # TAG names should always be lowercase
 ---
 
+{% include adsense-inarticlead.html %}
+
+
 **Aprendamos la diferencia entre grep vs egrep**
 
 En Linux, tanto `grep` como `egrep` son utilidades de línea de comandos que se utilizan para buscar patrones de texto en archivos o en la salida de otros comandos. Ambas herramientas se basan en expresiones regulares para realizar sus búsquedas, pero hay una diferencia clave entre ellas:

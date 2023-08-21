@@ -41,6 +41,9 @@ Para habilitar HSRP versión 2 en la interfaz VLAN, utiliza el siguiente comando
 hsrp version 2
 ```
 
+{% include adsense-inarticlead.html %}
+
+
 + __Paso 5:__ _Configurar el grupo HSRP_
 
 Ahora, debes configurar el grupo HSRP y asignarle una dirección IP virtual. El grupo HSRP representa un conjunto de routers que se comportarán como uno solo para proporcionar redundancia. Utiliza el siguiente comando:

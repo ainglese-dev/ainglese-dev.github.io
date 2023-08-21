@@ -51,6 +51,8 @@ gantt
 
 ---
 
+{% include adsense-inarticlead.html %}
+
 **Week 2: Grammar and Sentence Construction**
 
 - **Time Commitment:** 1-2 hours daily
