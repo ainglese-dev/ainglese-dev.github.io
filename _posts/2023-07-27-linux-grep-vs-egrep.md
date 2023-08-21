@@ -59,6 +59,3 @@ orange
 ```
 
 En resumen, la principal diferencia entre `grep` y `egrep` es la sintaxis de las expresiones regulares que utilizan. Si necesitas utilizar metacaracteres extendidos sin escapar, debes usar `egrep` o `grep -E`. Si solo necesitas patrones básicos, puedes usar `grep`.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
-     crossorigin="anonymous"></script>

@@ -79,5 +79,3 @@ Recuerda que los datos de telemetría proporcionan información valiosa sobre el
 
 - Cisco Nexus 3000 and 9000 Series NX-API REST SDK User Guide and API Reference, Release 9.2x: [enlace](https://developer.cisco.com/docs/cisco-nexus-3000-and-9000-series-nx-api-rest-sdk-user-guide-and-api-reference-release-9-2x/#!configuring-telemetry)
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
-     crossorigin="anonymous"></script>

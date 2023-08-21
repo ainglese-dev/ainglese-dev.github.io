@@ -108,6 +108,3 @@ gantt
 4. **Interact with native speakers:** Engaging with native speakers will help you gain practical experience.
 
 Remember, language learning is a journey, and it's important to enjoy the process. After the initial four weeks, continue practicing and expanding your knowledge to become more proficient in Brazilian Portuguese.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
-     crossorigin="anonymous"></script>

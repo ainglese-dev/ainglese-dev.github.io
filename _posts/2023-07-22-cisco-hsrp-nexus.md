@@ -86,5 +86,3 @@ copy running-config startup-config
 
 - Cisco Nexus 9000 Series NX-OS Unicast Routing Configuration Guide, Release 9.3(x): [enlace](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/unicast/configuration/guide/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x_chapter_010010.html)
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5329199788569018"
-     crossorigin="anonymous"></script>
