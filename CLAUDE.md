@@ -64,3 +64,17 @@ Standard delivery process for client projects:
 - Include Habeas Data compliance for Colombian clients
 - Privacy statements for WhatsApp usage
 - Basic legal templates for Premium package clients
+
+## Development Commands
+
+- `npm run dev` - Start development server (http://localhost:4321)
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run astro` - Run Astro CLI commands
+
+## Project Structure
+
+- `src/pages/` - Page components (file-based routing)
+- `src/components/` - Reusable Astro components
+- `public/` - Static assets
+- `astro.config.mjs` - Astro configuration
