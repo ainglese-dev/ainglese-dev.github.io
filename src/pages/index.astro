@@ -49,7 +49,32 @@ const content = {
 			},
 			network: {
 				title: "Servicios de Red",
-				description: "Precios personalizados para soluciones Cisco ACI, FMC/FTD, UCS y almacenamiento empresarial.",
+				day0day1: {
+					name: "Day-0 / Day-1",
+					subtitle: "Diseño e Implementación",
+					price: "Cotización",
+					features: [
+						"Diseño de arquitectura de red",
+						"Despliegue Cisco ACI fabric",
+						"Implementación FMC/FTD",
+						"Configuración UCS servers",
+						"Documentación completa",
+						"Sesiones de transferencia"
+					]
+				},
+				day2: {
+					name: "Day-2",
+					subtitle: "Operaciones Continuas",
+					price: "Retainer",
+					features: [
+						"Monitoreo y mantenimiento",
+						"Optimización de rendimiento",
+						"Gestión de políticas seguridad",
+						"Soporte y resolución incidentes",
+						"Planificación de capacidad",
+						"Reportes mensuales"
+					]
+				},
 				cta: "Discutir Proyecto"
 			},
 			cta: "Comenzar"
@@ -123,7 +148,32 @@ const content = {
 			},
 			network: {
 				title: "Network Services",
-				description: "Custom pricing for Cisco ACI, FMC/FTD, UCS, and enterprise storage solutions.",
+				day0day1: {
+					name: "Day-0 / Day-1",
+					subtitle: "Design & Implementation",
+					price: "Quote",
+					features: [
+						"Network architecture design",
+						"Cisco ACI fabric deployment",
+						"FMC/FTD security implementation",
+						"UCS server infrastructure setup",
+						"Complete documentation",
+						"Knowledge transfer sessions"
+					]
+				},
+				day2: {
+					name: "Day-2",
+					subtitle: "Ongoing Operations",
+					price: "Retainer",
+					features: [
+						"Network monitoring & maintenance",
+						"Performance optimization",
+						"Security policy management",
+						"Troubleshooting & incident response",
+						"Capacity planning & scaling",
+						"Monthly reports & recommendations"
+					]
+				},
 				cta: "Discuss Project"
 			},
 			cta: "Get Started"
@@ -782,8 +832,14 @@ const defaultLang = 'es';
 				document.getElementById('premium-name').textContent = c.services.premium.name;
 				
 				document.getElementById('network-title').textContent = c.services.network.title;
-				document.getElementById('network-description').textContent = c.services.network.description;
-				document.getElementById('network-cta').textContent = c.services.network.cta;
+				document.getElementById('network-day0day1-name').textContent = c.services.network.day0day1.name;
+				document.getElementById('network-day0day1-subtitle').textContent = c.services.network.day0day1.subtitle;
+				document.getElementById('network-day0day1-price').textContent = c.services.network.day0day1.price;
+				document.getElementById('network-day2-name').textContent = c.services.network.day2.name;
+				document.getElementById('network-day2-subtitle').textContent = c.services.network.day2.subtitle;
+				document.getElementById('network-day2-price').textContent = c.services.network.day2.price;
+				document.getElementById('network-cta-1').textContent = c.services.network.cta;
+				document.getElementById('network-cta-2').textContent = c.services.network.cta;
 				
 				document.getElementById('process-title').textContent = c.process.title;
 				
@@ -812,6 +868,17 @@ const defaultLang = 'es';
 				
 				c.services.premium.features.forEach((feature, i) => {
 					const el = document.getElementById(`premium-feature-${i}`);
+					if (el) el.textContent = feature;
+				});
+				
+				// Update network service features
+				c.services.network.day0day1.features.forEach((feature, i) => {
+					const el = document.getElementById(`network-day0day1-feature-${i}`);
+					if (el) el.textContent = feature;
+				});
+				
+				c.services.network.day2.features.forEach((feature, i) => {
+					const el = document.getElementById(`network-day2-feature-${i}`);
 					if (el) el.textContent = feature;
 				});
 				
@@ -935,10 +1002,37 @@ const defaultLang = 'es';
 					</div>
 				</div>
 				
-				<div style="text-align: center; margin-top: 40px; padding: 30px; background: var(--bg-tertiary); border-radius: 12px;">
-					<h3 id="network-title" style="margin-bottom: 15px;">Servicios de Red</h3>
-					<p id="network-description">Precios personalizados para soluciones Cisco ACI, FMC/FTD, UCS y almacenamiento empresarial.</p>
-					<a href="#" id="network-cta" class="cta-button main-cta" target="_blank" style="margin-top: 20px; display: inline-block;">Discutir Proyecto</a>
+				<h2 id="network-title" style="text-align: center; font-size: 2.5rem; margin: 50px 0; color: var(--text-primary);">Servicios de Red</h2>
+				<div class="services-grid" style="margin-bottom: 0;">
+					<div class="service-card">
+						<h3 id="network-day0day1-name">Day-0 / Day-1</h3>
+						<h4 id="network-day0day1-subtitle" style="color: var(--text-secondary); margin-bottom: 10px; font-weight: 500;">Diseño e Implementación</h4>
+						<div class="price" id="network-day0day1-price">Cotización</div>
+						<ul>
+							<li id="network-day0day1-feature-0">Diseño de arquitectura de red</li>
+							<li id="network-day0day1-feature-1">Despliegue Cisco ACI fabric</li>
+							<li id="network-day0day1-feature-2">Implementación FMC/FTD</li>
+							<li id="network-day0day1-feature-3">Configuración UCS servers</li>
+							<li id="network-day0day1-feature-4">Documentación completa</li>
+							<li id="network-day0day1-feature-5">Sesiones de transferencia</li>
+						</ul>
+						<a href="#" class="cta-button main-cta" target="_blank" id="network-cta-1">Discutir Proyecto</a>
+					</div>
+					
+					<div class="service-card">
+						<h3 id="network-day2-name">Day-2</h3>
+						<h4 id="network-day2-subtitle" style="color: var(--text-secondary); margin-bottom: 10px; font-weight: 500;">Operaciones Continuas</h4>
+						<div class="price" id="network-day2-price">Retainer</div>
+						<ul>
+							<li id="network-day2-feature-0">Monitoreo y mantenimiento</li>
+							<li id="network-day2-feature-1">Optimización de rendimiento</li>
+							<li id="network-day2-feature-2">Gestión de políticas seguridad</li>
+							<li id="network-day2-feature-3">Soporte y resolución incidentes</li>
+							<li id="network-day2-feature-4">Planificación de capacidad</li>
+							<li id="network-day2-feature-5">Reportes mensuales</li>
+						</ul>
+						<a href="#" class="cta-button main-cta" target="_blank" id="network-cta-2">Discutir Proyecto</a>
+					</div>
 				</div>
 			</div>
 		</section>
