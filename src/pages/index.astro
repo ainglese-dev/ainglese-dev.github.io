@@ -574,6 +574,83 @@ const defaultLang = 'es';
 				border-color: #ea4335;
 			}
 
+			.faq {
+				background: var(--bg-tertiary);
+				padding: 60px 0;
+			}
+			
+			.faq h2 {
+				text-align: center;
+				font-size: 2.5rem;
+				margin-bottom: 50px;
+				color: var(--text-primary);
+			}
+			
+			.faq-container {
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			
+			.faq-item {
+				background: var(--bg-secondary);
+				border: 1px solid var(--border-color);
+				border-radius: 8px;
+				margin-bottom: 15px;
+				overflow: hidden;
+				transition: all 0.3s ease;
+			}
+			
+			.faq-item:hover {
+				border-color: var(--accent-primary);
+			}
+			
+			.faq-question {
+				background: none;
+				border: none;
+				width: 100%;
+				padding: 20px;
+				text-align: left;
+				font-family: inherit;
+				font-size: 1.1rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				cursor: pointer;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				transition: background-color 0.3s ease;
+			}
+			
+			.faq-question:hover {
+				background: var(--bg-tertiary);
+			}
+			
+			.faq-icon {
+				font-size: 1.2rem;
+				transition: transform 0.3s ease;
+				color: var(--accent-primary);
+			}
+			
+			.faq-item.active .faq-icon {
+				transform: rotate(45deg);
+			}
+			
+			.faq-answer {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.3s ease;
+			}
+			
+			.faq-answer-content {
+				padding: 0 20px 20px 20px;
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+			
+			.faq-item.active .faq-answer {
+				max-height: 200px;
+			}
+
 			.contact {
 				background: var(--text-primary);
 				color: var(--bg-primary);
@@ -616,7 +693,8 @@ const defaultLang = 'es';
 				.services h2,
 				.process h2,
 				.contact h2,
-				.socials h2 {
+				.socials h2,
+				.faq h2 {
 					font-size: 2rem;
 				}
 				
@@ -632,6 +710,15 @@ const defaultLang = 'es';
 					width: 45px;
 					height: 45px;
 					font-size: 1.1rem;
+				}
+				
+				.faq-question {
+					font-size: 1rem;
+					padding: 15px;
+				}
+				
+				.faq-answer-content {
+					padding: 0 15px 15px 15px;
 				}
 			}
 		</style>
@@ -737,6 +824,51 @@ const defaultLang = 'es';
 						process: "Proceso",
 						contact: "Contacto"
 					},
+					faq: {
+						title: "Preguntas Frecuentes",
+						questions: [
+							{
+								question: "¿Qué incluye exactamente el paquete básico?",
+								answer: "El paquete básico incluye un diseño basado en plantilla con hero personalizable, 3 secciones de contenido, formulario de contacto funcional e integración con WhatsApp. El cliente debe proporcionar todo el contenido (textos, imágenes, logo)."
+							},
+							{
+								question: "¿Cuánto tiempo toma realmente entregar en 48-72 horas?",
+								answer: "Una vez recibidos todos los materiales del cliente (contenido, imágenes, acceso al dominio), entregamos el demo en subdomain en 48-72 horas hábiles. El tiempo final depende de la complejidad del paquete elegido."
+							},
+							{
+								question: "¿Qué pasa si no tengo contenido listo?",
+								answer: "Para paquetes Básico y Estándar, necesitas proporcionar el contenido. Con el paquete Premium incluimos servicios de copywriting profesional para ayudarte a crear contenido efectivo y persuasivo."
+							},
+							{
+								question: "¿Puedo ver ejemplos de trabajos anteriores?",
+								answer: "Sí, contacta vía WhatsApp y te compartiremos un portafolio con ejemplos relevantes para tu industria. Respetamos la confidencialidad de nuestros clientes mostrando solo trabajos autorizados."
+							},
+							{
+								question: "¿Qué tipo de soporte incluyen después del lanzamiento?",
+								answer: "Básico: Sin soporte post-lanzamiento. Estándar: 7 días de soporte técnico. Premium: 30 días de soporte completo incluyendo actualizaciones menores y optimizaciones."
+							},
+							{
+								question: "¿Aceptan pagos fraccionados?",
+								answer: "Sí, para paquetes Estándar y Premium requerimos 50% al inicio del proyecto y 50% al finalizar. El paquete Básico se paga completo al iniciar."
+							},
+							{
+								question: "¿Cuál es la diferencia entre Day-0/Day-1 y Day-2?",
+								answer: "Day-0/Day-1 es diseño e implementación inicial (arquitectura, despliegue, configuración). Day-2 son operaciones continuas (monitoreo, mantenimiento, optimización, soporte ongoing)."
+							},
+							{
+								question: "¿Trabajan con infraestructura existente o solo nuevas implementaciones?",
+								answer: "Trabajamos en ambos escenarios: nuevas implementaciones desde cero y modernización/expansión de infraestructuras existentes. Evaluamos cada caso específicamente."
+							},
+							{
+								question: "¿Qué certificaciones Cisco tienen?",
+								answer: "Contamos con certificaciones CCNP Enterprise, CCNP Security y experiencia especializada en ACI, FMC/FTD y UCS. Contacta para detalles específicos sobre certificaciones actuales."
+							},
+							{
+								question: "¿Cómo inicio un proyecto?",
+								answer: "Muy simple: 1) Contacta vía WhatsApp, 2) Discutimos tus necesidades y elegimos el paquete, 3) Completamos el formulario de intake, 4) Iniciamos el trabajo inmediatamente."
+							}
+						]
+					},
 					socials: {
 						title: "Conecta Conmigo"
 					}
@@ -841,6 +973,51 @@ const defaultLang = 'es';
 						process: "Process",
 						contact: "Contact"
 					},
+					faq: {
+						title: "Frequently Asked Questions",
+						questions: [
+							{
+								question: "What exactly is included in the basic package?",
+								answer: "The basic package includes a template-based design with customizable hero, 3 content sections, functional contact form, and WhatsApp integration. Client must provide all content (texts, images, logo)."
+							},
+							{
+								question: "How realistic is the 48-72 hour delivery time?",
+								answer: "Once we receive all client materials (content, images, domain access), we deliver the demo on subdomain within 48-72 business hours. Final time depends on chosen package complexity."
+							},
+							{
+								question: "What if I don't have content ready?",
+								answer: "For Basic and Standard packages, you need to provide content. With Premium package we include professional copywriting services to help create effective and persuasive content."
+							},
+							{
+								question: "Can I see examples of previous work?",
+								answer: "Yes, contact via WhatsApp and we'll share a portfolio with relevant examples for your industry. We respect client confidentiality by showing only authorized work."
+							},
+							{
+								question: "What kind of support is included after launch?",
+								answer: "Basic: No post-launch support. Standard: 7 days technical support. Premium: 30 days full support including minor updates and optimizations."
+							},
+							{
+								question: "Do you accept split payments?",
+								answer: "Yes, for Standard and Premium packages we require 50% at project start and 50% upon completion. Basic package is paid in full upfront."
+							},
+							{
+								question: "What's the difference between Day-0/Day-1 and Day-2?",
+								answer: "Day-0/Day-1 is initial design and implementation (architecture, deployment, configuration). Day-2 is ongoing operations (monitoring, maintenance, optimization, ongoing support)."
+							},
+							{
+								question: "Do you work with existing infrastructure or only new implementations?",
+								answer: "We work in both scenarios: new implementations from scratch and modernization/expansion of existing infrastructures. We evaluate each case specifically."
+							},
+							{
+								question: "What Cisco certifications do you have?",
+								answer: "We hold CCNP Enterprise, CCNP Security certifications and specialized experience in ACI, FMC/FTD, and UCS. Contact for specific details about current certifications."
+							},
+							{
+								question: "How do I start a project?",
+								answer: "Very simple: 1) Contact via WhatsApp, 2) Discuss your needs and choose package, 3) Complete intake form, 4) We start work immediately."
+							}
+						]
+					},
 					socials: {
 						title: "Connect With Me"
 					}
@@ -912,6 +1089,15 @@ const defaultLang = 'es';
 				document.getElementById('nav-services').textContent = c.nav.services;
 				document.getElementById('nav-process').textContent = c.nav.process;
 				document.getElementById('nav-contact').textContent = c.nav.contact;
+				
+				// Update FAQ
+				document.getElementById('faq-title').textContent = c.faq.title;
+				c.faq.questions.forEach((faq, i) => {
+					const questionEl = document.getElementById(`faq-question-${i}`);
+					const answerEl = document.getElementById(`faq-answer-${i}`);
+					if (questionEl) questionEl.textContent = faq.question;
+					if (answerEl) answerEl.textContent = faq.answer;
+				});
 				
 				// Update socials
 				document.getElementById('socials-title').textContent = c.socials.title;
@@ -986,7 +1172,31 @@ const defaultLang = 'es';
 				
 				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
 				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+				
+				// Initialize FAQ accordion
+				initFAQ();
 			});
+			
+			function initFAQ() {
+				const faqItems = document.querySelectorAll('.faq-item');
+				
+				faqItems.forEach(item => {
+					const question = item.querySelector('.faq-question');
+					question.addEventListener('click', () => {
+						const isActive = item.classList.contains('active');
+						
+						// Close all FAQ items
+						faqItems.forEach(otherItem => {
+							otherItem.classList.remove('active');
+						});
+						
+						// Toggle current item
+						if (!isActive) {
+							item.classList.add('active');
+						}
+					});
+				});
+			}
 		</script>
 	</head>
 	<body>
@@ -1121,6 +1331,134 @@ const defaultLang = 'es';
 						<div class="step-number">3</div>
 						<h3 id="step-title-2">Despliegue</h3>
 						<p id="step-desc-2">Despliegue final a tu dominio con 7-30 días de soporte según tu paquete.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section id="faq" class="faq section">
+			<div class="container">
+				<h2 id="faq-title">Preguntas Frecuentes</h2>
+				<div class="faq-container">
+					<div class="faq-item" data-faq="0">
+						<button class="faq-question">
+							<span id="faq-question-0">¿Qué incluye exactamente el paquete básico?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-0">
+								El paquete básico incluye un diseño basado en plantilla con hero personalizable, 3 secciones de contenido, formulario de contacto funcional e integración con WhatsApp. El cliente debe proporcionar todo el contenido (textos, imágenes, logo).
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="1">
+						<button class="faq-question">
+							<span id="faq-question-1">¿Cuánto tiempo toma realmente entregar en 48-72 horas?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-1">
+								Una vez recibidos todos los materiales del cliente (contenido, imágenes, acceso al dominio), entregamos el demo en subdomain en 48-72 horas hábiles. El tiempo final depende de la complejidad del paquete elegido.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="2">
+						<button class="faq-question">
+							<span id="faq-question-2">¿Qué pasa si no tengo contenido listo?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-2">
+								Para paquetes Básico y Estándar, necesitas proporcionar el contenido. Con el paquete Premium incluimos servicios de copywriting profesional para ayudarte a crear contenido efectivo y persuasivo.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="3">
+						<button class="faq-question">
+							<span id="faq-question-3">¿Puedo ver ejemplos de trabajos anteriores?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-3">
+								Sí, contacta vía WhatsApp y te compartiremos un portafolio con ejemplos relevantes para tu industria. Respetamos la confidencialidad de nuestros clientes mostrando solo trabajos autorizados.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="4">
+						<button class="faq-question">
+							<span id="faq-question-4">¿Qué tipo de soporte incluyen después del lanzamiento?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-4">
+								Básico: Sin soporte post-lanzamiento. Estándar: 7 días de soporte técnico. Premium: 30 días de soporte completo incluyendo actualizaciones menores y optimizaciones.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="5">
+						<button class="faq-question">
+							<span id="faq-question-5">¿Aceptan pagos fraccionados?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-5">
+								Sí, para paquetes Estándar y Premium requerimos 50% al inicio del proyecto y 50% al finalizar. El paquete Básico se paga completo al iniciar.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="6">
+						<button class="faq-question">
+							<span id="faq-question-6">¿Cuál es la diferencia entre Day-0/Day-1 y Day-2?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-6">
+								Day-0/Day-1 es diseño e implementación inicial (arquitectura, despliegue, configuración). Day-2 son operaciones continuas (monitoreo, mantenimiento, optimización, soporte ongoing).
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="7">
+						<button class="faq-question">
+							<span id="faq-question-7">¿Trabajan con infraestructura existente o solo nuevas implementaciones?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-7">
+								Trabajamos en ambos escenarios: nuevas implementaciones desde cero y modernización/expansión de infraestructuras existentes. Evaluamos cada caso específicamente.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="8">
+						<button class="faq-question">
+							<span id="faq-question-8">¿Qué certificaciones Cisco tienen?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-8">
+								Contamos con certificaciones CCNP Enterprise, CCNP Security y experiencia especializada en ACI, FMC/FTD y UCS. Contacta para detalles específicos sobre certificaciones actuales.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-faq="9">
+						<button class="faq-question">
+							<span id="faq-question-9">¿Cómo inicio un proyecto?</span>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<div class="faq-answer-content" id="faq-answer-9">
+								Muy simple: 1) Contacta vía WhatsApp, 2) Discutimos tus necesidades y elegimos el paquete, 3) Completamos el formulario de intake, 4) Iniciamos el trabajo inmediatamente.
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
