@@ -15,7 +15,9 @@
       "Bash(git branch:*)",
       "Bash(git fetch:*)",
       "Bash(git push:*)",
-      "Bash(git remote get-url:*)"
+      "Bash(git remote get-url:*)",
+      "Bash(git config:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": []
   }
