@@ -100,14 +100,6 @@ const content = {
 			title: "¿Listo para Comenzar?",
 			subtitle: "Obtén tu página de aterrizaje profesional entregada en 48-72 horas",
 			cta: "📱 Contactar por WhatsApp"
-		},
-		cookies: {
-			banner: {
-				title: "🍪 Usamos Cookies",
-				text: "Este sitio utiliza cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio.",
-				accept: "Aceptar",
-				policy: "Política de Cookies"
-			}
 		}
 	},
 	en: {
@@ -207,14 +199,6 @@ const content = {
 			title: "Ready to Get Started?",
 			subtitle: "Get your professional landing page delivered in 48-72 hours",
 			cta: "📱 Contact via WhatsApp"
-		},
-		cookies: {
-			banner: {
-				title: "🍪 We Use Cookies",
-				text: "This site uses cookies to improve your browsing experience and analyze site traffic.",
-				accept: "Accept",
-				policy: "Cookie Policy"
-			}
 		}
 	}
 };
@@ -771,99 +755,6 @@ const defaultLang = 'es';
 				100% { transform: scale(1); }
 			}
 			
-			/* Cookie Banner */
-			.cookie-overlay {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: rgba(0, 0, 0, 0.6);
-				z-index: 1001;
-				display: flex;
-				align-items: flex-end;
-				justify-content: center;
-				opacity: 0;
-				visibility: hidden;
-				transition: all 0.3s ease;
-			}
-			
-			.cookie-overlay.show {
-				opacity: 1;
-				visibility: visible;
-			}
-			
-			.cookie-banner {
-				background: var(--bg-secondary);
-				border: 1px solid var(--border-color);
-				border-radius: 15px 15px 0 0;
-				padding: 25px;
-				margin: 0 20px 0 20px;
-				max-width: 600px;
-				width: 100%;
-				box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-				transform: translateY(100%);
-				transition: transform 0.3s ease;
-			}
-			
-			.cookie-overlay.show .cookie-banner {
-				transform: translateY(0);
-			}
-			
-			.cookie-title {
-				font-size: 1.2rem;
-				font-weight: 700;
-				color: var(--text-primary);
-				margin-bottom: 10px;
-				display: flex;
-				align-items: center;
-				gap: 10px;
-			}
-			
-			.cookie-text {
-				color: var(--text-secondary);
-				margin-bottom: 20px;
-				line-height: 1.5;
-			}
-			
-			.cookie-actions {
-				display: flex;
-				gap: 15px;
-				flex-wrap: wrap;
-			}
-			
-			.cookie-btn {
-				padding: 12px 24px;
-				border-radius: 8px;
-				text-decoration: none;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				border: none;
-				cursor: pointer;
-				font-family: inherit;
-			}
-			
-			.cookie-accept {
-				background: var(--accent-success);
-				color: white;
-			}
-			
-			.cookie-accept:hover {
-				background: var(--accent-success-hover);
-				transform: translateY(-2px);
-			}
-			
-			.cookie-policy {
-				background: var(--bg-tertiary);
-				color: var(--text-primary);
-				border: 1px solid var(--border-color);
-			}
-			
-			.cookie-policy:hover {
-				background: var(--border-light);
-				transform: translateY(-2px);
-			}
-			
 			@media (max-width: 768px) {
 				.whatsapp-float {
 					width: 55px;
@@ -871,24 +762,6 @@ const defaultLang = 'es';
 					font-size: 1.6rem;
 					bottom: 20px;
 					right: 20px;
-				}
-				
-				.cookie-banner {
-					margin: 0 15px 0 15px;
-					padding: 20px;
-					border-radius: 10px 10px 0 0;
-				}
-				
-				.cookie-title {
-					font-size: 1.1rem;
-				}
-				
-				.cookie-actions {
-					flex-direction: column;
-				}
-				
-				.cookie-btn {
-					text-align: center;
 				}
 			}
 		</style>
@@ -1041,14 +914,6 @@ const defaultLang = 'es';
 					},
 					socials: {
 						title: "Conecta Conmigo"
-					},
-					cookies: {
-						banner: {
-							title: "🍪 Usamos Cookies",
-							text: "Este sitio utiliza cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio.",
-							accept: "Aceptar",
-							policy: "Política de Cookies"
-						}
 					}
 				},
 				en: {
@@ -1198,14 +1063,6 @@ const defaultLang = 'es';
 					},
 					socials: {
 						title: "Connect With Me"
-					},
-					cookies: {
-						banner: {
-							title: "🍪 We Use Cookies",
-							text: "This site uses cookies to improve your browsing experience and analyze site traffic.",
-							accept: "Accept",
-							policy: "Cookie Policy"
-						}
 					}
 				}
 			};
@@ -1384,50 +1241,6 @@ const defaultLang = 'es';
 				});
 			}
 			
-			// Test function for debugging cookie banner (can be called from browser console)
-			window.testCookieBanner = function() {
-				console.log('Testing cookie banner...');
-				localStorage.removeItem('cookieAccepted');
-				showCookieBanner();
-			};
-			
-			window.debugCookieElements = function() {
-				console.log('Cookie overlay:', document.getElementById('cookie-overlay'));
-				console.log('Cookie accept button:', document.getElementById('cookie-accept'));
-				console.log('Cookie title:', document.getElementById('cookie-title'));
-				console.log('Cookie text:', document.getElementById('cookie-text'));
-			};
-			
-			// Cookie Banner Management
-			function initCookieBanner() {
-				const cookieAccepted = localStorage.getItem('cookieAccepted');
-				console.log('Cookie banner init - cookieAccepted:', cookieAccepted);
-				if (!cookieAccepted) {
-					showCookieBanner();
-				}
-			}
-			
-			function showCookieBanner() {
-				setTimeout(() => {
-					const overlay = document.getElementById('cookie-overlay');
-					console.log('Showing cookie banner - overlay element:', overlay);
-					if (overlay) {
-						overlay.classList.add('show');
-						console.log('Cookie banner should now be visible');
-					} else {
-						console.error('Cookie overlay element not found!');
-					}
-				}, 1000); // Show banner 1 second after page load
-			}
-			
-			function acceptCookies() {
-				localStorage.setItem('cookieAccepted', 'true');
-				hideCookieBanner();
-			}
-			
-			function hideCookieBanner() {
-				document.getElementById('cookie-overlay').classList.remove('show');
-			}
 			
 			// WhatsApp Float Management
 			function initWhatsAppFloat() {
@@ -1441,18 +1254,6 @@ const defaultLang = 'es';
 				whatsappFloat.href = whatsappLink;
 			}
 			
-			// Update cookie banner content for language switching
-			function updateCookieContent() {
-				const currentLang = document.documentElement.getAttribute('lang') || 'es';
-				const currentContent = content[currentLang];
-				
-				if (currentContent.cookies) {
-					document.getElementById('cookie-title').textContent = currentContent.cookies.banner.title;
-					document.getElementById('cookie-text').textContent = currentContent.cookies.banner.text;
-					document.getElementById('cookie-accept').textContent = currentContent.cookies.banner.accept;
-					document.getElementById('cookie-policy').textContent = currentContent.cookies.banner.policy;
-				}
-			}
 			
 			// Enhanced language switching to include cookie content
 			function switchLanguage(lang) {
@@ -1539,9 +1340,6 @@ const defaultLang = 'es';
 					document.getElementById(`faq-answer-${index}`).textContent = faq.answer;
 				});
 				
-				// Update cookie content
-				updateCookieContent();
-				
 				// Update WhatsApp float
 				initWhatsAppFloat();
 				
@@ -1577,34 +1375,8 @@ const defaultLang = 'es';
 				// Initialize FAQ accordion
 				initFAQ();
 				
-				// Initialize Cookie Banner
-				initCookieBanner();
-				
 				// Initialize WhatsApp Float
 				initWhatsAppFloat();
-				
-				// Add cookie banner event listeners
-				const cookieAcceptBtn = document.getElementById('cookie-accept');
-				const cookieOverlay = document.getElementById('cookie-overlay');
-				
-				console.log('Cookie elements check:', { cookieAcceptBtn, cookieOverlay });
-				
-				if (cookieAcceptBtn) {
-					cookieAcceptBtn.addEventListener('click', acceptCookies);
-				} else {
-					console.error('Cookie accept button not found!');
-				}
-				
-				// Close cookie banner when clicking overlay (optional)
-				if (cookieOverlay) {
-					cookieOverlay.addEventListener('click', function(e) {
-						if (e.target === this) {
-							hideCookieBanner();
-						}
-					});
-				} else {
-					console.error('Cookie overlay not found for event listener!');
-				}
 			});
 		</script>
 	</head>
@@ -1913,24 +1685,5 @@ const defaultLang = 'es';
 			📱
 		</a>
 
-		<!-- Cookie Banner -->
-		<div class="cookie-overlay" id="cookie-overlay">
-			<div class="cookie-banner">
-				<div class="cookie-title" id="cookie-title">
-					🍪 Usamos Cookies
-				</div>
-				<div class="cookie-text" id="cookie-text">
-					Este sitio utiliza cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio.
-				</div>
-				<div class="cookie-actions">
-					<button class="cookie-btn cookie-accept" id="cookie-accept">
-						Aceptar
-					</button>
-					<a href="/privacy" class="cookie-btn cookie-policy" id="cookie-policy">
-						Política de Cookies
-					</a>
-				</div>
-			</div>
-		</div>
 	</body>
 </html>
