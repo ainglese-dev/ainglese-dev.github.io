@@ -1434,6 +1434,7 @@ const defaultLang = 'es';
 				const whatsappFloat = document.getElementById('whatsapp-float');
 				const currentLang = document.documentElement.getAttribute('lang') || 'es';
 				const currentContent = content[currentLang];
+				const whatsappNumber = "+573001234567"; // Define here for script access
 				
 				// Update WhatsApp link
 				const whatsappLink = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(currentContent.whatsappMessage)}`;
@@ -1546,6 +1547,7 @@ const defaultLang = 'es';
 				
 				// Update all WhatsApp links
 				const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], .main-cta');
+				const whatsappNumber = "+573001234567"; // Define here for script access
 				const whatsappLink = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(c.whatsappMessage)}`;
 				whatsappLinks.forEach(link => {
 					link.href = whatsappLink;
