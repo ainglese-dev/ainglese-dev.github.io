@@ -100,6 +100,14 @@ const content = {
 			title: "¿Listo para Comenzar?",
 			subtitle: "Obtén tu página de aterrizaje profesional entregada en 48-72 horas",
 			cta: "📱 Contactar por WhatsApp"
+		},
+		cookies: {
+			banner: {
+				title: "🍪 Usamos Cookies",
+				text: "Este sitio utiliza cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio.",
+				accept: "Aceptar",
+				policy: "Política de Cookies"
+			}
 		}
 	},
 	en: {
@@ -199,6 +207,14 @@ const content = {
 			title: "Ready to Get Started?",
 			subtitle: "Get your professional landing page delivered in 48-72 hours",
 			cta: "📱 Contact via WhatsApp"
+		},
+		cookies: {
+			banner: {
+				title: "🍪 We Use Cookies",
+				text: "This site uses cookies to improve your browsing experience and analyze site traffic.",
+				accept: "Accept",
+				policy: "Cookie Policy"
+			}
 		}
 	}
 };
@@ -721,6 +737,160 @@ const defaultLang = 'es';
 					padding: 0 15px 15px 15px;
 				}
 			}
+			
+			/* Floating WhatsApp Icon */
+			.whatsapp-float {
+				position: fixed;
+				bottom: 25px;
+				right: 25px;
+				width: 60px;
+				height: 60px;
+				background: var(--accent-success);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.8rem;
+				color: white;
+				text-decoration: none;
+				box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+				z-index: 1000;
+				transition: all 0.3s ease;
+				animation: pulse 2s infinite;
+			}
+			
+			.whatsapp-float:hover {
+				transform: scale(1.1);
+				background: var(--accent-success-hover);
+				box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+			}
+			
+			@keyframes pulse {
+				0% { transform: scale(1); }
+				50% { transform: scale(1.05); }
+				100% { transform: scale(1); }
+			}
+			
+			/* Cookie Banner */
+			.cookie-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.6);
+				z-index: 1001;
+				display: flex;
+				align-items: flex-end;
+				justify-content: center;
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease;
+			}
+			
+			.cookie-overlay.show {
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			.cookie-banner {
+				background: var(--bg-secondary);
+				border: 1px solid var(--border-color);
+				border-radius: 15px 15px 0 0;
+				padding: 25px;
+				margin: 0 20px 0 20px;
+				max-width: 600px;
+				width: 100%;
+				box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+				transform: translateY(100%);
+				transition: transform 0.3s ease;
+			}
+			
+			.cookie-overlay.show .cookie-banner {
+				transform: translateY(0);
+			}
+			
+			.cookie-title {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				margin-bottom: 10px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			
+			.cookie-text {
+				color: var(--text-secondary);
+				margin-bottom: 20px;
+				line-height: 1.5;
+			}
+			
+			.cookie-actions {
+				display: flex;
+				gap: 15px;
+				flex-wrap: wrap;
+			}
+			
+			.cookie-btn {
+				padding: 12px 24px;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				border: none;
+				cursor: pointer;
+				font-family: inherit;
+			}
+			
+			.cookie-accept {
+				background: var(--accent-success);
+				color: white;
+			}
+			
+			.cookie-accept:hover {
+				background: var(--accent-success-hover);
+				transform: translateY(-2px);
+			}
+			
+			.cookie-policy {
+				background: var(--bg-tertiary);
+				color: var(--text-primary);
+				border: 1px solid var(--border-color);
+			}
+			
+			.cookie-policy:hover {
+				background: var(--border-light);
+				transform: translateY(-2px);
+			}
+			
+			@media (max-width: 768px) {
+				.whatsapp-float {
+					width: 55px;
+					height: 55px;
+					font-size: 1.6rem;
+					bottom: 20px;
+					right: 20px;
+				}
+				
+				.cookie-banner {
+					margin: 0 15px 0 15px;
+					padding: 20px;
+					border-radius: 10px 10px 0 0;
+				}
+				
+				.cookie-title {
+					font-size: 1.1rem;
+				}
+				
+				.cookie-actions {
+					flex-direction: column;
+				}
+				
+				.cookie-btn {
+					text-align: center;
+				}
+			}
 		</style>
 		<script>
 			const content = {
@@ -1197,6 +1367,192 @@ const defaultLang = 'es';
 					});
 				});
 			}
+			
+			// Cookie Banner Management
+			function initCookieBanner() {
+				const cookieAccepted = localStorage.getItem('cookieAccepted');
+				if (!cookieAccepted) {
+					showCookieBanner();
+				}
+			}
+			
+			function showCookieBanner() {
+				setTimeout(() => {
+					document.getElementById('cookie-overlay').classList.add('show');
+				}, 1000); // Show banner 1 second after page load
+			}
+			
+			function acceptCookies() {
+				localStorage.setItem('cookieAccepted', 'true');
+				hideCookieBanner();
+			}
+			
+			function hideCookieBanner() {
+				document.getElementById('cookie-overlay').classList.remove('show');
+			}
+			
+			// WhatsApp Float Management
+			function initWhatsAppFloat() {
+				const whatsappFloat = document.getElementById('whatsapp-float');
+				const currentLang = document.documentElement.getAttribute('lang') || 'es';
+				const currentContent = content[currentLang];
+				
+				// Update WhatsApp link
+				const whatsappLink = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(currentContent.whatsappMessage)}`;
+				whatsappFloat.href = whatsappLink;
+			}
+			
+			// Update cookie banner content for language switching
+			function updateCookieContent() {
+				const currentLang = document.documentElement.getAttribute('lang') || 'es';
+				const currentContent = content[currentLang];
+				
+				if (currentContent.cookies) {
+					document.getElementById('cookie-title').textContent = currentContent.cookies.banner.title;
+					document.getElementById('cookie-text').textContent = currentContent.cookies.banner.text;
+					document.getElementById('cookie-accept').textContent = currentContent.cookies.banner.accept;
+					document.getElementById('cookie-policy').textContent = currentContent.cookies.banner.policy;
+				}
+			}
+			
+			// Enhanced language switching to include cookie content
+			function switchLanguage(lang) {
+				const c = content[lang];
+				
+				document.documentElement.setAttribute('lang', lang);
+				localStorage.setItem('language', lang);
+				
+				// Update all content
+				document.getElementById('page-title').textContent = c.title;
+				document.getElementById('page-description').setAttribute('content', c.description);
+				document.getElementById('hero-title').textContent = c.hero.title;
+				document.getElementById('hero-subtitle').textContent = c.hero.subtitle;
+				document.getElementById('hero-cta').textContent = c.hero.cta;
+				document.getElementById('services-title').textContent = c.services.title;
+				document.getElementById('basic-name').textContent = c.services.basic.name;
+				document.getElementById('basic-price').textContent = c.services.basic.price;
+				document.getElementById('standard-name').textContent = c.services.standard.name;
+				document.getElementById('standard-price').textContent = c.services.standard.price;
+				document.getElementById('premium-name').textContent = c.services.premium.name;
+				document.getElementById('premium-price').textContent = c.services.premium.price;
+				document.getElementById('network-title').textContent = c.services.network.title;
+				document.getElementById('day0day1-name').textContent = c.services.network.day0day1.name;
+				document.getElementById('day0day1-subtitle').textContent = c.services.network.day0day1.subtitle;
+				document.getElementById('day0day1-price').textContent = c.services.network.day0day1.price;
+				document.getElementById('day2-name').textContent = c.services.network.day2.name;
+				document.getElementById('day2-subtitle').textContent = c.services.network.day2.subtitle;
+				document.getElementById('day2-price').textContent = c.services.network.day2.price;
+				document.getElementById('network-cta').textContent = c.services.network.cta;
+				document.getElementById('services-cta').textContent = c.services.cta;
+				document.getElementById('process-title').textContent = c.process.title;
+				document.getElementById('contact-title').textContent = c.contact.title;
+				document.getElementById('contact-subtitle').textContent = c.contact.subtitle;
+				document.getElementById('contact-cta').textContent = c.contact.cta;
+				document.getElementById('faq-title').textContent = c.faq.title;
+				document.getElementById('socials-title').textContent = c.socials.title;
+				
+				// Update features
+				const basicFeatures = document.querySelectorAll('.basic-feature');
+				const standardFeatures = document.querySelectorAll('.standard-feature');
+				const premiumFeatures = document.querySelectorAll('.premium-feature');
+				const day0day1Features = document.querySelectorAll('.day0day1-feature');
+				const day2Features = document.querySelectorAll('.day2-feature');
+				
+				basicFeatures.forEach((feature, index) => {
+					if (c.services.basic.features[index]) {
+						feature.textContent = c.services.basic.features[index];
+					}
+				});
+				
+				standardFeatures.forEach((feature, index) => {
+					if (c.services.standard.features[index]) {
+						feature.textContent = c.services.standard.features[index];
+					}
+				});
+				
+				premiumFeatures.forEach((feature, index) => {
+					if (c.services.premium.features[index]) {
+						feature.textContent = c.services.premium.features[index];
+					}
+				});
+				
+				day0day1Features.forEach((feature, index) => {
+					if (c.services.network.day0day1.features[index]) {
+						feature.textContent = c.services.network.day0day1.features[index];
+					}
+				});
+				
+				day2Features.forEach((feature, index) => {
+					if (c.services.network.day2.features[index]) {
+						feature.textContent = c.services.network.day2.features[index];
+					}
+				});
+				
+				// Update process steps
+				c.process.steps.forEach((step, index) => {
+					document.getElementById(`step-title-${index}`).textContent = step.title;
+					document.getElementById(`step-desc-${index}`).textContent = step.description;
+				});
+				
+				// Update FAQ content
+				c.faq.questions.forEach((faq, index) => {
+					document.getElementById(`faq-question-${index}`).textContent = faq.question;
+					document.getElementById(`faq-answer-${index}`).textContent = faq.answer;
+				});
+				
+				// Update cookie content
+				updateCookieContent();
+				
+				// Update WhatsApp float
+				initWhatsAppFloat();
+				
+				// Update all WhatsApp links
+				const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], .main-cta');
+				const whatsappLink = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(c.whatsappMessage)}`;
+				whatsappLinks.forEach(link => {
+					link.href = whatsappLink;
+				});
+				
+				updateLanguageButton();
+			}
+			
+			// Initialize everything when DOM loads
+			document.addEventListener('DOMContentLoaded', function() {
+				const savedLanguage = localStorage.getItem('language') || 'es';
+				const savedTheme = localStorage.getItem('theme') || 'light';
+				
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+					document.documentElement.setAttribute('data-theme', 'dark');
+				} else {
+					document.documentElement.setAttribute('data-theme', savedTheme);
+				}
+				
+				switchLanguage(savedLanguage);
+				updateLanguageButton();
+				updateThemeButton();
+				
+				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
+				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+				
+				// Initialize FAQ accordion
+				initFAQ();
+				
+				// Initialize Cookie Banner
+				initCookieBanner();
+				
+				// Initialize WhatsApp Float
+				initWhatsAppFloat();
+				
+				// Add cookie banner event listeners
+				document.getElementById('cookie-accept').addEventListener('click', acceptCookies);
+				
+				// Close cookie banner when clicking overlay (optional)
+				document.getElementById('cookie-overlay').addEventListener('click', function(e) {
+					if (e.target === this) {
+						hideCookieBanner();
+					}
+				});
+			});
 		</script>
 	</head>
 	<body>
@@ -1498,5 +1854,30 @@ const defaultLang = 'es';
 				</a>
 			</div>
 		</section>
+
+		<!-- Floating WhatsApp Icon -->
+		<a href="#" class="whatsapp-float" id="whatsapp-float" target="_blank" title="WhatsApp">
+			📱
+		</a>
+
+		<!-- Cookie Banner -->
+		<div class="cookie-overlay" id="cookie-overlay">
+			<div class="cookie-banner">
+				<div class="cookie-title" id="cookie-title">
+					🍪 Usamos Cookies
+				</div>
+				<div class="cookie-text" id="cookie-text">
+					Este sitio utiliza cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio.
+				</div>
+				<div class="cookie-actions">
+					<button class="cookie-btn cookie-accept" id="cookie-accept">
+						Aceptar
+					</button>
+					<a href="/privacy" class="cookie-btn cookie-policy" id="cookie-policy">
+						Política de Cookies
+					</a>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
