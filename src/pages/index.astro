@@ -202,6 +202,10 @@ const defaultLang = 'es';
 				box-sizing: border-box;
 			}
 			
+			html {
+				scroll-behavior: smooth;
+			}
+			
 			body {
 				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 				line-height: 1.6;
@@ -210,9 +214,57 @@ const defaultLang = 'es';
 				transition: background-color 0.3s ease, color 0.3s ease;
 			}
 			
+			.nav-banner {
+				background: var(--bg-secondary);
+				border-bottom: 1px solid var(--border-color);
+				padding: 15px 0;
+				position: sticky;
+				top: 0;
+				z-index: 999;
+				backdrop-filter: blur(10px);
+				background: rgba(255, 255, 255, 0.95);
+			}
+			
+			[data-theme="dark"] .nav-banner {
+				background: rgba(45, 45, 45, 0.95);
+			}
+			
+			.nav-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+			
+			.nav-logo {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				text-decoration: none;
+			}
+			
+			.nav-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
+			
+			.nav-menu a {
+				color: var(--text-secondary);
+				text-decoration: none;
+				font-weight: 500;
+				transition: color 0.3s ease;
+			}
+			
+			.nav-menu a:hover {
+				color: var(--accent-primary);
+			}
+			
 			.controls {
 				position: fixed;
-				top: 20px;
+				top: 80px;
 				right: 20px;
 				z-index: 1000;
 				display: flex;
@@ -262,8 +314,12 @@ const defaultLang = 'es';
 			
 			.logo {
 				width: 120px;
-				height: auto;
+				height: 120px;
+				border-radius: 50%;
+				object-fit: cover;
 				margin-bottom: 30px;
+				border: 3px solid rgba(255, 255, 255, 0.2);
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 			}
 			
 			.hero h1 {
@@ -416,6 +472,19 @@ const defaultLang = 'es';
 			}
 			
 			@media (max-width: 768px) {
+				.nav-menu {
+					gap: 15px;
+				}
+				
+				.nav-menu a {
+					font-size: 0.9rem;
+				}
+				
+				.controls {
+					top: 70px;
+					right: 10px;
+				}
+				
 				.hero h1 {
 					font-size: 2rem;
 				}
@@ -506,6 +575,11 @@ const defaultLang = 'es';
 						title: "¿Listo para Comenzar?",
 						subtitle: "Obtén tu página de aterrizaje profesional entregada en 48-72 horas",
 						cta: "📱 Contactar por WhatsApp"
+					},
+					nav: {
+						services: "Servicios",
+						process: "Proceso",
+						contact: "Contacto"
 					}
 				},
 				en: {
@@ -577,6 +651,11 @@ const defaultLang = 'es';
 						title: "Ready to Get Started?",
 						subtitle: "Get your professional landing page delivered in 48-72 hours",
 						cta: "📱 Contact via WhatsApp"
+					},
+					nav: {
+						services: "Services",
+						process: "Process",
+						contact: "Contact"
 					}
 				}
 			};
@@ -624,6 +703,11 @@ const defaultLang = 'es';
 				document.getElementById('contact-title').textContent = c.contact.title;
 				document.getElementById('contact-subtitle').textContent = c.contact.subtitle;
 				document.getElementById('contact-cta').textContent = c.contact.cta;
+				
+				// Update navigation
+				document.getElementById('nav-services').textContent = c.nav.services;
+				document.getElementById('nav-process').textContent = c.nav.process;
+				document.getElementById('nav-contact').textContent = c.nav.contact;
 				
 				// Update features
 				c.services.basic.features.forEach((feature, i) => {
@@ -686,6 +770,18 @@ const defaultLang = 'es';
 		</script>
 	</head>
 	<body>
+		<!-- Navigation Banner -->
+		<nav class="nav-banner">
+			<div class="nav-content">
+				<a href="#hero" class="nav-logo">Angel Dev</a>
+				<ul class="nav-menu">
+					<li><a href="#services" id="nav-services">Servicios</a></li>
+					<li><a href="#process" id="nav-process">Proceso</a></li>
+					<li><a href="#contact" id="nav-contact">Contacto</a></li>
+				</ul>
+			</div>
+		</nav>
+
 		<!-- Controls -->
 		<div class="controls">
 			<button id="lang-btn" class="control-btn active">EN</button>
@@ -693,7 +789,7 @@ const defaultLang = 'es';
 		</div>
 
 		<!-- Hero Section -->
-		<section class="hero">
+		<section id="hero" class="hero">
 			<div class="container">
 				<img src="/ainglese-dev-logo.png" alt="Angel Dev Logo" class="logo" />
 				<h1 id="hero-title">Páginas de Aterrizaje en 48-72 Horas</h1>
@@ -705,7 +801,7 @@ const defaultLang = 'es';
 		</section>
 
 		<!-- Services Section -->
-		<section class="services section">
+		<section id="services" class="services section">
 			<div class="container">
 				<h2 id="services-title">Elige Tu Paquete</h2>
 				<div class="services-grid">
@@ -758,7 +854,7 @@ const defaultLang = 'es';
 		</section>
 
 		<!-- Process Section -->
-		<section class="process section">
+		<section id="process" class="process section">
 			<div class="container">
 				<h2 id="process-title">Proceso Simple de 3 Pasos</h2>
 				<div class="process-steps">
@@ -784,7 +880,7 @@ const defaultLang = 'es';
 		</section>
 
 		<!-- Contact Section -->
-		<section class="contact section">
+		<section id="contact" class="contact section">
 			<div class="container">
 				<h2 id="contact-title">¿Listo para Comenzar?</h2>
 				<p id="contact-subtitle">Obtén tu página de aterrizaje profesional entregada en 48-72 horas</p>
