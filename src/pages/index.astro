@@ -1041,6 +1041,14 @@ const defaultLang = 'es';
 					},
 					socials: {
 						title: "Conecta Conmigo"
+					},
+					cookies: {
+						banner: {
+							title: "🍪 Usamos Cookies",
+							text: "Este sitio utiliza cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio.",
+							accept: "Aceptar",
+							policy: "Política de Cookies"
+						}
 					}
 				},
 				en: {
@@ -1190,6 +1198,14 @@ const defaultLang = 'es';
 					},
 					socials: {
 						title: "Connect With Me"
+					},
+					cookies: {
+						banner: {
+							title: "🍪 We Use Cookies",
+							text: "This site uses cookies to improve your browsing experience and analyze site traffic.",
+							accept: "Accept",
+							policy: "Cookie Policy"
+						}
 					}
 				}
 			};
@@ -1368,9 +1384,24 @@ const defaultLang = 'es';
 				});
 			}
 			
+			// Test function for debugging cookie banner (can be called from browser console)
+			window.testCookieBanner = function() {
+				console.log('Testing cookie banner...');
+				localStorage.removeItem('cookieAccepted');
+				showCookieBanner();
+			};
+			
+			window.debugCookieElements = function() {
+				console.log('Cookie overlay:', document.getElementById('cookie-overlay'));
+				console.log('Cookie accept button:', document.getElementById('cookie-accept'));
+				console.log('Cookie title:', document.getElementById('cookie-title'));
+				console.log('Cookie text:', document.getElementById('cookie-text'));
+			};
+			
 			// Cookie Banner Management
 			function initCookieBanner() {
 				const cookieAccepted = localStorage.getItem('cookieAccepted');
+				console.log('Cookie banner init - cookieAccepted:', cookieAccepted);
 				if (!cookieAccepted) {
 					showCookieBanner();
 				}
@@ -1378,7 +1409,14 @@ const defaultLang = 'es';
 			
 			function showCookieBanner() {
 				setTimeout(() => {
-					document.getElementById('cookie-overlay').classList.add('show');
+					const overlay = document.getElementById('cookie-overlay');
+					console.log('Showing cookie banner - overlay element:', overlay);
+					if (overlay) {
+						overlay.classList.add('show');
+						console.log('Cookie banner should now be visible');
+					} else {
+						console.error('Cookie overlay element not found!');
+					}
 				}, 1000); // Show banner 1 second after page load
 			}
 			
@@ -1544,14 +1582,27 @@ const defaultLang = 'es';
 				initWhatsAppFloat();
 				
 				// Add cookie banner event listeners
-				document.getElementById('cookie-accept').addEventListener('click', acceptCookies);
+				const cookieAcceptBtn = document.getElementById('cookie-accept');
+				const cookieOverlay = document.getElementById('cookie-overlay');
+				
+				console.log('Cookie elements check:', { cookieAcceptBtn, cookieOverlay });
+				
+				if (cookieAcceptBtn) {
+					cookieAcceptBtn.addEventListener('click', acceptCookies);
+				} else {
+					console.error('Cookie accept button not found!');
+				}
 				
 				// Close cookie banner when clicking overlay (optional)
-				document.getElementById('cookie-overlay').addEventListener('click', function(e) {
-					if (e.target === this) {
-						hideCookieBanner();
-					}
-				});
+				if (cookieOverlay) {
+					cookieOverlay.addEventListener('click', function(e) {
+						if (e.target === this) {
+							hideCookieBanner();
+						}
+					});
+				} else {
+					console.error('Cookie overlay not found for event listener!');
+				}
 			});
 		</script>
 	</head>
