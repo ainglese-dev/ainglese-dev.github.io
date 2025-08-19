@@ -680,7 +680,32 @@ const defaultLang = 'es';
 						},
 						network: {
 							title: "Servicios de Red",
-							description: "Precios personalizados para soluciones Cisco ACI, FMC/FTD, UCS y almacenamiento empresarial.",
+							day0day1: {
+								name: "Day-0 / Day-1",
+								subtitle: "Diseño e Implementación",
+								price: "Cotización",
+								features: [
+									"Diseño de arquitectura de red",
+									"Despliegue Cisco ACI fabric",
+									"Implementación FMC/FTD",
+									"Configuración UCS servers",
+									"Documentación completa",
+									"Sesiones de transferencia"
+								]
+							},
+							day2: {
+								name: "Day-2",
+								subtitle: "Operaciones Continuas",
+								price: "Retainer",
+								features: [
+									"Monitoreo y mantenimiento",
+									"Optimización de rendimiento",
+									"Gestión de políticas seguridad",
+									"Soporte y resolución incidentes",
+									"Planificación de capacidad",
+									"Reportes mensuales"
+								]
+							},
 							cta: "Discutir Proyecto"
 						},
 						cta: "Comenzar"
@@ -759,7 +784,32 @@ const defaultLang = 'es';
 						},
 						network: {
 							title: "Network Services",
-							description: "Custom pricing for Cisco ACI, FMC/FTD, UCS, and enterprise storage solutions.",
+							day0day1: {
+								name: "Day-0 / Day-1",
+								subtitle: "Design & Implementation",
+								price: "Quote",
+								features: [
+									"Network architecture design",
+									"Cisco ACI fabric deployment",
+									"FMC/FTD security implementation",
+									"UCS server infrastructure setup",
+									"Complete documentation",
+									"Knowledge transfer sessions"
+								]
+							},
+							day2: {
+								name: "Day-2",
+								subtitle: "Ongoing Operations",
+								price: "Retainer",
+								features: [
+									"Network monitoring & maintenance",
+									"Performance optimization",
+									"Security policy management",
+									"Troubleshooting & incident response",
+									"Capacity planning & scaling",
+									"Monthly reports & recommendations"
+								]
+							},
 							cta: "Discuss Project"
 						},
 						cta: "Get Started"
@@ -831,15 +881,26 @@ const defaultLang = 'es';
 				document.getElementById('standard-name').textContent = c.services.standard.name;
 				document.getElementById('premium-name').textContent = c.services.premium.name;
 				
-				document.getElementById('network-title').textContent = c.services.network.title;
-				document.getElementById('network-day0day1-name').textContent = c.services.network.day0day1.name;
-				document.getElementById('network-day0day1-subtitle').textContent = c.services.network.day0day1.subtitle;
-				document.getElementById('network-day0day1-price').textContent = c.services.network.day0day1.price;
-				document.getElementById('network-day2-name').textContent = c.services.network.day2.name;
-				document.getElementById('network-day2-subtitle').textContent = c.services.network.day2.subtitle;
-				document.getElementById('network-day2-price').textContent = c.services.network.day2.price;
-				document.getElementById('network-cta-1').textContent = c.services.network.cta;
-				document.getElementById('network-cta-2').textContent = c.services.network.cta;
+				// Update network services (check if new structure exists)
+				if (c.services.network.day0day1 && c.services.network.day2) {
+					document.getElementById('network-title').textContent = c.services.network.title;
+					document.getElementById('network-day0day1-name').textContent = c.services.network.day0day1.name;
+					document.getElementById('network-day0day1-subtitle').textContent = c.services.network.day0day1.subtitle;
+					document.getElementById('network-day0day1-price').textContent = c.services.network.day0day1.price;
+					document.getElementById('network-day2-name').textContent = c.services.network.day2.name;
+					document.getElementById('network-day2-subtitle').textContent = c.services.network.day2.subtitle;
+					document.getElementById('network-day2-price').textContent = c.services.network.day2.price;
+					document.getElementById('network-cta-1').textContent = c.services.network.cta;
+					document.getElementById('network-cta-2').textContent = c.services.network.cta;
+				} else {
+					// Fallback for old structure
+					const networkTitle = document.getElementById('network-title');
+					const networkDesc = document.getElementById('network-description');
+					const networkCta = document.getElementById('network-cta');
+					if (networkTitle) networkTitle.textContent = c.services.network.title;
+					if (networkDesc) networkDesc.textContent = c.services.network.description;
+					if (networkCta) networkCta.textContent = c.services.network.cta;
+				}
 				
 				document.getElementById('process-title').textContent = c.process.title;
 				
@@ -871,16 +932,18 @@ const defaultLang = 'es';
 					if (el) el.textContent = feature;
 				});
 				
-				// Update network service features
-				c.services.network.day0day1.features.forEach((feature, i) => {
-					const el = document.getElementById(`network-day0day1-feature-${i}`);
-					if (el) el.textContent = feature;
-				});
-				
-				c.services.network.day2.features.forEach((feature, i) => {
-					const el = document.getElementById(`network-day2-feature-${i}`);
-					if (el) el.textContent = feature;
-				});
+				// Update network service features (if new structure exists)
+				if (c.services.network.day0day1 && c.services.network.day2) {
+					c.services.network.day0day1.features.forEach((feature, i) => {
+						const el = document.getElementById(`network-day0day1-feature-${i}`);
+						if (el) el.textContent = feature;
+					});
+					
+					c.services.network.day2.features.forEach((feature, i) => {
+						const el = document.getElementById(`network-day2-feature-${i}`);
+						if (el) el.textContent = feature;
+					});
+				}
 				
 				// Update process steps
 				c.process.steps.forEach((step, i) => {
