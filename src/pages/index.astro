@@ -5,10 +5,10 @@ const whatsappNumber = "+573001234567"; // Replace with actual WhatsApp number
 const content = {
 	es: {
 		title: "Angel Landing Pages | Entrega Rápida 48-72h | Sitios CrossFit y Empresas",
-		description: "Páginas de aterrizaje profesionales para boxes de CrossFit, gimnasios y empresas. Entrega en 48-72h. Desde $200. Contacto por WhatsApp disponible.",
-		whatsappMessage: "¡Hola! Estoy interesado en sus servicios de páginas de aterrizaje. ¿Podemos hablar sobre una demostración en 48-72h?",
+		description: "Landing pages estáticas profesionales para boxes de CrossFit, gimnasios y empresas. Entrega en 48-72h. Desde $200. Contacto por WhatsApp disponible.",
+		whatsappMessage: "¡Hola! Estoy interesado en sus servicios de landing pages estáticas. ¿Podemos hablar sobre una demostración en 48-72h?",
 		hero: {
-			title: "Páginas de Aterrizaje en 48-72 Horas",
+			title: "Landing Pages Estáticas en 48-72 Horas",
 			subtitle: "Sitios profesionales para boxes de CrossFit, gimnasios y empresas. Entrega rápida, diseño enfocado en conversión.",
 			cta: "📱 Iniciar Demo"
 		},
@@ -160,11 +160,14 @@ const defaultLang = 'es';
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title id="page-title">Angel Landing Pages | Entrega Rápida 48-72h | Sitios CrossFit y Empresas</title>
-		<meta id="page-description" name="description" content="Páginas de aterrizaje profesionales para boxes de CrossFit, gimnasios y empresas. Entrega en 48-72h. Desde $200. Contacto por WhatsApp disponible." />
+		<meta id="page-description" name="description" content="Landing pages estáticas profesionales para boxes de CrossFit, gimnasios y empresas. Entrega en 48-72h. Desde $200. Contacto por WhatsApp disponible." />
 		<style>
 			:root {
 				--bg-primary: #fafafa;
@@ -454,6 +457,73 @@ const defaultLang = 'es';
 				color: var(--text-primary);
 			}
 			
+			.socials {
+				background: var(--bg-secondary);
+				padding: 40px 0;
+				text-align: center;
+				border-top: 1px solid var(--border-color);
+			}
+			
+			.socials h2 {
+				font-size: 2rem;
+				margin-bottom: 30px;
+				color: var(--text-primary);
+			}
+			
+			.social-links {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+				flex-wrap: wrap;
+			}
+			
+			.social-link {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 50px;
+				height: 50px;
+				background: var(--bg-tertiary);
+				border: 2px solid var(--border-color);
+				border-radius: 50%;
+				color: var(--text-secondary);
+				text-decoration: none;
+				font-size: 1.2rem;
+				transition: all 0.3s ease;
+			}
+			
+			.social-link:hover {
+				background: var(--accent-primary);
+				border-color: var(--accent-primary);
+				color: white;
+				transform: translateY(-3px);
+			}
+			
+			.social-link.whatsapp:hover {
+				background: var(--accent-success);
+				border-color: var(--accent-success);
+			}
+			
+			.social-link.linkedin:hover {
+				background: #0077b5;
+				border-color: #0077b5;
+			}
+			
+			.social-link.instagram:hover {
+				background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+				border-color: #dc2743;
+			}
+			
+			.social-link.github:hover {
+				background: #333;
+				border-color: #333;
+			}
+			
+			.social-link.email:hover {
+				background: #ea4335;
+				border-color: #ea4335;
+			}
+
 			.contact {
 				background: var(--text-primary);
 				color: var(--bg-primary);
@@ -495,12 +565,23 @@ const defaultLang = 'es';
 				
 				.services h2,
 				.process h2,
-				.contact h2 {
+				.contact h2,
+				.socials h2 {
 					font-size: 2rem;
 				}
 				
 				.services-grid {
 					grid-template-columns: 1fr;
+				}
+				
+				.social-links {
+					gap: 15px;
+				}
+				
+				.social-link {
+					width: 45px;
+					height: 45px;
+					font-size: 1.1rem;
 				}
 			}
 		</style>
@@ -580,6 +661,9 @@ const defaultLang = 'es';
 						services: "Servicios",
 						process: "Proceso",
 						contact: "Contacto"
+					},
+					socials: {
+						title: "Conecta Conmigo"
 					}
 				},
 				en: {
@@ -656,6 +740,9 @@ const defaultLang = 'es';
 						services: "Services",
 						process: "Process",
 						contact: "Contact"
+					},
+					socials: {
+						title: "Connect With Me"
 					}
 				}
 			};
@@ -708,6 +795,9 @@ const defaultLang = 'es';
 				document.getElementById('nav-services').textContent = c.nav.services;
 				document.getElementById('nav-process').textContent = c.nav.process;
 				document.getElementById('nav-contact').textContent = c.nav.contact;
+				
+				// Update socials
+				document.getElementById('socials-title').textContent = c.socials.title;
 				
 				// Update features
 				c.services.basic.features.forEach((feature, i) => {
@@ -792,7 +882,7 @@ const defaultLang = 'es';
 		<section id="hero" class="hero">
 			<div class="container">
 				<img src="/ainglese-dev-logo.png" alt="Angel Dev Logo" class="logo" />
-				<h1 id="hero-title">Páginas de Aterrizaje en 48-72 Horas</h1>
+				<h1 id="hero-title">Landing Pages Estáticas en 48-72 Horas</h1>
 				<p id="hero-subtitle">Sitios profesionales para boxes de CrossFit, gimnasios y empresas. Entrega rápida, diseño enfocado en conversión.</p>
 				<a href="#" class="cta-button main-cta" target="_blank" id="hero-cta">
 					📱 Iniciar Demo
@@ -875,6 +965,30 @@ const defaultLang = 'es';
 						<h3 id="step-title-2">Despliegue</h3>
 						<p id="step-desc-2">Despliegue final a tu dominio con 7-30 días de soporte según tu paquete.</p>
 					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Social Media Section -->
+		<section id="socials" class="socials section">
+			<div class="container">
+				<h2 id="socials-title">Conecta Conmigo</h2>
+				<div class="social-links">
+					<a href="https://wa.me/573001234567" class="social-link whatsapp" target="_blank" title="WhatsApp">
+						📱
+					</a>
+					<a href="https://linkedin.com/in/ainglese" class="social-link linkedin" target="_blank" title="LinkedIn">
+						💼
+					</a>
+					<a href="https://instagram.com/ainglese.dev" class="social-link instagram" target="_blank" title="Instagram">
+						📸
+					</a>
+					<a href="https://github.com/ainglese-dev" class="social-link github" target="_blank" title="GitHub">
+						💻
+					</a>
+					<a href="mailto:angel@ainglese.dev" class="social-link email" target="_blank" title="Email">
+						📧
+					</a>
 				</div>
 			</div>
 		</section>
