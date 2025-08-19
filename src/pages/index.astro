@@ -1,5 +1,7 @@
 ---
-
+const whatsappNumber = "+573001234567"; // Replace with actual WhatsApp number
+const whatsappMessage = "Hi! I'm interested in your landing page services. Can we discuss a 48-72h demo?";
+const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
 <html lang="en">
@@ -8,9 +10,316 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Angel Landing Pages | Fast 48-72h Delivery | CrossFit & Business Sites</title>
+		<meta name="description" content="Professional landing pages for CrossFit boxes, gyms & businesses. 48-72h delivery. From $200. WhatsApp booking available." />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+				line-height: 1.6;
+				color: #333;
+				background: #fafafa;
+			}
+			
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+			
+			.section {
+				padding: 60px 0;
+			}
+			
+			.hero {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				text-align: center;
+				padding: 100px 0;
+			}
+			
+			.logo {
+				width: 120px;
+				height: auto;
+				margin-bottom: 30px;
+			}
+			
+			.hero h1 {
+				font-size: 3rem;
+				font-weight: 700;
+				margin-bottom: 20px;
+				line-height: 1.2;
+			}
+			
+			.hero p {
+				font-size: 1.2rem;
+				margin-bottom: 40px;
+				opacity: 0.9;
+			}
+			
+			.cta-button {
+				display: inline-block;
+				background: #25d366;
+				color: white;
+				padding: 15px 30px;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 1.1rem;
+				transition: transform 0.2s;
+			}
+			
+			.cta-button:hover {
+				transform: translateY(-2px);
+				background: #128c7e;
+			}
+			
+			.services {
+				background: white;
+			}
+			
+			.services h2 {
+				text-align: center;
+				font-size: 2.5rem;
+				margin-bottom: 50px;
+				color: #333;
+			}
+			
+			.services-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 30px;
+				margin-bottom: 40px;
+			}
+			
+			.service-card {
+				background: white;
+				border: 2px solid #e0e0e0;
+				border-radius: 12px;
+				padding: 30px;
+				text-align: center;
+				transition: border-color 0.3s;
+			}
+			
+			.service-card:hover {
+				border-color: #667eea;
+			}
+			
+			.service-card h3 {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				color: #333;
+			}
+			
+			.price {
+				font-size: 2rem;
+				font-weight: 700;
+				color: #667eea;
+				margin-bottom: 20px;
+			}
+			
+			.service-card ul {
+				list-style: none;
+				margin-bottom: 30px;
+				text-align: left;
+			}
+			
+			.service-card li {
+				padding: 8px 0;
+				border-bottom: 1px solid #f0f0f0;
+			}
+			
+			.service-card li:before {
+				content: "✓ ";
+				color: #25d366;
+				font-weight: bold;
+			}
+			
+			.process {
+				background: #f8f9fa;
+			}
+			
+			.process h2 {
+				text-align: center;
+				font-size: 2.5rem;
+				margin-bottom: 50px;
+				color: #333;
+			}
+			
+			.process-steps {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 40px;
+			}
+			
+			.step {
+				text-align: center;
+			}
+			
+			.step-number {
+				width: 60px;
+				height: 60px;
+				background: #667eea;
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.5rem;
+				font-weight: bold;
+				margin: 0 auto 20px;
+			}
+			
+			.step h3 {
+				font-size: 1.3rem;
+				margin-bottom: 15px;
+				color: #333;
+			}
+			
+			.contact {
+				background: #333;
+				color: white;
+				text-align: center;
+			}
+			
+			.contact h2 {
+				font-size: 2.5rem;
+				margin-bottom: 20px;
+			}
+			
+			.contact p {
+				font-size: 1.2rem;
+				margin-bottom: 40px;
+				opacity: 0.9;
+			}
+			
+			@media (max-width: 768px) {
+				.hero h1 {
+					font-size: 2rem;
+				}
+				
+				.hero p {
+					font-size: 1rem;
+				}
+				
+				.services h2,
+				.process h2,
+				.contact h2 {
+					font-size: 2rem;
+				}
+				
+				.services-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="container">
+				<img src="/ainglese-dev-logo.png" alt="Angel Dev Logo" class="logo" />
+				<h1>Landing Pages in 48-72 Hours</h1>
+				<p>Professional sites for CrossFit boxes, gyms & businesses. Fast delivery, conversion-focused design.</p>
+				<a href={whatsappUrl} class="cta-button" target="_blank">
+					📱 Start Your Demo
+				</a>
+			</div>
+		</section>
+
+		<!-- Services Section -->
+		<section class="services section">
+			<div class="container">
+				<h2>Choose Your Package</h2>
+				<div class="services-grid">
+					<div class="service-card">
+						<h3>Basic</h3>
+						<div class="price">$200</div>
+						<ul>
+							<li>Template-based design</li>
+							<li>Hero + 3 content sections</li>
+							<li>Contact form</li>
+							<li>WhatsApp integration</li>
+							<li>Client provides content</li>
+						</ul>
+						<a href={whatsappUrl} class="cta-button" target="_blank">Get Started</a>
+					</div>
+					
+					<div class="service-card">
+						<h3>Standard</h3>
+						<div class="price">$350</div>
+						<ul>
+							<li>Custom hero design</li>
+							<li>Calendly booking system</li>
+							<li>Google Analytics setup</li>
+							<li>Meta Pixel integration</li>
+							<li>1 revision included</li>
+						</ul>
+						<a href={whatsappUrl} class="cta-button" target="_blank">Get Started</a>
+					</div>
+					
+					<div class="service-card">
+						<h3>Premium</h3>
+						<div class="price">$600</div>
+						<ul>
+							<li>Professional copywriting</li>
+							<li>Ads optimization setup</li>
+							<li>Legal templates included</li>
+							<li>30 days support</li>
+							<li>Performance optimization</li>
+						</ul>
+						<a href={whatsappUrl} class="cta-button" target="_blank">Get Started</a>
+					</div>
+				</div>
+				
+				<div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 12px;">
+					<h3 style="margin-bottom: 15px;">Network Services</h3>
+					<p>Custom pricing for Cisco ACI, FMC/FTD, UCS, and enterprise storage solutions.</p>
+					<a href={whatsappUrl} class="cta-button" target="_blank" style="margin-top: 20px; display: inline-block;">Discuss Project</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Process Section -->
+		<section class="process section">
+			<div class="container">
+				<h2>Simple 3-Step Process</h2>
+				<div class="process-steps">
+					<div class="step">
+						<div class="step-number">1</div>
+						<h3>Intake</h3>
+						<p>Share your assets, domain, and WhatsApp number. Pay 50% upfront for Standard/Premium.</p>
+					</div>
+					
+					<div class="step">
+						<div class="step-number">2</div>
+						<h3>Demo</h3>
+						<p>Receive your demo site on a subdomain within 48-72 hours. Review and request revisions.</p>
+					</div>
+					
+					<div class="step">
+						<div class="step-number">3</div>
+						<h3>Deploy</h3>
+						<p>Final deployment to your domain with 7-30 days support based on your package.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section class="contact section">
+			<div class="container">
+				<h2>Ready to Get Started?</h2>
+				<p>Get your professional landing page delivered in 48-72 hours</p>
+				<a href={whatsappUrl} class="cta-button" target="_blank">
+					📱 Contact via WhatsApp
+				</a>
+			</div>
+		</section>
 	</body>
 </html>
