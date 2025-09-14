@@ -18,8 +18,12 @@
       "Bash(git remote get-url:*)",
       "Bash(git config:*)",
       "Bash(mkdir:*)",
-      "WebFetch(domain:ainglese-dev.github.io)"
+      "WebFetch(domain:ainglese-dev.github.io)",
+      "Bash(git log:*)"
     ],
-    "deny": []
+    "deny": [],
+    "additionalDirectories": [
+      "/home/ainglese"
+    ]
   }
 }
