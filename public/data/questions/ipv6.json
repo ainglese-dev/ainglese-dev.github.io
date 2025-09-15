@@ -1,0 +1,819 @@
+{
+  "topic": "IPv6",
+  "certification": ["CCNA", "Network+", "JNCIA"],
+  "difficulty": "advanced",
+  "timeEstimate": 35,
+  "totalQuestions": 28,
+  "passingScore": 70,
+  "description": "IPv6 address types, subnetting, autoconfiguration, and transition mechanisms",
+  "prerequisites": ["Basic IPv4 understanding", "Binary/Hexadecimal conversion", "Subnetting concepts"],
+  "learningObjectives": [
+    "Master IPv6 address structure and shortening rules",
+    "Identify different IPv6 address types and scopes",
+    "Understand EUI-64 autoconfiguration process",
+    "Apply IPv6 subnetting principles effectively",
+    "Compare SLAAC vs DHCPv6 mechanisms"
+  ],
+  "references": [
+    "RFC 4291 - IP Version 6 Addressing Architecture",
+    "RFC 3587 - IPv6 Global Unicast Address Format",
+    "RFC 4862 - IPv6 Stateless Address Autoconfiguration",
+    "RFC 3315 - Dynamic Host Configuration Protocol for IPv6"
+  ],
+  "questions": [
+    {
+      "id": "ipv6_001",
+      "question": "Which of the following represents the correctly shortened form of the IPv6 address 2001:0db8:0000:0000:0000:ff00:0042:8329?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "2001:db8:0:0:0:ff00:42:8329",
+        "2001:db8::ff00:42:8329",
+        "2001:0db8::ff00:0042:8329",
+        "2001:db8:::ff00:42:8329"
+      ],
+      "answer": {
+        "correct": "2001:db8::ff00:42:8329",
+        "index": 1
+      },
+      "explanation": "IPv6 shortening rules: remove leading zeros in each quartet, and replace the longest string of consecutive zero quartets with :: (only once per address). 2001:0db8:0000:0000:0000:ff00:0042:8329 becomes 2001:db8::ff00:42:8329.",
+      "hints": [
+        "Remove leading zeros from each quartet",
+        "Replace the longest consecutive zeros with double colon (::)",
+        "Double colon can only be used once per address"
+      ],
+      "references": [
+        "RFC 4291 Section 2.2 - Text Representation of Addresses"
+      ],
+      "tags": ["ipv6", "address-format", "shortening"]
+    },
+    {
+      "id": "ipv6_002",
+      "question": "What is the full expanded form of the IPv6 address fe80::1?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "fe80:0000:0000:0000:0000:0000:0000:0001",
+        "fe80:0000:0000:0000:0000:0000:0001:0000",
+        "fe80:0001:0000:0000:0000:0000:0000:0000",
+        "fe80:0000:0000:0001:0000:0000:0000:0000"
+      ],
+      "answer": {
+        "correct": "fe80:0000:0000:0000:0000:0000:0000:0001",
+        "index": 0
+      },
+      "explanation": "The :: represents consecutive zero quartets. In fe80::1, the :: replaces six zero quartets (0000:0000:0000:0000:0000:0000), resulting in fe80:0000:0000:0000:0000:0000:0000:0001.",
+      "hints": [
+        "Double colon represents consecutive zero quartets",
+        "Count how many quartets are missing",
+        "IPv6 addresses have 8 quartets total"
+      ],
+      "references": [
+        "RFC 4291 Section 2.2 - Text Representation of Addresses"
+      ],
+      "tags": ["ipv6", "address-format", "expansion"]
+    },
+    {
+      "id": "ipv6_003",
+      "question": "Which IPv6 address type is used for link-local communications and is automatically configured on all IPv6-enabled interfaces?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "Global Unicast (2000::/3)",
+        "Link-Local (fe80::/10)",
+        "Multicast (ff00::/8)",
+        "Unique Local (fc00::/7)"
+      ],
+      "answer": {
+        "correct": "Link-Local (fe80::/10)",
+        "index": 1
+      },
+      "explanation": "Link-Local addresses (fe80::/10) are automatically configured on all IPv6-enabled interfaces and are used for communication within the same network segment. They are not routable beyond the local link.",
+      "hints": [
+        "These addresses start with fe80",
+        "Automatically configured on every IPv6 interface",
+        "Not routable beyond the local network segment"
+      ],
+      "references": [
+        "RFC 4291 Section 2.4 - Address Type Identification",
+        "RFC 4862 - Stateless Address Autoconfiguration"
+      ],
+      "tags": ["ipv6", "address-types", "link-local"]
+    },
+    {
+      "id": "ipv6_004",
+      "question": "In IPv6, what does the /64 prefix length represent in most network scenarios?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "64 bits for network, 64 bits for host identification",
+        "64 total bits in the address",
+        "64 possible host addresses",
+        "64 different networks"
+      ],
+      "answer": {
+        "correct": "64 bits for network, 64 bits for host identification",
+        "index": 0
+      },
+      "explanation": "/64 means the first 64 bits identify the network prefix, and the remaining 64 bits identify the interface (host). This is the standard subnet size for most IPv6 networks and enables SLAAC and EUI-64 autoconfiguration.",
+      "hints": [
+        "IPv6 addresses are 128 bits total",
+        "Standard subnet boundary for most networks",
+        "Enables automatic host configuration"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.1 - Interface Identifiers",
+        "RFC 3587 - IPv6 Global Unicast Address Format"
+      ],
+      "tags": ["ipv6", "subnetting", "prefix-length"]
+    },
+    {
+      "id": "ipv6_005",
+      "question": "Which IPv6 address is used as the loopback address, equivalent to 127.0.0.1 in IPv4?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "::1",
+        "::0",
+        "fe80::1",
+        "127::1"
+      ],
+      "answer": {
+        "correct": "::1",
+        "index": 0
+      },
+      "explanation": "::1 is the IPv6 loopback address, equivalent to IPv4's 127.0.0.1. It represents 0000:0000:0000:0000:0000:0000:0000:0001 and is used for local communication within the same device.",
+      "hints": [
+        "Similar purpose to 127.0.0.1 in IPv4",
+        "Used for local device communication",
+        "Only one address, not a range like IPv4"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.3 - The Loopback Address"
+      ],
+      "tags": ["ipv6", "loopback", "special-addresses"]
+    },
+    {
+      "id": "ipv6_006",
+      "question": "Given the MAC address 00:1b:63:84:45:e6, what would be the EUI-64 interface identifier for IPv6 autoconfiguration?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 180,
+      "options": [
+        "001b:63ff:fe84:45e6",
+        "021b:63ff:fe84:45e6",
+        "001b:6384:45e6:0000",
+        "021b:6384:45e6:fffe"
+      ],
+      "answer": {
+        "correct": "021b:63ff:fe84:45e6",
+        "index": 1
+      },
+      "explanation": "EUI-64 process: 1) Split MAC at 24-bit boundary: 00:1b:63 | 84:45:e6, 2) Insert fffe: 00:1b:63:ff:fe:84:45:e6, 3) Flip 7th bit (U/L bit): 00 becomes 02. Result: 021b:63ff:fe84:45e6.",
+      "hints": [
+        "Split MAC address in the middle (after 3rd octet)",
+        "Insert 'fffe' in the middle",
+        "Flip the 7th bit (universal/local bit) of first octet"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.1 - Interface Identifiers",
+        "RFC 4862 Section 5.3 - Creation of Link-Local Addresses"
+      ],
+      "tags": ["ipv6", "eui-64", "autoconfiguration"]
+    },
+    {
+      "id": "ipv6_007",
+      "question": "What is the purpose of flipping the 7th bit (U/L bit) in the EUI-64 interface identifier creation process?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "To indicate the address is locally administered",
+        "To indicate the address is universally administered",
+        "To prevent address conflicts",
+        "To enable multicast functionality"
+      ],
+      "answer": {
+        "correct": "To indicate the address is universally administered",
+        "index": 1
+      },
+      "explanation": "The 7th bit (U/L bit) indicates universal (1) vs local (0) administration. Since MAC addresses are universally administered by IEEE, flipping the bit from 0 to 1 correctly indicates the resulting interface identifier is derived from a universally administered identifier.",
+      "hints": [
+        "U/L stands for Universal/Local bit",
+        "MAC addresses are assigned by IEEE globally",
+        "The bit indicates the scope of administration"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.1 - Interface Identifiers",
+        "IEEE 802 - Local and Metropolitan Area Networks"
+      ],
+      "tags": ["ipv6", "eui-64", "universal-local-bit"]
+    },
+    {
+      "id": "ipv6_008",
+      "question": "Which IPv6 multicast address is used for all IPv6 nodes on the local network segment?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "ff01::1",
+        "ff02::1",
+        "ff02::2",
+        "ff05::1"
+      ],
+      "answer": {
+        "correct": "ff02::1",
+        "index": 1
+      },
+      "explanation": "ff02::1 is the 'All Nodes' link-local multicast address. All IPv6-enabled devices on the local link listen to this address. ff02::2 is for all routers, ff01::1 is node-local scope, and ff05::1 is site-local scope.",
+      "hints": [
+        "All multicast addresses start with ff",
+        "02 indicates link-local scope",
+        "Used to communicate with all devices on the segment"
+      ],
+      "references": [
+        "RFC 4291 Section 2.7.1 - Pre-Defined Multicast Addresses"
+      ],
+      "tags": ["ipv6", "multicast", "all-nodes"]
+    },
+    {
+      "id": "ipv6_009",
+      "question": "In SLAAC (Stateless Address Autoconfiguration), what information does a host receive from Router Advertisement messages?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 180,
+      "options": [
+        "Complete IPv6 address only",
+        "Network prefix and default gateway information",
+        "DNS server addresses only",
+        "DHCP server location"
+      ],
+      "answer": {
+        "correct": "Network prefix and default gateway information",
+        "index": 1
+      },
+      "explanation": "Router Advertisement (RA) messages contain the network prefix (typically /64) and default gateway information. The host combines this prefix with its own interface identifier (often EUI-64) to create a complete global unicast address.",
+      "hints": [
+        "SLAAC is 'stateless' - no central server tracks assignments",
+        "Host generates its own interface portion",
+        "Router provides network portion and gateway info"
+      ],
+      "references": [
+        "RFC 4862 Section 5.5.3 - Router Advertisement Processing",
+        "RFC 4861 - Neighbor Discovery for IP version 6"
+      ],
+      "tags": ["ipv6", "slaac", "router-advertisement"]
+    },
+    {
+      "id": "ipv6_010",
+      "question": "What is the primary advantage of IPv6's /64 subnet standard compared to variable subnet masks in IPv4?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "Easier subnetting calculations",
+        "Enables automatic address configuration and simplifies network design",
+        "Provides more host addresses",
+        "Reduces routing table size"
+      ],
+      "answer": {
+        "correct": "Enables automatic address configuration and simplifies network design",
+        "index": 1
+      },
+      "explanation": "The /64 boundary enables SLAAC, EUI-64 autoconfiguration, and simplifies network design by providing a consistent 64-bit interface identifier space. This eliminates the need for complex subnet calculations while providing 2^64 possible host addresses per subnet.",
+      "hints": [
+        "Think about autoconfiguration benefits",
+        "64-bit interface identifier is key",
+        "Eliminates complex subnet planning"
+      ],
+      "references": [
+        "RFC 3587 Section 3 - Global Unicast Address Structure",
+        "RFC 4862 - IPv6 Stateless Address Autoconfiguration"
+      ],
+      "tags": ["ipv6", "subnetting", "benefits"]
+    },
+    {
+      "id": "ipv6_011",
+      "question": "Given the IPv6 prefix 2001:db8:acad::/48, how many /64 subnets can be created?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 180,
+      "options": [
+        "16 subnets",
+        "256 subnets",
+        "65,536 subnets",
+        "16,777,216 subnets"
+      ],
+      "answer": {
+        "correct": "65,536 subnets",
+        "index": 2
+      },
+      "explanation": "From /48 to /64 provides 16 additional bits for subnetting (64-48=16). 2^16 = 65,536 possible /64 subnets. Each /64 subnet provides 2^64 host addresses, which is the standard IPv6 subnet size.",
+      "hints": [
+        "Calculate the difference: /64 - /48 = 16 bits",
+        "2^16 = 65,536",
+        "/64 is the standard IPv6 subnet boundary"
+      ],
+      "references": [
+        "RFC 3587 Section 3 - Global Unicast Address Structure"
+      ],
+      "tags": ["ipv6", "subnetting", "calculation"]
+    },
+    {
+      "id": "ipv6_012",
+      "question": "Which statement best describes the difference between SLAAC and DHCPv6?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 180,
+      "options": [
+        "SLAAC provides complete configuration, DHCPv6 only provides addresses",
+        "SLAAC is stateless with host-generated addresses, DHCPv6 is stateful with server-assigned addresses",
+        "SLAAC is faster, DHCPv6 is more secure",
+        "SLAAC uses EUI-64, DHCPv6 uses random identifiers"
+      ],
+      "answer": {
+        "correct": "SLAAC is stateless with host-generated addresses, DHCPv6 is stateful with server-assigned addresses",
+        "index": 1
+      },
+      "explanation": "SLAAC (Stateless Address Autoconfiguration) allows hosts to generate their own addresses using router-provided prefixes. DHCPv6 is stateful, with a server assigning and tracking address assignments. Both can coexist in a network.",
+      "hints": [
+        "Stateless means no server tracks assignments",
+        "Stateful means server manages and tracks addresses",
+        "Think about who generates the address"
+      ],
+      "references": [
+        "RFC 4862 - IPv6 Stateless Address Autoconfiguration",
+        "RFC 3315 - Dynamic Host Configuration Protocol for IPv6"
+      ],
+      "tags": ["ipv6", "slaac", "dhcpv6", "comparison"]
+    },
+    {
+      "id": "ipv6_013",
+      "question": "What IPv6 address range is designated for Unique Local Addresses (ULA), similar to RFC 1918 private addresses in IPv4?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "fe80::/10",
+        "fc00::/7",
+        "ff00::/8",
+        "2001:db8::/32"
+      ],
+      "answer": {
+        "correct": "fc00::/7",
+        "index": 1
+      },
+      "explanation": "fc00::/7 is the Unique Local Address (ULA) range in IPv6, similar to RFC 1918 private addresses in IPv4. These addresses are not routable on the global Internet but provide unique addressing within organizations.",
+      "hints": [
+        "Similar purpose to 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 in IPv4",
+        "Not globally routable",
+        "Starts with 'fc' or 'fd'"
+      ],
+      "references": [
+        "RFC 4193 - Unique Local IPv6 Unicast Addresses"
+      ],
+      "tags": ["ipv6", "unique-local", "private-addressing"]
+    },
+    {
+      "id": "ipv6_014",
+      "question": "In an IPv6 address 2001:db8:acad:1::1/64, which portion represents the interface identifier?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "2001:db8:acad:1",
+        "::1",
+        "0000:0000:0000:0001 (the last 64 bits)",
+        "acad:1::1"
+      ],
+      "answer": {
+        "correct": "0000:0000:0000:0001 (the last 64 bits)",
+        "index": 2
+      },
+      "explanation": "In a /64 network, the first 64 bits (2001:db8:acad:1) represent the network prefix, and the last 64 bits represent the interface identifier. ::1 expands to 0000:0000:0000:0001 in the interface portion.",
+      "hints": [
+        "/64 means first 64 bits are network, last 64 bits are interface",
+        "IPv6 addresses are 128 bits total",
+        "::1 represents the expanded interface identifier"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.1 - Interface Identifiers"
+      ],
+      "tags": ["ipv6", "interface-identifier", "address-structure"]
+    },
+    {
+      "id": "ipv6_015",
+      "question": "Which ICMPv6 message type is used by routers to advertise their presence and network prefixes to hosts?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "Router Solicitation",
+        "Router Advertisement",
+        "Neighbor Solicitation",
+        "Neighbor Advertisement"
+      ],
+      "answer": {
+        "correct": "Router Advertisement",
+        "index": 1
+      },
+      "explanation": "Router Advertisement (RA) messages are sent by routers to advertise their presence, network prefixes, and other configuration parameters. Hosts use this information for SLAAC and default gateway configuration.",
+      "hints": [
+        "Think about what routers send to advertise themselves",
+        "Part of Neighbor Discovery Protocol",
+        "Contains prefix information for SLAAC"
+      ],
+      "references": [
+        "RFC 4861 Section 4.2 - Router Advertisement Message Format"
+      ],
+      "tags": ["ipv6", "icmpv6", "router-advertisement", "neighbor-discovery"]
+    },
+    {
+      "id": "ipv6_016",
+      "question": "What happens when an IPv6 host receives a Router Advertisement with the 'M' (Managed) flag set to 1?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "Host should use SLAAC only",
+        "Host should use DHCPv6 for address configuration",
+        "Host should disable IPv6",
+        "Host should use link-local addresses only"
+      ],
+      "answer": {
+        "correct": "Host should use DHCPv6 for address configuration",
+        "index": 1
+      },
+      "explanation": "The 'M' (Managed) flag in Router Advertisement messages indicates that hosts should use DHCPv6 for stateful address configuration instead of SLAAC. When M=1, hosts contact a DHCPv6 server for address assignment.",
+      "hints": [
+        "M flag stands for 'Managed'",
+        "Indicates stateful vs stateless configuration",
+        "Directs hosts to use DHCPv6 server"
+      ],
+      "references": [
+        "RFC 4861 Section 4.2 - Router Advertisement Message Format",
+        "RFC 3315 - Dynamic Host Configuration Protocol for IPv6"
+      ],
+      "tags": ["ipv6", "dhcpv6", "router-advertisement", "flags"]
+    },
+    {
+      "id": "ipv6_017",
+      "question": "In dual-stack networks, what is the primary method for preferring IPv6 over IPv4 when both are available?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "IPv6 is always preferred automatically",
+        "Default Address Selection Policy (RFC 6724)",
+        "Manual configuration only",
+        "Random selection"
+      ],
+      "answer": {
+        "correct": "Default Address Selection Policy (RFC 6724)",
+        "index": 1
+      },
+      "explanation": "RFC 6724 defines the Default Address Selection Policy, which provides rules for preferring IPv6 over IPv4 in dual-stack environments. This includes source and destination address selection algorithms.",
+      "hints": [
+        "Standardized policy for address selection",
+        "Handles both source and destination selection",
+        "Generally prefers IPv6 when available"
+      ],
+      "references": [
+        "RFC 6724 - Default Address Selection for Internet Protocol version 6"
+      ],
+      "tags": ["ipv6", "dual-stack", "address-selection"]
+    },
+    {
+      "id": "ipv6_018",
+      "question": "Which IPv6 transition mechanism encapsulates IPv6 packets within IPv4 packets to traverse IPv4-only networks?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "Dual Stack",
+        "NAT64",
+        "6to4 Tunneling",
+        "SLAAC"
+      ],
+      "answer": {
+        "correct": "6to4 Tunneling",
+        "index": 2
+      },
+      "explanation": "6to4 tunneling encapsulates IPv6 packets within IPv4 packets, allowing IPv6 traffic to traverse IPv4-only network infrastructure. This is one of several tunneling mechanisms for IPv6 transition.",
+      "hints": [
+        "Think about encapsulation methods",
+        "Allows IPv6 to cross IPv4 networks",
+        "One of several tunneling mechanisms"
+      ],
+      "references": [
+        "RFC 3056 - Connection of IPv6 Domains via IPv4 Clouds"
+      ],
+      "tags": ["ipv6", "transition", "tunneling", "6to4"]
+    },
+    {
+      "id": "ipv6_019",
+      "question": "What is the unspecified IPv6 address and when is it typically used?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "::1 - used for loopback",
+        ":: - used when no address is available",
+        "fe80:: - used for link-local",
+        "ff02::1 - used for multicast"
+      ],
+      "answer": {
+        "correct": ":: - used when no address is available",
+        "index": 1
+      },
+      "explanation": "The unspecified address (::) indicates the absence of an address. It's used by hosts during address acquisition (like DHCP) or in routing tables to indicate a default route. It must never be assigned to any interface.",
+      "hints": [
+        "All zeros address",
+        "Indicates absence of an address",
+        "Used during address acquisition process"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.2 - The Unspecified Address"
+      ],
+      "tags": ["ipv6", "unspecified", "special-addresses"]
+    },
+    {
+      "id": "ipv6_020",
+      "question": "In IPv6 Neighbor Discovery, what replaces the ARP protocol used in IPv4?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "Router Advertisement messages",
+        "Neighbor Solicitation and Neighbor Advertisement messages",
+        "DHCPv6 messages",
+        "ICMPv6 Echo messages"
+      ],
+      "answer": {
+        "correct": "Neighbor Solicitation and Neighbor Advertisement messages",
+        "index": 1
+      },
+      "explanation": "Neighbor Solicitation (NS) and Neighbor Advertisement (NA) messages replace ARP in IPv6. NS messages discover link-layer addresses of neighbors, and NA messages respond with the requested information.",
+      "hints": [
+        "Part of Neighbor Discovery Protocol",
+        "Used for link-layer address resolution",
+        "Replaces IPv4 ARP functionality"
+      ],
+      "references": [
+        "RFC 4861 Section 4.3 - Neighbor Solicitation Message Format",
+        "RFC 4861 Section 4.4 - Neighbor Advertisement Message Format"
+      ],
+      "tags": ["ipv6", "neighbor-discovery", "arp-replacement"]
+    },
+    {
+      "id": "ipv6_021",
+      "question": "Given the IPv6 global unicast address 2001:db8:cafe:1::1/64, what would be the corresponding solicited-node multicast address?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 240,
+      "options": [
+        "ff02::1:ff00:1",
+        "ff02::1:ff01:1",
+        "ff02::1:ff00:0001",
+        "ff02::1:ffff:0001"
+      ],
+      "answer": {
+        "correct": "ff02::1:ff00:0001",
+        "index": 2
+      },
+      "explanation": "Solicited-node multicast addresses are formed by taking ff02::1:ff00:0000 and appending the last 24 bits of the unicast address. For 2001:db8:cafe:1::1, the last 24 bits are 00:00:01, giving ff02::1:ff00:0001.",
+      "hints": [
+        "Start with ff02::1:ff00:0000",
+        "Take the last 24 bits (6 hex digits) of the unicast address",
+        "::1 expands to 0000:0000:0000:0001"
+      ],
+      "references": [
+        "RFC 4291 Section 2.7.1 - Solicited-Node Multicast Addresses"
+      ],
+      "tags": ["ipv6", "multicast", "solicited-node", "calculation"]
+    },
+    {
+      "id": "ipv6_022",
+      "question": "What is the primary purpose of IPv6 solicited-node multicast addresses?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "To broadcast to all nodes on the network",
+        "To efficiently perform address resolution without flooding",
+        "To assign IPv6 addresses automatically",
+        "To route packets between subnets"
+      ],
+      "answer": {
+        "correct": "To efficiently perform address resolution without flooding",
+        "index": 1
+      },
+      "explanation": "Solicited-node multicast addresses enable efficient address resolution in Neighbor Discovery. Instead of broadcasting to all nodes (like ARP), IPv6 multicasts to a small group of nodes that might have the target address, reducing network traffic.",
+      "hints": [
+        "More efficient than broadcasting to everyone",
+        "Used in Neighbor Discovery process",
+        "Reduces unnecessary network traffic"
+      ],
+      "references": [
+        "RFC 4861 Section 7.2.2 - Address Resolution"
+      ],
+      "tags": ["ipv6", "multicast", "efficiency", "neighbor-discovery"]
+    },
+    {
+      "id": "ipv6_023",
+      "question": "In IPv6, what is the maximum number of hops (hop limit) that can be set in the IPv6 header?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "64",
+        "128",
+        "255",
+        "Unlimited"
+      ],
+      "answer": {
+        "correct": "255",
+        "index": 2
+      },
+      "explanation": "The Hop Limit field in the IPv6 header is 8 bits, allowing values from 0 to 255. This replaces the TTL (Time To Live) field in IPv4 and serves the same purpose of preventing routing loops.",
+      "hints": [
+        "8-bit field in IPv6 header",
+        "Similar to TTL in IPv4",
+        "Maximum value for 8 bits"
+      ],
+      "references": [
+        "RFC 8200 Section 3 - IPv6 Header Format"
+      ],
+      "tags": ["ipv6", "hop-limit", "header-format"]
+    },
+    {
+      "id": "ipv6_024",
+      "question": "Which statement about IPv6 and NAT (Network Address Translation) is most accurate?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "IPv6 requires NAT for internet connectivity",
+        "IPv6 eliminates the need for NAT due to abundant address space",
+        "IPv6 uses NAT64 exclusively",
+        "IPv6 NAT works the same as IPv4 NAT"
+      ],
+      "answer": {
+        "correct": "IPv6 eliminates the need for NAT due to abundant address space",
+        "index": 1
+      },
+      "explanation": "IPv6's vast address space (2^128 addresses) eliminates the address scarcity that necessitated NAT in IPv4. Every device can have globally unique addresses, removing the need for address translation in most scenarios.",
+      "hints": [
+        "IPv6 has abundant address space",
+        "NAT was primarily needed due to IPv4 address shortage",
+        "Global unique addressing is possible with IPv6"
+      ],
+      "references": [
+        "RFC 4291 - IP Version 6 Addressing Architecture"
+      ],
+      "tags": ["ipv6", "nat", "address-space", "benefits"]
+    },
+    {
+      "id": "ipv6_025",
+      "question": "What is the standard prefix length typically assigned to end-user sites by ISPs for IPv6?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 10,
+      "timeLimit": 150,
+      "options": [
+        "/32",
+        "/48",
+        "/56",
+        "/64"
+      ],
+      "answer": {
+        "correct": "/56",
+        "index": 2
+      },
+      "explanation": "Many ISPs assign /56 prefixes to residential customers and small businesses. This provides 256 /64 subnets (2^8), which is sufficient for most end-user scenarios while conserving address space compared to the traditional /48 recommendation.",
+      "hints": [
+        "Provides multiple /64 subnets for end users",
+        "Balance between address space and conservation",
+        "Common ISP assignment for residential customers"
+      ],
+      "references": [
+        "RFC 6177 - IPv6 Address Assignment to End Sites"
+      ],
+      "tags": ["ipv6", "prefix-assignment", "isp-allocation"]
+    },
+    {
+      "id": "ipv6_026",
+      "question": "In IPv6, what does it mean when a Router Advertisement message has both M=0 and O=1 flags set?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "Use SLAAC for addresses, DHCPv6 for other configuration",
+        "Use DHCPv6 for addresses, SLAAC for other configuration",
+        "Use DHCPv6 for everything",
+        "Use SLAAC for everything"
+      ],
+      "answer": {
+        "correct": "Use SLAAC for addresses, DHCPv6 for other configuration",
+        "index": 0
+      },
+      "explanation": "M=0 (Managed flag) means don't use DHCPv6 for address configuration (use SLAAC). O=1 (Other flag) means use DHCPv6 for other configuration options like DNS servers. This is called 'stateless DHCPv6'.",
+      "hints": [
+        "M flag controls address configuration method",
+        "O flag controls other configuration options",
+        "This combination is called 'stateless DHCPv6'"
+      ],
+      "references": [
+        "RFC 4861 Section 4.2 - Router Advertisement Message Format",
+        "RFC 3315 - Dynamic Host Configuration Protocol for IPv6"
+      ],
+      "tags": ["ipv6", "router-advertisement", "flags", "stateless-dhcpv6"]
+    },
+    {
+      "id": "ipv6_027",
+      "question": "Which IPv6 feature helps prevent address scanning attacks that are common in IPv4 networks?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 15,
+      "timeLimit": 180,
+      "options": [
+        "Smaller subnet sizes",
+        "The vast /64 subnet space making scanning impractical",
+        "Built-in encryption",
+        "Automatic firewalling"
+      ],
+      "answer": {
+        "correct": "The vast /64 subnet space making scanning impractical",
+        "index": 1
+      },
+      "explanation": "IPv6 /64 subnets contain 2^64 (18 quintillion) possible addresses. This makes network scanning attacks impractical as it would take an extremely long time to scan even a small portion of the address space.",
+      "hints": [
+        "Think about the size of /64 address space",
+        "2^64 is approximately 18 quintillion",
+        "Time required to scan becomes prohibitive"
+      ],
+      "references": [
+        "RFC 7707 - Network Reconnaissance in IPv6 Networks"
+      ],
+      "tags": ["ipv6", "security", "address-space", "scanning-attacks"]
+    },
+    {
+      "id": "ipv6_028",
+      "question": "What is the IPv6 equivalent of the IPv4 default route 0.0.0.0/0?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 5,
+      "timeLimit": 120,
+      "options": [
+        "::/0",
+        "::1/128",
+        "fe80::/10",
+        "ff00::/8"
+      ],
+      "answer": {
+        "correct": "::/0",
+        "index": 0
+      },
+      "explanation": "The IPv6 default route is ::/0, which represents all zeros with a prefix length of 0. This matches any IPv6 destination address and serves the same purpose as 0.0.0.0/0 in IPv4 routing tables.",
+      "hints": [
+        "All zeros with prefix length 0",
+        "Matches any destination address",
+        "Similar concept to IPv4 default route"
+      ],
+      "references": [
+        "RFC 4291 Section 2.5.2 - The Unspecified Address"
+      ],
+      "tags": ["ipv6", "default-route", "routing"]
+    }
+  ]
+}

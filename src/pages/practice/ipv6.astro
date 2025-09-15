@@ -1,0 +1,628 @@
+---
+const pageTitle = "IPv6 Practice | Network Certification Tool";
+const pageDescription = "Practice IPv6 addressing, autoconfiguration, and transition mechanisms with interactive questions and detailed explanations.";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<style>
+			:root {
+				--bg-primary: #fafafa;
+				--bg-secondary: #ffffff;
+				--bg-tertiary: #f8f9fa;
+				--text-primary: #333;
+				--text-secondary: #666;
+				--border-color: #e0e0e0;
+				--accent-primary: #667eea;
+				--accent-secondary: #764ba2;
+				--accent-success: #25d366;
+				--accent-error: #dc3545;
+				--accent-warning: #ffc107;
+			}
+
+			[data-theme="dark"] {
+				--bg-primary: #1a1a1a;
+				--bg-secondary: #2d2d2d;
+				--bg-tertiary: #252525;
+				--text-primary: #e0e0e0;
+				--text-secondary: #b0b0b0;
+				--border-color: #404040;
+				--accent-primary: #7c8aff;
+				--accent-secondary: #8a5cc2;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+				line-height: 1.6;
+				color: var(--text-primary);
+				background: var(--bg-primary);
+				transition: background-color 0.3s ease, color 0.3s ease;
+			}
+
+			.container {
+				max-width: 900px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+
+			.header {
+				background: var(--bg-secondary);
+				border-bottom: 2px solid var(--border-color);
+				padding: 20px 0;
+				margin-bottom: 30px;
+			}
+
+			.header h1 {
+				font-size: 2rem;
+				text-align: center;
+				color: var(--accent-primary);
+				margin-bottom: 10px;
+			}
+
+			.progress-bar {
+				background: var(--bg-tertiary);
+				border-radius: 10px;
+				height: 8px;
+				margin: 20px 0;
+				overflow: hidden;
+			}
+
+			.progress-fill {
+				background: var(--accent-primary);
+				height: 100%;
+				width: 0%;
+				transition: width 0.3s ease;
+			}
+
+			.question-card {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				margin-bottom: 20px;
+			}
+
+			.question-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+			}
+
+			.question-number {
+				background: var(--accent-primary);
+				color: white;
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-weight: 600;
+			}
+
+			.question-difficulty {
+				padding: 4px 8px;
+				border-radius: 4px;
+				font-size: 0.9rem;
+				background: var(--accent-warning);
+				color: #333;
+			}
+
+			.question-text {
+				font-size: 1.1rem;
+				margin-bottom: 25px;
+				line-height: 1.7;
+			}
+
+			.options-container {
+				margin-bottom: 20px;
+			}
+
+			.option {
+				display: flex;
+				align-items: center;
+				padding: 12px 16px;
+				border: 2px solid var(--border-color);
+				border-radius: 8px;
+				margin-bottom: 10px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				background: var(--bg-primary);
+			}
+
+			.option:hover {
+				border-color: var(--accent-primary);
+				background: rgba(102, 126, 234, 0.05);
+			}
+
+			.option.selected {
+				border-color: var(--accent-primary);
+				background: rgba(102, 126, 234, 0.1);
+			}
+
+			.option.correct {
+				border-color: var(--accent-success);
+				background: rgba(37, 211, 102, 0.1);
+			}
+
+			.option.incorrect {
+				border-color: var(--accent-error);
+				background: rgba(220, 53, 69, 0.1);
+			}
+
+			.option input[type="radio"] {
+				margin-right: 12px;
+				transform: scale(1.2);
+			}
+
+			.option label {
+				flex: 1;
+				cursor: pointer;
+				font-size: 1rem;
+				line-height: 1.5;
+			}
+
+			.button-group {
+				display: flex;
+				gap: 10px;
+				flex-wrap: wrap;
+			}
+
+			.btn {
+				padding: 12px 20px;
+				border: 2px solid;
+				border-radius: 6px;
+				font-family: inherit;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+			}
+
+			.btn-primary {
+				background: var(--accent-primary);
+				border-color: var(--accent-primary);
+				color: white;
+			}
+
+			.btn-primary:hover {
+				background: var(--accent-secondary);
+				border-color: var(--accent-secondary);
+			}
+
+			.btn-secondary {
+				background: transparent;
+				border-color: var(--border-color);
+				color: var(--text-primary);
+			}
+
+			.btn-secondary:hover {
+				border-color: var(--accent-primary);
+				background: var(--accent-primary);
+				color: white;
+			}
+
+			.btn:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+
+			.feedback {
+				margin-top: 20px;
+				padding: 15px;
+				border-radius: 8px;
+				display: none;
+			}
+
+			.feedback.correct {
+				background: rgba(37, 211, 102, 0.1);
+				border: 1px solid var(--accent-success);
+				color: var(--accent-success);
+			}
+
+			.feedback.incorrect {
+				background: rgba(220, 53, 69, 0.1);
+				border: 1px solid var(--accent-error);
+				color: var(--accent-error);
+			}
+
+			.explanation {
+				margin-top: 15px;
+				padding: 15px;
+				background: var(--bg-tertiary);
+				border-radius: 8px;
+				border-left: 4px solid var(--accent-primary);
+				display: none;
+			}
+
+			.score-card {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+
+			.score-number {
+				font-size: 3rem;
+				font-weight: 700;
+				color: var(--accent-primary);
+				margin-bottom: 10px;
+			}
+
+			.theme-toggle {
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				color: var(--text-primary);
+				padding: 8px 12px;
+				border-radius: 6px;
+				cursor: pointer;
+				font-family: inherit;
+				font-size: 0.9rem;
+				transition: all 0.3s ease;
+				z-index: 1000;
+			}
+
+			.theme-toggle:hover {
+				border-color: var(--accent-primary);
+				background: var(--accent-primary);
+				color: white;
+			}
+
+			.hints {
+				margin-top: 15px;
+				display: none !important;
+			}
+
+			.hint {
+				padding: 10px;
+				background: var(--bg-tertiary);
+				border-radius: 6px;
+				margin-bottom: 8px;
+				font-size: 0.95rem;
+			}
+
+			@media (max-width: 768px) {
+				.question-header {
+					flex-direction: column;
+					gap: 10px;
+					align-items: flex-start;
+				}
+
+				.button-group {
+					flex-direction: column;
+				}
+
+				.btn {
+					width: 100%;
+				}
+
+				.theme-toggle {
+					top: 60px;
+					right: 10px;
+				}
+
+				nav .container {
+					flex-direction: column;
+					gap: 10px;
+					text-align: center;
+				}
+
+				nav .container > div {
+					gap: 15px !important;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<button id="theme-toggle" class="theme-toggle">🌙</button>
+
+		<nav style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); padding: 10px 0;">
+			<div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+				<div style="display: flex; gap: 20px; align-items: center;">
+					<a href="/" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">← Home</a>
+					<a href="/practice" style="color: var(--text-secondary); text-decoration: none;">← Back to Topics</a>
+				</div>
+				<a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Angel Dev</a>
+			</div>
+		</nav>
+
+		<header class="header">
+			<div class="container">
+				<h1>IPv6 Practice</h1>
+				<div class="progress-bar">
+					<div id="progress-fill" class="progress-fill"></div>
+				</div>
+				<div style="text-align: center; color: var(--text-secondary);">
+					<span id="progress-text">Question 0 of 0</span>
+				</div>
+			</div>
+		</header>
+
+		<main class="container">
+			<div id="practice-container">
+				<!-- Questions will be loaded here -->
+			</div>
+
+			<div id="score-container" style="display: none;">
+				<div class="score-card">
+					<div id="final-score" class="score-number">0%</div>
+					<h2>Practice Complete!</h2>
+					<p id="score-message">Great job on completing the IPv6 practice session.</p>
+					<div style="margin-top: 20px;">
+						<span id="correct-count">0</span> correct out of <span id="total-count">0</span> questions
+					</div>
+				</div>
+
+				<div class="button-group">
+					<button id="restart-btn" class="btn btn-primary">Practice Again</button>
+					<a href="/practice" class="btn btn-secondary">Back to Topics</a>
+				</div>
+			</div>
+		</main>
+
+		<script>
+			let currentTheme = 'light';
+			let questions = [];
+			let currentQuestion = 0;
+			let score = 0;
+			let userAnswers = [];
+
+			// Load questions from JSON
+			async function loadQuestions() {
+				try {
+					const response = await fetch('/src/data/questions/ipv6.json');
+					const data = await response.json();
+					questions = data.questions;
+
+					if (questions.length === 0) {
+						throw new Error('No questions found');
+					}
+
+					startPractice();
+				} catch (error) {
+					console.error('Error loading questions:', error);
+					document.getElementById('practice-container').innerHTML = `
+						<div class="question-card" style="text-align: center;">
+							<h2 style="color: var(--accent-error); margin-bottom: 20px;">Error Loading Questions</h2>
+							<p style="margin-bottom: 20px;">Unable to load IPv6 practice questions. Please try again later.</p>
+							<a href="/practice" class="btn btn-secondary">Back to Topics</a>
+						</div>
+					`;
+				}
+			}
+
+			function startPractice() {
+				currentQuestion = 0;
+				score = 0;
+				userAnswers = [];
+				document.getElementById('score-container').style.display = 'none';
+				document.getElementById('practice-container').style.display = 'block';
+				showQuestion();
+			}
+
+			function showQuestion() {
+				if (currentQuestion >= questions.length) {
+					showResults();
+					return;
+				}
+
+				const question = questions[currentQuestion];
+				updateProgress();
+
+				// Create options HTML for multiple choice
+				const optionsHtml = question.options.map((option, index) => `
+					<div class="option" onclick="selectOption(${index})">
+						<input type="radio" name="answer" value="${index}" id="option-${index}" />
+						<label for="option-${index}">${option}</label>
+					</div>
+				`).join('');
+
+				const html = `
+					<div class="question-card">
+						<div class="question-header">
+							<span class="question-number">Question ${currentQuestion + 1}</span>
+							<span class="question-difficulty">${question.difficulty}</span>
+						</div>
+
+						<div class="question-text">${question.question}</div>
+
+						<div class="options-container">
+							${optionsHtml}
+						</div>
+
+						<div class="button-group">
+							<button id="submit-btn" class="btn btn-primary" disabled>Submit Answer</button>
+							<button id="hint-btn" class="btn btn-secondary">Show Hint</button>
+							<button id="next-btn" class="btn btn-primary" style="display: none;">Next Question</button>
+						</div>
+
+						<div id="hints" class="hints">
+							${question.hints.map(hint => `<div class="hint">💡 ${hint}</div>`).join('')}
+						</div>
+
+						<div id="feedback" class="feedback"></div>
+						<div id="explanation" class="explanation"></div>
+					</div>
+				`;
+
+				document.getElementById('practice-container').innerHTML = html;
+
+				// Add event listeners
+				document.getElementById('submit-btn').addEventListener('click', submitAnswer);
+				document.getElementById('hint-btn').addEventListener('click', showHints);
+				document.getElementById('next-btn').addEventListener('click', nextQuestion);
+
+				// Add radio button change listeners
+				document.querySelectorAll('input[name="answer"]').forEach((radio, index) => {
+					radio.addEventListener('change', () => {
+						if (radio.checked) {
+							// Clear previous visual selections
+							document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+
+							// Add selected class to current option
+							radio.closest('.option').classList.add('selected');
+
+							// Enable submit button
+							document.getElementById('submit-btn').disabled = false;
+						}
+					});
+				});
+
+				// Reset hints and button state for new question
+				document.getElementById('hints').style.display = 'none';
+				document.getElementById('hint-btn').style.display = 'inline-block';
+			}
+
+			function selectOption(index) {
+				// Clear previous visual selections
+				document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+
+				// Add selected class to current option
+				const currentOption = document.getElementById(`option-${index}`);
+				if (currentOption) {
+					currentOption.closest('.option').classList.add('selected');
+
+					// Ensure radio is checked
+					currentOption.checked = true;
+
+					// Enable submit button
+					const submitBtn = document.getElementById('submit-btn');
+					if (submitBtn) {
+						submitBtn.disabled = false;
+					}
+				}
+			}
+
+			function submitAnswer() {
+				const selectedOption = document.querySelector('input[name="answer"]:checked');
+				if (!selectedOption) return;
+
+				const userAnswerIndex = parseInt(selectedOption.value);
+				const question = questions[currentQuestion];
+				const correctIndex = question.answer.index;
+				const isCorrect = userAnswerIndex === correctIndex;
+
+				userAnswers.push({
+					questionId: question.id,
+					userAnswer: question.options[userAnswerIndex],
+					correct: isCorrect,
+					correctAnswer: question.answer.correct
+				});
+
+				if (isCorrect) {
+					score++;
+					showFeedback(true, 'Correct! Well done.');
+				} else {
+					showFeedback(false, `Incorrect. The correct answer is: ${question.answer.correct}`);
+				}
+
+				// Highlight correct and incorrect options
+				document.querySelectorAll('.option').forEach((option, index) => {
+					if (index === correctIndex) {
+						option.classList.add('correct');
+					} else if (index === userAnswerIndex && !isCorrect) {
+						option.classList.add('incorrect');
+					}
+					option.style.pointerEvents = 'none';
+				});
+
+				showExplanation(question.explanation);
+
+				document.getElementById('submit-btn').style.display = 'none';
+				document.getElementById('next-btn').style.display = 'inline-block';
+			}
+
+			function showFeedback(isCorrect, message) {
+				const feedback = document.getElementById('feedback');
+				feedback.textContent = message;
+				feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+				feedback.style.display = 'block';
+			}
+
+			function showExplanation(explanation) {
+				const explanationEl = document.getElementById('explanation');
+				explanationEl.innerHTML = `<strong>Explanation:</strong> ${explanation}`;
+				explanationEl.style.display = 'block';
+			}
+
+			function showHints() {
+				document.getElementById('hints').style.setProperty('display', 'block', 'important');
+				document.getElementById('hint-btn').style.display = 'none';
+			}
+
+			function nextQuestion() {
+				currentQuestion++;
+				showQuestion();
+			}
+
+			function updateProgress() {
+				const progress = ((currentQuestion) / questions.length) * 100;
+				document.getElementById('progress-fill').style.width = progress + '%';
+				document.getElementById('progress-text').textContent =
+					`Question ${currentQuestion + 1} of ${questions.length}`;
+			}
+
+			function showResults() {
+				document.getElementById('practice-container').style.display = 'none';
+				document.getElementById('score-container').style.display = 'block';
+
+				const percentage = Math.round((score / questions.length) * 100);
+				document.getElementById('final-score').textContent = percentage + '%';
+				document.getElementById('correct-count').textContent = score;
+				document.getElementById('total-count').textContent = questions.length;
+
+				let message = '';
+				if (percentage >= 70) {
+					message = 'Excellent! You have a strong understanding of IPv6 concepts.';
+				} else if (percentage >= 60) {
+					message = 'Good work! Review the areas you missed and practice again.';
+				} else {
+					message = 'Keep studying! IPv6 is challenging but with practice you\'ll master it.';
+				}
+
+				document.getElementById('score-message').textContent = message;
+			}
+
+			function toggleTheme() {
+				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+				localStorage.setItem('theme', currentTheme);
+			}
+
+			function updateThemeButton() {
+				const btn = document.getElementById('theme-toggle');
+				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+			}
+
+			// Initialize
+			document.addEventListener('DOMContentLoaded', function() {
+				const savedTheme = localStorage.getItem('theme') || 'light';
+				currentTheme = savedTheme;
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+
+				document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+				document.getElementById('restart-btn').addEventListener('click', startPractice);
+
+				loadQuestions();
+			});
+		</script>
+	</body>
+</html>
