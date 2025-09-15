@@ -900,6 +900,7 @@ const defaultLang = 'es';
 					nav: {
 						services: "Servicios",
 						process: "Proceso",
+						practice: "Network Practice",
 						contact: "Contacto"
 					},
 					faq: {
@@ -1049,6 +1050,7 @@ const defaultLang = 'es';
 					nav: {
 						services: "Services",
 						process: "Process",
+						practice: "Network Practice",
 						contact: "Contact"
 					},
 					faq: {
@@ -1166,6 +1168,7 @@ const defaultLang = 'es';
 				// Update navigation
 				document.getElementById('nav-services').textContent = c.nav.services;
 				document.getElementById('nav-process').textContent = c.nav.process;
+				document.getElementById('nav-practice').textContent = c.nav.practice;
 				document.getElementById('nav-contact').textContent = c.nav.contact;
 				
 				// Update FAQ
@@ -1323,6 +1326,13 @@ const defaultLang = 'es';
 				document.getElementById('contact-title').textContent = c.contact.title;
 				document.getElementById('contact-subtitle').textContent = c.contact.subtitle;
 				document.getElementById('contact-cta').textContent = c.contact.cta;
+				
+				// Update navigation  
+				document.getElementById('nav-services').textContent = c.nav.services;
+				document.getElementById('nav-process').textContent = c.nav.process;
+				document.getElementById('nav-practice').textContent = c.nav.practice;
+				document.getElementById('nav-contact').textContent = c.nav.contact;
+				
 				document.getElementById('faq-title').textContent = c.faq.title;
 				document.getElementById('socials-title').textContent = c.socials.title;
 				
@@ -1423,6 +1433,7 @@ const defaultLang = 'es';
 				<ul class="nav-menu">
 					<li><a href="#services" id="nav-services">Servicios</a></li>
 					<li><a href="#process" id="nav-process">Proceso</a></li>
+					<li><a href="/practice" id="nav-practice">Network Practice</a></li>
 					<li><a href="#contact" id="nav-contact">Contacto</a></li>
 				</ul>
 			</div>

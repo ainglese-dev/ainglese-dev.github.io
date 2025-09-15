@@ -1,0 +1,753 @@
+{
+  "topic": "VLSM",
+  "certification": ["CCNA", "Network+"],
+  "difficulty": "intermediate",
+  "timeEstimate": 30,
+  "totalQuestions": 30,
+  "passingScore": 80,
+  "description": "Variable Length Subnet Masking concepts and calculations for efficient IP address allocation",
+  "prerequisites": ["Basic Subnetting", "Binary to Decimal Conversion"],
+  "learningObjectives": [
+    "Calculate optimal subnet sizes using VLSM",
+    "Minimize IP address waste in network design",
+    "Design hierarchical networks with variable subnet sizes",
+    "Apply RFC 1918 private addressing effectively"
+  ],
+  "references": [
+    "RFC 1918 - Address Allocation for Private Internets",
+    "RFC 950 - Internet Standard Subnetting Procedure", 
+    "RFC 1812 - Requirements for IP Version 4 Routers"
+  ],
+  "questions": [
+    {
+      "id": "vlsm_001",
+      "question": "You have been allocated the RFC 1918 private network 192.168.100.0/24. You need to design VLSM subnets for: Branch A (60 hosts), Branch B (28 hosts), Branch C (12 hosts), and two point-to-point links (2 hosts each). What is the subnet mask for Branch A?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["/25 (255.255.255.128)", "/26 (255.255.255.192)", "/27 (255.255.255.224)", "/28 (255.255.255.240)"],
+      "answer": {
+        "correct": "/26 (255.255.255.192)",
+        "index": 1
+      },
+      "explanation": "Branch A needs 60 hosts. Using 2^n-2 formula: 2^6-2=62 usable hosts. This requires 6 host bits, leaving 26 network bits (/26). Start with largest requirement first in VLSM design.",
+      "hints": [
+        "Use formula 2^n - 2 for usable hosts (subtract network and broadcast)",
+        "Start with the largest subnet requirement first",
+        "6 host bits provides 2^6-2 = 62 usable host addresses"
+      ],
+      "references": [
+        "RFC 1918 Section 3 - Private Address Space",
+        "RFC 950 - Variable Length Subnet Masking"
+      ],
+      "tags": ["vlsm", "rfc1918", "calculation", "subnetting"]
+    },
+    {
+      "id": "vlsm_002", 
+      "question": "Continuing from the previous scenario with 192.168.100.0/24, after allocating 192.168.100.0/26 to Branch A, what subnet would you assign to Branch B (28 hosts)?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["192.168.100.32/27", "192.168.100.64/27", "192.168.100.96/27", "192.168.100.128/27"],
+      "answer": {
+        "correct": "192.168.100.64/27",
+        "index": 1
+      },
+      "explanation": "Branch B needs 28 hosts, requiring 5 host bits (2^5-2=30). Next available address after 192.168.100.0/26 (ends at .63) is 192.168.100.64. With /27 mask: 192.168.100.64/27.",
+      "hints": [
+        "Branch B needs 5 host bits for 30 usable addresses", 
+        "The /26 subnet ends at 192.168.100.63",
+        "Next available address is 192.168.100.64"
+      ],
+      "references": [
+        "RFC 950 - Subnetting Procedure",
+        "RFC 1812 - IP Router Requirements"
+      ],
+      "tags": ["vlsm", "sequential_allocation", "calculation"]
+    },
+    {
+      "id": "vlsm_003",
+      "question": "For point-to-point WAN links requiring only 2 host addresses each, what is the most efficient subnet mask to use according to RFC standards?",
+      "type": "multiple_choice", 
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 120,
+      "options": ["/28 (255.255.255.240)", "/29 (255.255.255.248)", "/30 (255.255.255.252)", "/31 (255.255.255.254)"],
+      "answer": {
+        "correct": "/30 (255.255.255.252)",
+        "index": 2
+      },
+      "explanation": "For point-to-point links, /30 provides exactly 2 usable host addresses (2^2-2=2). /31 is defined in RFC 3021 for point-to-point links but /30 is the traditional standard approach.",
+      "hints": [
+        "Point-to-point links need exactly 2 host addresses",
+        "Use 2^n-2 formula to determine required host bits",
+        "/30 gives 4 total addresses: network, 2 hosts, broadcast"
+      ],
+      "references": [
+        "RFC 950 - Standard subnetting for point-to-point links",
+        "RFC 3021 - Using 31-Bit Prefixes on IPv4 Point-to-Point Links"
+      ],
+      "tags": ["vlsm", "point_to_point", "efficiency"]
+    },
+    {
+      "id": "vlsm_004",
+      "question": "Given the RFC 1918 network 10.0.0.0/8, you need to create subnets for a regional office with 500 hosts, 200 hosts, and 50 hosts. What is the subnet mask for the 500-host subnet?",
+      "type": "multiple_choice",
+      "difficulty": "medium", 
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["/22 (255.255.252.0)", "/23 (255.255.254.0)", "/24 (255.255.255.0)", "/25 (255.255.255.128)"],
+      "answer": {
+        "correct": "/23 (255.255.254.0)",
+        "index": 1
+      },
+      "explanation": "500 hosts requires 9 host bits (2^9-2=510). With 9 host bits, we need 32-9=23 network bits, giving us /23 or 255.255.254.0.",
+      "hints": [
+        "Calculate host bits needed: 2^9-2 = 510 addresses",
+        "9 host bits means 32-9 = 23 network bits",
+        "This is within the RFC 1918 Class A private range"
+      ],
+      "references": [
+        "RFC 1918 - Class A private addressing (10.0.0.0/8)",
+        "RFC 950 - Subnetting procedures"
+      ],
+      "tags": ["vlsm", "large_subnets", "rfc1918", "class_a"]
+    },
+    {
+      "id": "vlsm_005",
+      "question": "In a VLSM design using 172.16.0.0/16 (RFC 1918 Class B), what is the broadcast address for the subnet 172.16.32.0/19?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10, 
+      "timeLimit": 180,
+      "options": ["172.16.47.255", "172.16.63.255", "172.16.95.255", "172.16.127.255"],
+      "answer": {
+        "correct": "172.16.63.255",
+        "index": 1
+      },
+      "explanation": "/19 has 13 host bits (32-19=13). Block size is 2^13=8192 addresses or 32 in the third octet. Starting at 172.16.32.0, the range is 172.16.32.0 to 172.16.63.255, making broadcast 172.16.63.255.",
+      "hints": [
+        "/19 means 13 host bits total",
+        "In third octet: /19 = 3 host bits = block size of 32",
+        "Range: 172.16.32.0 through 172.16.63.255"
+      ],
+      "references": [
+        "RFC 1918 - Class B private addressing",
+        "RFC 950 - Broadcast address calculation"
+      ],
+      "tags": ["vlsm", "broadcast", "rfc1918", "class_b"]
+    },
+    {
+      "id": "vlsm_006",
+      "question": "You are designing a network using 192.168.0.0/24. After allocating /26 subnets for LANs, you have 192.168.0.192/26 remaining. How many /30 point-to-point subnets can you create from this remaining space?",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 240,
+      "options": ["8 subnets", "12 subnets", "16 subnets", "20 subnets"],
+      "answer": {
+        "correct": "16 subnets",
+        "index": 2
+      },
+      "explanation": "192.168.0.192/26 provides 64 addresses (2^6). Each /30 subnet uses 4 addresses. Therefore: 64 ÷ 4 = 16 point-to-point subnets can be created.",
+      "hints": [
+        "/26 provides 2^6 = 64 total addresses",
+        "Each /30 point-to-point link uses 4 addresses",
+        "Divide total available by addresses per subnet"
+      ],
+      "references": [
+        "RFC 950 - Efficient address space utilization",
+        "RFC 1918 - Private address conservation"
+      ],
+      "tags": ["vlsm", "efficiency", "point_to_point", "calculation"]
+    },
+    {
+      "id": "vlsm_007",
+      "question": "According to RFC 1918, which of the following is NOT a valid private address range for VLSM implementation?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 90,
+      "options": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "169.254.0.0/16"],
+      "answer": {
+        "correct": "169.254.0.0/16", 
+        "index": 3
+      },
+      "explanation": "169.254.0.0/16 is the APIPA (Automatic Private IP Addressing) range defined in RFC 3927, not RFC 1918. RFC 1918 defines only: 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16.",
+      "hints": [
+        "RFC 1918 defines three private ranges only",
+        "169.254.x.x is used for automatic configuration",
+        "Check which ranges are specifically in RFC 1918"
+      ],
+      "references": [
+        "RFC 1918 - Address Allocation for Private Internets",
+        "RFC 3927 - Dynamic Configuration of IPv4 Link-Local Addresses"
+      ],
+      "tags": ["rfc1918", "private_addressing", "standards"]
+    },
+    {
+      "id": "vlsm_008",
+      "question": "In a VLSM scheme, you subnet 10.1.0.0/16 into multiple /24 networks. What is the network address of the 10th subnet (starting count from 0)?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 150,
+      "options": ["10.1.9.0", "10.1.10.0", "10.1.11.0", "10.1.16.0"],
+      "answer": {
+        "correct": "10.1.10.0",
+        "index": 1
+      },
+      "explanation": "Subnetting /16 into /24 networks increments the third octet. Starting from 10.1.0.0/24 (subnet 0), the 10th subnet is 10.1.10.0/24.",
+      "hints": [
+        "Each /24 subnet increments the third octet by 1",
+        "Starting from 10.1.0.0, count: 0, 1, 2... 10",
+        "The pattern is 10.1.X.0 where X is the subnet number"
+      ],
+      "references": [
+        "RFC 950 - Subnetting procedures",
+        "RFC 1918 - Class A private addressing"
+      ],
+      "tags": ["vlsm", "subnet_calculation", "sequential"]
+    },
+    {
+      "id": "vlsm_009",
+      "question": "You have 172.16.0.0/16 and need to create exactly 1000 equal-sized subnets. What subnet mask should you use to accommodate this requirement efficiently?",
+      "type": "multiple_choice", 
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 300,
+      "options": ["/25 (255.255.255.128)", "/26 (255.255.255.192)", "/27 (255.255.255.224)", "/28 (255.255.255.240)"],
+      "answer": {
+        "correct": "/26 (255.255.255.192)",
+        "index": 1
+      },
+      "explanation": "1000 subnets requires at least 10 subnet bits (2^10=1024 subnets). Starting with /16, adding 10 subnet bits gives /26. This provides 1024 subnets of 62 hosts each.",
+      "hints": [
+        "Find the power of 2 that accommodates 1000: 2^10 = 1024",
+        "You need 10 additional subnet bits beyond the /16",
+        "16 + 10 = 26 network bits = /26"
+      ],
+      "references": [
+        "RFC 950 - Subnet calculation methodology",
+        "RFC 1918 - Efficient use of Class B private space"
+      ],
+      "tags": ["vlsm", "subnet_planning", "large_scale"]
+    },
+    {
+      "id": "vlsm_010",
+      "question": "Using VLSM with 192.168.1.0/24, you allocate 192.168.1.0/26 and 192.168.1.64/27. What is the next available subnet address for a /28 network?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["192.168.1.80", "192.168.1.96", "192.168.1.112", "192.168.1.128"],
+      "answer": {
+        "correct": "192.168.1.96",
+        "index": 1
+      },
+      "explanation": "192.168.1.0/26 uses .0-.63. 192.168.1.64/27 uses .64-.95. The next available address is 192.168.1.96, which can accommodate a /28 subnet (.96-.111).",
+      "hints": [
+        "/26 subnet ends at address .63",
+        "/27 subnet (.64) ends at address .95", 
+        "Next available address is .96"
+      ],
+      "references": [
+        "RFC 950 - Sequential subnet allocation",
+        "RFC 1918 - Address space management"
+      ],
+      "tags": ["vlsm", "sequential_allocation", "address_calculation"]
+    },
+    {
+      "id": "vlsm_011",
+      "question": "In RFC 1918 addressing, what is the maximum number of Class C-equivalent (/24) subnets that can be created from the 172.16.0.0/12 private range?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["1024 subnets", "2048 subnets", "4096 subnets", "8192 subnets"],
+      "answer": {
+        "correct": "4096 subnets",
+        "index": 2
+      },
+      "explanation": "172.16.0.0/12 to /24 requires 12 additional bits (24-12=12). 2^12 = 4096 possible /24 subnets within the RFC 1918 172.16.0.0/12 range.",
+      "hints": [
+        "Going from /12 to /24 adds 12 subnet bits",
+        "Calculate 2^12 for the number of possible subnets",
+        "This covers 172.16.0.0 through 172.31.255.255"
+      ],
+      "references": [
+        "RFC 1918 - Class B private range definition",
+        "RFC 950 - Subnet enumeration"
+      ],
+      "tags": ["rfc1918", "class_b", "subnet_capacity"]
+    },
+    {
+      "id": "vlsm_012",
+      "question": "You are implementing VLSM for a company network. Given 10.0.0.0/8, you need subnets for: Data Center (2000 hosts), Branch Office (500 hosts), DMZ (100 hosts). What mask should be used for the Data Center subnet?",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 300,
+      "options": ["/20 (255.255.240.0)", "/21 (255.255.248.0)", "/22 (255.255.252.0)", "/23 (255.255.254.0)"],
+      "answer": {
+        "correct": "/21 (255.255.248.0)",
+        "index": 1
+      },
+      "explanation": "2000 hosts requires 11 host bits (2^11-2=2046). With 11 host bits, we need 32-11=21 network bits, giving /21 or 255.255.248.0.",
+      "hints": [
+        "2000 hosts needs 11 host bits: 2^11-2 = 2046 addresses",
+        "32 total bits - 11 host bits = 21 network bits",
+        "Always size for the largest requirement first in VLSM"
+      ],
+      "references": [
+        "RFC 1918 - Large-scale private addressing",
+        "RFC 950 - Host capacity planning"
+      ],
+      "tags": ["vlsm", "enterprise", "large_subnets", "planning"]
+    },
+    {
+      "id": "vlsm_013",
+      "question": "When using VLSM, what is the key principle for efficient address space utilization according to RFC 950?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 120,
+      "options": [
+        "Allocate smallest subnets first",
+        "Allocate largest subnets first", 
+        "Allocate subnets in random order",
+        "Allocate all subnets the same size"
+      ],
+      "answer": {
+        "correct": "Allocate largest subnets first",
+        "index": 1
+      },
+      "explanation": "RFC 950 and best practices recommend allocating largest subnets first in VLSM to prevent fragmentation and ensure efficient address space utilization. This minimizes wasted address space.",
+      "hints": [
+        "Consider how to prevent address space fragmentation",
+        "Think about which allocation order preserves flexibility",
+        "Large subnets need contiguous address blocks"
+      ],
+      "references": [
+        "RFC 950 - Variable Length Subnet Masking",
+        "RFC 1812 - Efficient address allocation practices"
+      ],
+      "tags": ["vlsm", "best_practices", "planning", "efficiency"]
+    },
+    {
+      "id": "vlsm_014", 
+      "question": "In a VLSM design using 192.168.10.0/24, you create subnets: 192.168.10.0/26 (LAN1), 192.168.10.64/27 (LAN2), 192.168.10.96/28 (DMZ). How many host addresses are available in the remaining unallocated space?",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 300,
+      "options": ["128 addresses", "144 addresses", "160 addresses", "176 addresses"],
+      "answer": {
+        "correct": "144 addresses",
+        "index": 1
+      },
+      "explanation": "Total /24 = 256 addresses. Used: /26 (64) + /27 (32) + /28 (16) = 112 addresses. Remaining: 256 - 112 = 144 addresses available for future allocation.",
+      "hints": [
+        "Calculate total addresses in /24: 2^8 = 256",
+        "Sum used addresses: 64 + 32 + 16 = 112", 
+        "Subtract used from total: 256 - 112"
+      ],
+      "references": [
+        "RFC 950 - Address space accounting",
+        "RFC 1918 - Efficient private address utilization"
+      ],
+      "tags": ["vlsm", "address_accounting", "planning", "efficiency"]
+    },
+    {
+      "id": "vlsm_015",
+      "question": "According to RFC standards, what is the primary advantage of VLSM over fixed-length subnet masking (FLSM)?",
+      "type": "multiple_choice",
+      "difficulty": "easy", 
+      "points": 5,
+      "timeLimit": 90,
+      "options": [
+        "Simpler configuration",
+        "Better security",
+        "Reduced address waste",
+        "Faster routing"
+      ],
+      "answer": {
+        "correct": "Reduced address waste",
+        "index": 2
+      },
+      "explanation": "RFC 950 identifies that VLSM's primary advantage is efficient address utilization by allowing different subnet sizes based on actual requirements, significantly reducing address waste compared to fixed-length subnetting.",
+      "hints": [
+        "Think about address efficiency and conservation",
+        "Consider what happens with fixed vs. variable subnet sizes",
+        "Focus on the core problem VLSM was designed to solve"
+      ],
+      "references": [
+        "RFC 950 - Variable Length Subnet Masking benefits",
+        "RFC 1518 - Classless Inter-Domain Routing (CIDR)"
+      ],
+      "tags": ["vlsm", "advantages", "efficiency", "address_conservation"]
+    },
+    {
+      "id": "vlsm_016",
+      "question": "Given the subnet 192.168.50.64/27, what is the first usable host address?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 120,
+      "options": ["192.168.50.64", "192.168.50.65", "192.168.50.66", "192.168.50.67"],
+      "answer": {
+        "correct": "192.168.50.65",
+        "index": 1
+      },
+      "explanation": "In subnet 192.168.50.64/27, the network address is 192.168.50.64 (first address) and the first usable host address is 192.168.50.65 (network address + 1).",
+      "hints": [
+        "The network address itself cannot be assigned to hosts",
+        "First usable host is always network address + 1",
+        "Host addresses are between network and broadcast addresses"
+      ],
+      "references": [
+        "RFC 950 - Host address allocation",
+        "RFC 1812 - Network and broadcast address usage"
+      ],
+      "tags": ["vlsm", "first_host", "addressing", "basics"]
+    },
+    {
+      "id": "vlsm_017",
+      "question": "Given the subnet 192.168.50.64/27, what is the last usable host address?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 120,
+      "options": ["192.168.50.93", "192.168.50.94", "192.168.50.95", "192.168.50.96"],
+      "answer": {
+        "correct": "192.168.50.94",
+        "index": 1
+      },
+      "explanation": "Subnet 192.168.50.64/27 has range .64-.95. Broadcast is 192.168.50.95, so last usable host is 192.168.50.94 (broadcast - 1).",
+      "hints": [
+        "/27 provides 32 addresses (.64 through .95)",
+        "Broadcast address cannot be assigned to hosts",
+        "Last usable host is always broadcast address - 1"
+      ],
+      "references": [
+        "RFC 950 - Broadcast address definition",
+        "RFC 1812 - Host address ranges"
+      ],
+      "tags": ["vlsm", "last_host", "addressing", "broadcast"]
+    },
+    {
+      "id": "vlsm_018",
+      "question": "In subnet 10.1.16.0/20, if the gateway is assigned to 10.1.16.1, how many host addresses remain available for assignment?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["4093 addresses", "4094 addresses", "4095 addresses", "4096 addresses"],
+      "answer": {
+        "correct": "4093 addresses",
+        "index": 0
+      },
+      "explanation": "/20 provides 4096 total addresses. Subtract: network address (1), broadcast address (1), and gateway (1) = 4096 - 3 = 4093 available host addresses.",
+      "hints": [
+        "/20 subnet has 12 host bits = 2^12 = 4096 total addresses",
+        "Subtract network address, broadcast address, and gateway",
+        "4096 - 1 - 1 - 1 = 4093 remaining"
+      ],
+      "references": [
+        "RFC 950 - Address allocation practices",
+        "RFC 1812 - Gateway address assignment"
+      ],
+      "tags": ["vlsm", "gateway", "available_addresses", "calculation"]
+    },
+    {
+      "id": "vlsm_019",
+      "question": "What is the network address for the host 172.16.85.142/22?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["172.16.84.0", "172.16.85.0", "172.16.80.0", "172.16.88.0"],
+      "answer": {
+        "correct": "172.16.84.0",
+        "index": 0
+      },
+      "explanation": "/22 means 22 network bits. In the third octet, this gives 6 network bits. 85 in binary is 01010101. Taking first 6 bits (010101) = 84. Network is 172.16.84.0.",
+      "hints": [
+        "/22 uses 6 bits from the third octet for network",
+        "Convert 85 to binary and mask with network bits",
+        "01010101 masked with 11111100 = 01010100 = 84"
+      ],
+      "references": [
+        "RFC 950 - Network address calculation",
+        "RFC 1812 - Subnet masking procedures"
+      ],
+      "tags": ["vlsm", "network_address", "binary", "calculation"]
+    },
+    {
+      "id": "vlsm_020",
+      "question": "In a /25 subnet, what is the maximum number of usable host addresses?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 90,
+      "options": ["126 hosts", "127 hosts", "128 hosts", "254 hosts"],
+      "answer": {
+        "correct": "126 hosts",
+        "index": 0
+      },
+      "explanation": "/25 has 7 host bits. 2^7 = 128 total addresses. Subtract network and broadcast: 128 - 2 = 126 usable host addresses.",
+      "hints": [
+        "/25 leaves 7 bits for hosts",
+        "Calculate 2^7 for total addresses",
+        "Subtract 2 for network and broadcast addresses"
+      ],
+      "references": [
+        "RFC 950 - Host capacity calculation",
+        "RFC 1812 - Usable address determination"
+      ],
+      "tags": ["vlsm", "host_capacity", "calculation", "basics"]
+    },
+    {
+      "id": "vlsm_021",
+      "question": "You need to subnet 192.168.1.0/24 to accommodate exactly 14 hosts per subnet. What subnet mask should you use?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["/27 (255.255.255.224)", "/28 (255.255.255.240)", "/29 (255.255.255.248)", "/30 (255.255.255.252)"],
+      "answer": {
+        "correct": "/28 (255.255.255.240)",
+        "index": 1
+      },
+      "explanation": "14 hosts requires 4 host bits (2^4-2=14). With 4 host bits, we use 28 network bits (/28). This provides exactly 14 usable addresses per subnet.",
+      "hints": [
+        "Find minimum host bits: 2^n-2 ≥ 14",
+        "2^4-2 = 14 exactly meets the requirement",
+        "4 host bits means 32-4 = 28 network bits"
+      ],
+      "references": [
+        "RFC 950 - Optimal subnet sizing",
+        "RFC 1812 - Host bit calculation"
+      ],
+      "tags": ["vlsm", "exact_sizing", "calculation", "efficiency"]
+    },
+    {
+      "id": "vlsm_022",
+      "question": "Given subnet 10.50.100.128/25, which of the following is a valid host address?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 150,
+      "options": ["10.50.100.127", "10.50.100.200", "10.50.100.255", "10.50.100.128"],
+      "answer": {
+        "correct": "10.50.100.200",
+        "index": 1
+      },
+      "explanation": "Subnet 10.50.100.128/25 ranges from .128 to .255. Network is .128, broadcast is .255. Valid hosts are .129-.254. Only 10.50.100.200 falls in this range.",
+      "hints": [
+        "/25 provides 128 addresses in the subnet",
+        "Range is .128 through .255",
+        "Valid hosts exclude network (.128) and broadcast (.255)"
+      ],
+      "references": [
+        "RFC 950 - Host address validation",
+        "RFC 1812 - Address range determination"
+      ],
+      "tags": ["vlsm", "valid_host", "address_range", "validation"]
+    },
+    {
+      "id": "vlsm_023",
+      "question": "How many /26 subnets can be created from a single /24 network?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 120,
+      "options": ["2 subnets", "4 subnets", "6 subnets", "8 subnets"],
+      "answer": {
+        "correct": "4 subnets",
+        "index": 1
+      },
+      "explanation": "From /24 to /26 adds 2 subnet bits. 2^2 = 4 subnets. Each /26 uses 64 addresses, and 4 × 64 = 256 addresses total in /24.",
+      "hints": [
+        "Count additional subnet bits: 26 - 24 = 2",
+        "Calculate 2^2 for number of subnets",
+        "Verify: 4 subnets × 64 addresses = 256 total"
+      ],
+      "references": [
+        "RFC 950 - Subnet enumeration",
+        "RFC 1812 - Hierarchical addressing"
+      ],
+      "tags": ["vlsm", "subnet_count", "hierarchy", "calculation"]
+    },
+    {
+      "id": "vlsm_024",
+      "question": "In VLSM design, you have 172.20.0.0/16 and need one subnet for 8000 hosts. What's the smallest subnet mask that accommodates this requirement?",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 300,
+      "options": ["/18 (255.255.192.0)", "/19 (255.255.224.0)", "/20 (255.255.240.0)", "/17 (255.255.128.0)"],
+      "answer": {
+        "correct": "/19 (255.255.224.0)",
+        "index": 1
+      },
+      "explanation": "8000 hosts requires 13 host bits (2^13-2=8190). With 13 host bits: 32-13=19 network bits. /19 provides 8190 usable addresses.",
+      "hints": [
+        "Find minimum host bits: 2^13-2 = 8190 > 8000",
+        "13 host bits means 32-13 = 19 network bits",
+        "Verify: /19 provides sufficient capacity"
+      ],
+      "references": [
+        "RFC 950 - Large subnet design",
+        "RFC 1918 - Efficient address utilization"
+      ],
+      "tags": ["vlsm", "large_subnet", "capacity_planning", "optimization"]
+    },
+    {
+      "id": "vlsm_025",
+      "question": "What is the broadcast address for the subnet containing host 192.168.30.75/26?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["192.168.30.127", "192.168.30.95", "192.168.30.63", "192.168.30.191"],
+      "answer": {
+        "correct": "192.168.30.127",
+        "index": 0
+      },
+      "explanation": "Host 192.168.30.75 with /26 mask. /26 has 64-address blocks: 0-63, 64-127, 128-191, 192-255. 75 falls in 64-127 block, so broadcast is 192.168.30.127.",
+      "hints": [
+        "/26 creates 64-address blocks",
+        "Find which block contains 75: 64-127",
+        "Broadcast is the last address in the block"
+      ],
+      "references": [
+        "RFC 950 - Broadcast address identification",
+        "RFC 1812 - Address block calculations"
+      ],
+      "tags": ["vlsm", "broadcast", "address_blocks", "calculation"]
+    },
+    {
+      "id": "vlsm_026",
+      "question": "You are configuring a point-to-point link between two routers. If one router uses 10.1.1.5/30, what is the other usable host address on this link?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "points": 5,
+      "timeLimit": 120,
+      "options": ["10.1.1.3", "10.1.1.5", "10.1.1.6", "10.1.1.7"],
+      "answer": {
+        "correct": "10.1.1.6",
+        "index": 2
+      },
+      "explanation": "/30 provides 4 addresses in block 10.1.1.4-10.1.1.7. Network: .4, usable hosts: .5 and .6, broadcast: .7. If one router uses 10.1.1.5, the other usable address is 10.1.1.6.",
+      "hints": [
+        "/30 subnet has 4 addresses total",
+        "Block: .4 (network), .5 (host1), .6 (host2), .7 (broadcast)",
+        "If .5 is used, then .6 is the other usable address"
+      ],
+      "references": [
+        "RFC 950 - Point-to-point addressing",
+        "RFC 3021 - Efficient P2P link addressing"
+      ],
+      "tags": ["vlsm", "point_to_point", "host_addressing", "links"]
+    },
+    {
+      "id": "vlsm_027",
+      "question": "In subnet 192.168.5.192/27, if the default gateway is at 192.168.5.193, what is the range of addresses available for host assignment?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 200,
+      "options": ["192.168.5.194 - 192.168.5.222", "192.168.5.193 - 192.168.5.222", "192.168.5.194 - 192.168.5.223", "192.168.5.195 - 192.168.5.222"],
+      "answer": {
+        "correct": "192.168.5.194 - 192.168.5.222",
+        "index": 0
+      },
+      "explanation": "Subnet .192/27 ranges .192-.223. Network: .192, Gateway: .193, Broadcast: .223. Available for hosts: .194 through .222 (excluding network, gateway, and broadcast).",
+      "hints": [
+        "/27 subnet ranges from .192 to .223",
+        "Exclude network (.192), gateway (.193), and broadcast (.223)",
+        "Remaining range: .194 through .222"
+      ],
+      "references": [
+        "RFC 950 - Host address allocation",
+        "RFC 1812 - Gateway address reservations"
+      ],
+      "tags": ["vlsm", "gateway", "host_range", "address_allocation"]
+    },
+    {
+      "id": "vlsm_028",
+      "question": "A network administrator subnets 10.10.0.0/8 using VLSM. If one department needs exactly 1000 hosts, what is the most efficient subnet mask?",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 300,
+      "options": ["/21 (255.255.248.0)", "/22 (255.255.252.0)", "/20 (255.255.240.0)", "/23 (255.255.254.0)"],
+      "answer": {
+        "correct": "/22 (255.255.252.0)",
+        "index": 1
+      },
+      "explanation": "1000 hosts requires 10 host bits (2^10-2=1022). With 10 host bits: 32-10=22 network bits. /22 is the most efficient mask providing 1022 usable addresses.",
+      "hints": [
+        "Find minimum host bits for 1000: 2^10-2 = 1022",
+        "10 host bits means 32-10 = 22 network bits",
+        "/22 is the most efficient (smallest waste)"
+      ],
+      "references": [
+        "RFC 950 - Efficient subnet allocation",
+        "RFC 1918 - Large enterprise subnetting"
+      ],
+      "tags": ["vlsm", "efficiency", "enterprise", "optimization"]
+    },
+    {
+      "id": "vlsm_029",
+      "question": "Given the VLSM allocation: 192.168.100.0/26, 192.168.100.64/27, 192.168.100.96/28, what is the next available /29 subnet address?",
+      "type": "multiple_choice",
+      "difficulty": "hard",
+      "points": 15,
+      "timeLimit": 300,
+      "options": ["192.168.100.112", "192.168.100.116", "192.168.100.120", "192.168.100.128"],
+      "answer": {
+        "correct": "192.168.100.112",
+        "index": 0
+      },
+      "explanation": "Used: .0-.63 (/26), .64-.95 (/27), .96-.111 (/28). Next available is .112. /29 needs 8 addresses, so .112-.119 is the first available /29 block.",
+      "hints": [
+        "Track used ranges: .0-.63, .64-.95, .96-.111",
+        "Next available address is .112",
+        "/29 uses 8 addresses, so .112-.119 fits"
+      ],
+      "references": [
+        "RFC 950 - Sequential VLSM allocation",
+        "RFC 1812 - Address space management"
+      ],
+      "tags": ["vlsm", "sequential_allocation", "address_planning", "complex"]
+    },
+    {
+      "id": "vlsm_030",
+      "question": "In a /28 subnet, if 3 addresses are reserved (network, broadcast, gateway), how many addresses remain for DHCP pool assignment?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "points": 10,
+      "timeLimit": 180,
+      "options": ["11 addresses", "12 addresses", "13 addresses", "14 addresses"],
+      "answer": {
+        "correct": "13 addresses",
+        "index": 2
+      },
+      "explanation": "/28 provides 16 total addresses. Reserve network (1), broadcast (1), and gateway (1) = 3 reserved. Remaining for DHCP: 16 - 3 = 13 addresses.",
+      "hints": [
+        "/28 has 4 host bits = 2^4 = 16 addresses",
+        "Subtract network, broadcast, and gateway addresses",
+        "16 - 1 - 1 - 1 = 13 available for DHCP"
+      ],
+      "references": [
+        "RFC 950 - Address reservation practices",
+        "RFC 2131 - DHCP address allocation"
+      ],
+      "tags": ["vlsm", "dhcp", "address_reservation", "practical"]
+    }
+  ]
+}

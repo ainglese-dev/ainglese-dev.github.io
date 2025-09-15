@@ -19,7 +19,9 @@
       "Bash(git config:*)",
       "Bash(mkdir:*)",
       "WebFetch(domain:ainglese-dev.github.io)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "additionalDirectories": [
