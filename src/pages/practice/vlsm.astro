@@ -286,7 +286,7 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 			
 			.hints {
 				margin-top: 15px;
-				display: none;
+				display: none !important;
 			}
 			
 			.hint {
@@ -477,15 +477,19 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 						if (radio.checked) {
 							// Clear previous visual selections
 							document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-							
+
 							// Add selected class to current option
 							radio.closest('.option').classList.add('selected');
-							
+
 							// Enable submit button
 							document.getElementById('submit-btn').disabled = false;
 						}
 					});
 				});
+
+				// Reset hints and button state for new question
+				document.getElementById('hints').style.display = 'none';
+				document.getElementById('hint-btn').style.display = 'inline-block';
 			}
 			
 			function selectOption(index) {
@@ -561,7 +565,7 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 			}
 			
 			function showHints() {
-				document.getElementById('hints').style.display = 'block';
+				document.getElementById('hints').style.setProperty('display', 'block', 'important');
 				document.getElementById('hint-btn').style.display = 'none';
 			}
 			
