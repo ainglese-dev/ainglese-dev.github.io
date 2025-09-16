@@ -386,7 +386,7 @@ const pageDescription = "Practice IPv6 addressing, autoconfiguration, and transi
 			// Load questions from JSON
 			async function loadQuestions() {
 				try {
-					const response = await fetch('/src/data/questions/ipv6.json');
+					const response = await fetch('/data/questions/ipv6.json');
 					const data = await response.json();
 					questions = data.questions;
 
