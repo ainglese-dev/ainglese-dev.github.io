@@ -1,0 +1,542 @@
+{
+  "topic": "NIST Cybersecurity Framework",
+  "certification": ["CISSP", "CISA", "CISM"],
+  "difficulty": "intermediate",
+  "timeEstimate": 30,
+  "totalQuestions": 25,
+  "passingScore": 75,
+  "description": "NIST Cybersecurity Framework functions: Identify, Protect, Detect, Respond, Recover",
+  "prerequisites": ["Basic cybersecurity concepts"],
+  "learningObjectives": [
+    "Understand the five core functions of NIST CSF",
+    "Apply framework categories to organizational scenarios",
+    "Implement CSF for risk management and compliance"
+  ],
+  "questions": [
+    {
+      "id": "nist_csf_001",
+      "question": "A financial services company wants to understand what assets need protection in their environment. Which NIST CSF function should they focus on first?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 4,
+      "timeLimit": 90,
+      "options": ["Identify", "Protect", "Detect", "Respond"],
+      "answer": {"correct": "Identify", "index": 0},
+      "explanation": "The Identify function helps organizations understand their business context, resources that support critical functions, and related cybersecurity risks. This is the foundation before implementing protective measures.",
+      "hints": [
+        "Think about what comes first in risk management",
+        "You can't protect what you don't know exists",
+        "This function includes asset management and risk assessment"
+      ],
+      "references": [
+        "NIST Cybersecurity Framework v1.1",
+        "NIST CSF Identify Function"
+      ],
+      "tags": ["identify", "asset-management", "risk-assessment"]
+    },
+    {
+      "id": "nist_csf_002",
+      "question": "An organization has implemented firewalls, access controls, and encryption. Which NIST CSF function does this primarily represent?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 4,
+      "timeLimit": 90,
+      "options": ["Identify", "Protect", "Detect", "Recover"],
+      "answer": {"correct": "Protect", "index": 1},
+      "explanation": "The Protect function includes safeguards to ensure delivery of critical infrastructure services. Firewalls, access controls, and encryption are all protective measures.",
+      "hints": [
+        "These are all preventive security controls",
+        "Think about what these technologies are designed to do",
+        "These measures prevent unauthorized access"
+      ],
+      "references": [
+        "NIST Cybersecurity Framework v1.1",
+        "NIST CSF Protect Function"
+      ],
+      "tags": ["protect", "access-control", "encryption"]
+    },
+    {
+      "id": "nist_csf_003",
+      "question": "A company's SIEM alerts on unusual network traffic patterns at 2 AM. This capability best represents which NIST CSF function?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Protect", "Detect", "Respond", "Recover"],
+      "answer": {"correct": "Detect", "index": 1},
+      "explanation": "The Detect function develops and implements appropriate activities to identify cybersecurity events. SIEM monitoring and alerting on anomalous activity is a key detection capability.",
+      "hints": [
+        "SIEM systems are monitoring tools",
+        "The key word is 'alerts' - what does this indicate?",
+        "This is about identifying potential security events"
+      ],
+      "references": [
+        "NIST Cybersecurity Framework v1.1",
+        "NIST CSF Detect Function"
+      ],
+      "tags": ["detect", "siem", "monitoring"]
+    },
+    {
+      "id": "nist_csf_004",
+      "question": "During a ransomware incident, the IT team isolates affected systems and activates the incident response plan. This action primarily represents which NIST CSF function?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Detect", "Respond", "Recover", "Protect"],
+      "answer": {"correct": "Respond", "index": 1},
+      "explanation": "The Respond function includes activities to take action regarding a detected cybersecurity incident. Isolation and activating incident response plans are key response activities.",
+      "hints": [
+        "This is happening during an active incident",
+        "Think about what you do when something bad is happening",
+        "Isolation and incident response are immediate actions"
+      ],
+      "references": [
+        "NIST Cybersecurity Framework v1.1",
+        "NIST CSF Respond Function"
+      ],
+      "tags": ["respond", "incident-response", "containment"]
+    },
+    {
+      "id": "nist_csf_005",
+      "question": "After a data breach, an organization restores systems from clean backups and resumes normal operations. This primarily represents which NIST CSF function?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 4,
+      "timeLimit": 90,
+      "options": ["Respond", "Recover", "Protect", "Identify"],
+      "answer": {"correct": "Recover", "index": 1},
+      "explanation": "The Recover function includes activities to restore capabilities or services that were impaired due to a cybersecurity incident. Restoring from backups and resuming operations are recovery activities.",
+      "hints": [
+        "This happens after the incident is contained",
+        "The goal is to get back to normal operations",
+        "Backup restoration is a key recovery activity"
+      ],
+      "references": [
+        "NIST Cybersecurity Framework v1.1",
+        "NIST CSF Recover Function"
+      ],
+      "tags": ["recover", "backup-restoration", "business-continuity"]
+    },
+    {
+      "id": "nist_csf_006",
+      "question": "Which NIST CSF category focuses on understanding the organization's mission, objectives, stakeholders, and activities?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Asset Management", "Business Environment", "Governance", "Risk Assessment"],
+      "answer": {"correct": "Business Environment", "index": 1},
+      "explanation": "The Business Environment category (ID.BE) focuses on understanding the organization's mission, objectives, stakeholders, and activities to inform cybersecurity roles, responsibilities, and risk management decisions.",
+      "hints": [
+        "This is about understanding the organization itself",
+        "Think about the broader context beyond just IT assets",
+        "This category is part of the Identify function"
+      ],
+      "references": [
+        "NIST CSF ID.BE - Business Environment",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["identify", "business-environment", "stakeholders"]
+    },
+    {
+      "id": "nist_csf_007",
+      "question": "An organization implements multi-factor authentication across all systems. This control primarily supports which NIST CSF category?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 4,
+      "timeLimit": 90,
+      "options": ["Data Security", "Identity Management", "Maintenance", "Protective Technology"],
+      "answer": {"correct": "Identity Management", "index": 1},
+      "explanation": "The Identity Management and Access Control category (PR.AC) includes managing physical and logical access to assets and associated facilities. MFA is a key identity management control.",
+      "hints": [
+        "MFA is about verifying who someone is",
+        "This is about controlling access to systems",
+        "Think about authentication and authorization"
+      ],
+      "references": [
+        "NIST CSF PR.AC - Identity Management",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["protect", "identity-management", "authentication"]
+    },
+    {
+      "id": "nist_csf_008",
+      "question": "A company establishes a 24/7 security operations center to monitor for threats. This capability primarily supports which NIST CSF category?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Anomalies and Events", "Security Continuous Monitoring", "Detection Processes", "All of the above"],
+      "answer": {"correct": "All of the above", "index": 3},
+      "explanation": "A SOC supports multiple Detect function categories: Security Continuous Monitoring (DE.CM), Anomalies and Events (DE.AE), and Detection Processes (DE.DP) by providing comprehensive threat monitoring and detection capabilities.",
+      "hints": [
+        "SOCs have multiple detection responsibilities",
+        "Think about all the things a SOC does",
+        "Consider monitoring, detecting anomalies, and processes"
+      ],
+      "references": [
+        "NIST CSF Detect Function",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["detect", "soc", "monitoring", "processes"]
+    },
+    {
+      "id": "nist_csf_009",
+      "question": "During incident response, who should be primarily responsible for making business decisions about system shutdowns and operational impacts?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["IT Security Team", "Business Management", "Legal Department", "External Consultants"],
+      "answer": {"correct": "Business Management", "index": 1},
+      "explanation": "Business management should make decisions about operational impacts as they understand business priorities, customer impacts, and can authorize resource allocation. This aligns with the NIST CSF emphasis on business context.",
+      "hints": [
+        "Who understands the business impact best?",
+        "Think about who has authority over business operations",
+        "Consider who can make resource allocation decisions"
+      ],
+      "references": [
+        "NIST CSF Response Planning",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["respond", "incident-response", "governance"]
+    },
+    {
+      "id": "nist_csf_010",
+      "question": "An organization wants to establish cybersecurity performance metrics. Which NIST CSF category would be most relevant?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["Risk Assessment", "Information Protection", "Improvements", "Communications"],
+      "answer": {"correct": "Improvements", "index": 2},
+      "explanation": "The Improvements category (RC.IM) includes activities to improve organizational cybersecurity capabilities based on lessons learned and predictive indicators. Performance metrics support continuous improvement.",
+      "hints": [
+        "Metrics are used to measure and improve performance",
+        "This is about getting better over time",
+        "Think about continuous improvement processes"
+      ],
+      "references": [
+        "NIST CSF RC.IM - Improvements",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["recover", "improvements", "metrics", "continuous-improvement"]
+    },
+    {
+      "id": "nist_csf_011",
+      "question": "A retail company processing credit cards wants to apply NIST CSF. Which external framework would complement CSF implementation for payment processing?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["ISO 27001", "PCI DSS", "SOX", "HIPAA"],
+      "answer": {"correct": "PCI DSS", "index": 1},
+      "explanation": "PCI DSS (Payment Card Industry Data Security Standard) is specifically designed for organizations that handle credit card data. NIST CSF can provide the strategic framework while PCI DSS provides specific payment card security requirements.",
+      "hints": [
+        "What framework is specific to payment cards?",
+        "Think about credit card processing requirements",
+        "Consider industry-specific regulations"
+      ],
+      "references": [
+        "PCI Security Standards Council",
+        "NIST CSF Framework Alignment"
+      ],
+      "tags": ["frameworks", "pci-dss", "compliance", "payment-cards"]
+    },
+    {
+      "id": "nist_csf_012",
+      "question": "When implementing NIST CSF, what is the recommended approach for a small organization with limited cybersecurity resources?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Implement all categories simultaneously", "Focus on Protect function only", "Start with Current State assessment", "Hire external consultants first"],
+      "answer": {"correct": "Start with Current State assessment", "index": 2},
+      "explanation": "NIST CSF recommends starting with understanding your current cybersecurity posture before developing target states and implementation plans. This allows organizations to prioritize efforts based on actual risks and capabilities.",
+      "hints": [
+        "You need to know where you are before you know where to go",
+        "Assessment comes before implementation",
+        "Small organizations need to prioritize effectively"
+      ],
+      "references": [
+        "NIST CSF Implementation Guidance",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["implementation", "current-state", "assessment", "small-business"]
+    },
+    {
+      "id": "nist_csf_013",
+      "question": "In the NIST CSF, what does 'Profile' refer to?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["A user's access permissions", "Organization's alignment of functions, categories, and subcategories", "Network configuration template", "Risk assessment methodology"],
+      "answer": {"correct": "Organization's alignment of functions, categories, and subcategories", "index": 1},
+      "explanation": "A Profile represents the outcomes based on business needs that an organization has selected from the Framework Categories and Subcategories. Organizations use Profiles to establish a roadmap for reducing cybersecurity risk.",
+      "hints": [
+        "This is a CSF-specific term",
+        "Think about how organizations customize the framework",
+        "It's about selecting relevant parts of the framework"
+      ],
+      "references": [
+        "NIST CSF Core Components",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["csf-profile", "framework-components", "customization"]
+    },
+    {
+      "id": "nist_csf_014",
+      "question": "A manufacturing company wants to protect their operational technology (OT) systems. Which NIST CSF considerations are most important?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["Focus only on IT security controls", "Prioritize availability over confidentiality", "Implement air-gapped networks only", "Apply same controls as IT systems"],
+      "answer": {"correct": "Prioritize availability over confidentiality", "index": 1},
+      "explanation": "For OT systems, availability is typically the highest priority as disruptions can impact safety and production. NIST CSF should be applied with this context in mind, though all CIA triad elements remain important.",
+      "hints": [
+        "OT systems control physical processes",
+        "Think about what matters most in manufacturing",
+        "Consider safety and production impacts"
+      ],
+      "references": [
+        "NIST CSF Manufacturing Profile",
+        "ICS/OT Security Guidelines"
+      ],
+      "tags": ["operational-technology", "manufacturing", "availability", "ot-security"]
+    },
+    {
+      "id": "nist_csf_015",
+      "question": "Which NIST CSF Implementation Tier indicates that cybersecurity practices are managed and expressed as policy?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Tier 1: Partial", "Tier 2: Risk Informed", "Tier 3: Repeatable", "Tier 4: Adaptive"],
+      "answer": {"correct": "Tier 3: Repeatable", "index": 2},
+      "explanation": "Tier 3 (Repeatable) indicates that the organization's cybersecurity practices are formally approved and expressed as policy. The organization has a cybersecurity program that is managed consistently.",
+      "hints": [
+        "Think about when practices become formal policy",
+        "This tier is about consistency and formal management",
+        "Policy indicates a more mature level"
+      ],
+      "references": [
+        "NIST CSF Implementation Tiers",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["implementation-tiers", "maturity", "policy", "governance"]
+    },
+    {
+      "id": "nist_csf_016",
+      "question": "An organization discovers their current cybersecurity practices don't align well with business requirements. Which CSF step should they focus on?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Create Current Profile", "Develop Target Profile", "Conduct Gap Analysis", "Prioritize and Plan"],
+      "answer": {"correct": "Develop Target Profile", "index": 1},
+      "explanation": "If current practices don't align with business requirements, the organization should develop a Target Profile that represents the desired cybersecurity outcomes based on business needs, threat landscape, and risk tolerance.",
+      "hints": [
+        "They need to define what they want to achieve",
+        "Business alignment requires understanding business needs",
+        "Think about the desired future state"
+      ],
+      "references": [
+        "NIST CSF Implementation Steps",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["target-profile", "business-alignment", "implementation-steps"]
+    },
+    {
+      "id": "nist_csf_017",
+      "question": "Which type of organization would benefit most from using a NIST CSF sector-specific profile?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Generic consulting firm", "Healthcare provider", "Small retail business", "Software development company"],
+      "answer": {"correct": "Healthcare provider", "index": 1},
+      "explanation": "Healthcare providers operate in a highly regulated environment with specific compliance requirements (HIPAA), unique threat landscape, and patient safety considerations. Sector-specific profiles address these specialized needs.",
+      "hints": [
+        "Which industry has specific regulations and risks?",
+        "Think about sectors with unique security challenges",
+        "Consider compliance and safety requirements"
+      ],
+      "references": [
+        "NIST CSF Sector Profiles",
+        "Healthcare Cybersecurity Guidelines"
+      ],
+      "tags": ["sector-profiles", "healthcare", "industry-specific", "compliance"]
+    },
+    {
+      "id": "nist_csf_018",
+      "question": "In NIST CSF, what is the primary purpose of conducting regular cybersecurity risk assessments?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 4,
+      "timeLimit": 90,
+      "options": ["Meet compliance requirements", "Support Identify function activities", "Justify security budget", "Document security controls"],
+      "answer": {"correct": "Support Identify function activities", "index": 1},
+      "explanation": "Risk assessments are a core component of the Identify function, specifically the Risk Assessment category (ID.RA). They help organizations understand cybersecurity risk to systems, assets, data, and capabilities.",
+      "hints": [
+        "Risk assessment is fundamental to understanding threats",
+        "Think about which CSF function this supports",
+        "This is about knowing what needs protection"
+      ],
+      "references": [
+        "NIST CSF ID.RA - Risk Assessment",
+        "NIST Cybersecurity Framework v1.1"
+      ],
+      "tags": ["identify", "risk-assessment", "threats", "vulnerabilities"]
+    },
+    {
+      "id": "nist_csf_019",
+      "question": "A company wants to share threat intelligence with industry partners. Which NIST CSF category best supports this activity?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Information Sharing", "Communications", "Detection Processes", "Analysis"],
+      "answer": {"correct": "Information Sharing", "index": 0},
+      "explanation": "The Information Sharing category (RS.CO) focuses on coordinating response activities with internal and external stakeholders. This includes sharing threat intelligence with industry partners and law enforcement.",
+      "hints": [
+        "This is about working with external partners",
+        "Think about coordination during incidents",
+        "Consider threat intelligence sharing"
+      ],
+      "references": [
+        "NIST CSF RS.CO - Communications",
+        "Threat Intelligence Sharing Guidelines"
+      ],
+      "tags": ["respond", "information-sharing", "threat-intelligence", "collaboration"]
+    },
+    {
+      "id": "nist_csf_020",
+      "question": "An organization implements security awareness training for all employees. This primarily supports which NIST CSF category?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 4,
+      "timeLimit": 90,
+      "options": ["Awareness and Training", "Identity Management", "Governance", "Risk Assessment"],
+      "answer": {"correct": "Awareness and Training", "index": 0},
+      "explanation": "The Awareness and Training category (PR.AT) ensures that organizational personnel and partners are provided cybersecurity awareness education and are trained to perform their cybersecurity-related duties.",
+      "hints": [
+        "This is directly about educating people",
+        "Think about human factors in security",
+        "Training is mentioned in the question"
+      ],
+      "references": [
+        "NIST CSF PR.AT - Awareness and Training",
+        "Security Awareness Best Practices"
+      ],
+      "tags": ["protect", "awareness-training", "human-factors", "education"]
+    },
+    {
+      "id": "nist_csf_021",
+      "question": "During a cyber incident, an organization needs to make decisions about public communications. Which stakeholder group should lead this decision?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["IT Security Team", "Legal and Communications", "Executive Leadership", "External PR Agency"],
+      "answer": {"correct": "Executive Leadership", "index": 2},
+      "explanation": "Public communications during incidents can significantly impact business reputation and stakeholder confidence. Executive leadership should make these strategic decisions, though they may rely on legal and communications teams for guidance.",
+      "hints": [
+        "Who has ultimate accountability for company reputation?",
+        "Think about strategic vs tactical decisions",
+        "Consider business impact of public statements"
+      ],
+      "references": [
+        "NIST CSF Response Planning",
+        "Crisis Communications Best Practices"
+      ],
+      "tags": ["respond", "communications", "executive-leadership", "reputation-management"]
+    },
+    {
+      "id": "nist_csf_022",
+      "question": "An organization wants to measure the effectiveness of their cybersecurity program. Which approach aligns best with NIST CSF?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Count number of security tools deployed", "Measure outcomes against Target Profile", "Track compliance checklist completion", "Monitor security spending levels"],
+      "answer": {"correct": "Measure outcomes against Target Profile", "index": 1},
+      "explanation": "NIST CSF emphasizes outcome-based measurement. Organizations should measure their progress toward achieving the cybersecurity outcomes defined in their Target Profile, not just tool deployment or spending.",
+      "hints": [
+        "CSF is about outcomes, not just activities",
+        "Think about what the Target Profile represents",
+        "Effectiveness means achieving desired results"
+      ],
+      "references": [
+        "NIST CSF Measurement Guidance",
+        "Cybersecurity Metrics Best Practices"
+      ],
+      "tags": ["measurement", "target-profile", "outcomes", "effectiveness"]
+    },
+    {
+      "id": "nist_csf_023",
+      "question": "A cloud service provider wants to help customers understand their shared security responsibilities. Which NIST CSF approach would be most helpful?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["Provide detailed technical specifications", "Map services to CSF subcategories", "Offer compliance certifications only", "Focus on SLA guarantees"],
+      "answer": {"correct": "Map services to CSF subcategories", "index": 1},
+      "explanation": "Mapping cloud services to NIST CSF subcategories helps customers understand exactly which cybersecurity outcomes the provider supports versus which remain the customer's responsibility. This provides clear, framework-based communication.",
+      "hints": [
+        "Think about how to clearly communicate security responsibilities",
+        "CSF provides a common language for security",
+        "Mapping helps customers understand coverage"
+      ],
+      "references": [
+        "NIST CSF Cloud Computing Guidance",
+        "Shared Responsibility Model Best Practices"
+      ],
+      "tags": ["cloud-security", "shared-responsibility", "csf-mapping", "communication"]
+    },
+    {
+      "id": "nist_csf_024",
+      "question": "An organization's board of directors wants regular cybersecurity updates. Which NIST CSF concept would be most useful for board reporting?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 4,
+      "timeLimit": 120,
+      "options": ["Technical vulnerability counts", "Implementation Tier progress", "Detailed incident logs", "Penetration test results"],
+      "answer": {"correct": "Implementation Tier progress", "index": 1},
+      "explanation": "Implementation Tiers provide a high-level view of cybersecurity program maturity that boards can understand and use for strategic decision-making. This is more appropriate than technical details for board-level reporting.",
+      "hints": [
+        "Boards need strategic, not technical information",
+        "Think about what executives care about",
+        "Maturity levels are easier to understand than technical details"
+      ],
+      "references": [
+        "NIST CSF Implementation Tiers",
+        "Cybersecurity Board Reporting Best Practices"
+      ],
+      "tags": ["governance", "board-reporting", "implementation-tiers", "executive-communication"]
+    },
+    {
+      "id": "nist_csf_025",
+      "question": "A multinational corporation wants to implement NIST CSF across different countries with varying regulatory requirements. What approach should they take?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["Use identical implementation everywhere", "Develop country-specific profiles", "Focus only on US regulations", "Implement minimal controls globally"],
+      "answer": {"correct": "Develop country-specific profiles", "index": 1},
+      "explanation": "Country-specific profiles allow organizations to adapt the NIST CSF to local regulatory requirements, threat landscapes, and business contexts while maintaining a consistent overall framework approach across the organization.",
+      "hints": [
+        "Different countries have different regulations",
+        "Think about how to maintain consistency while adapting",
+        "Profiles allow customization of the framework"
+      ],
+      "references": [
+        "NIST CSF International Implementation",
+        "Global Cybersecurity Frameworks"
+      ],
+      "tags": ["international", "country-profiles", "regulatory-compliance", "global-implementation"]
+    }
+  ]
+}

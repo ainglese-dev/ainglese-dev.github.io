@@ -24,6 +24,7 @@ const pageDescription = "Practice IPv6 addressing, autoconfiguration, and transi
 				--accent-success: #25d366;
 				--accent-error: #dc3545;
 				--accent-warning: #ffc107;
+				--accent-info: #17a2b8;
 			}
 
 			[data-theme="dark"] {
@@ -52,23 +53,73 @@ const pageDescription = "Practice IPv6 addressing, autoconfiguration, and transi
 			}
 
 			.container {
-				max-width: 900px;
+				max-width: 1000px;
 				margin: 0 auto;
 				padding: 20px;
 			}
 
+			.breadcrumb {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 20px;
+				font-size: 0.9rem;
+			}
+
+			.breadcrumb a {
+				color: var(--accent-primary);
+				text-decoration: none;
+			}
+
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+
+			.breadcrumb span {
+				color: var(--text-secondary);
+			}
+
 			.header {
 				background: var(--bg-secondary);
-				border-bottom: 2px solid var(--border-color);
-				padding: 20px 0;
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
 				margin-bottom: 30px;
+				text-align: center;
 			}
 
 			.header h1 {
-				font-size: 2rem;
-				text-align: center;
+				font-size: 2.2rem;
 				color: var(--accent-primary);
 				margin-bottom: 10px;
+			}
+
+			.header p {
+				color: var(--text-secondary);
+				font-size: 1.1rem;
+				margin-bottom: 20px;
+			}
+
+			.stats {
+				display: flex;
+				justify-content: center;
+				gap: 30px;
+				flex-wrap: wrap;
+			}
+
+			.stat {
+				text-align: center;
+			}
+
+			.stat-value {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: var(--accent-primary);
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				color: var(--text-secondary);
 			}
 
 			.progress-bar {
@@ -226,15 +277,25 @@ const pageDescription = "Practice IPv6 addressing, autoconfiguration, and transi
 			}
 
 			.feedback.correct {
-				background: rgba(37, 211, 102, 0.1);
-				border: 1px solid var(--accent-success);
-				color: var(--accent-success);
+				border-color: var(--accent-success);
+				background: #d4edda;
+				color: #155724;
 			}
 
 			.feedback.incorrect {
-				background: rgba(220, 53, 69, 0.1);
-				border: 1px solid var(--accent-error);
-				color: var(--accent-error);
+				border-color: var(--accent-error);
+				background: #f8d7da;
+				color: #721c24;
+			}
+
+			[data-theme="dark"] .feedback.correct {
+				background: #1e4f23;
+				color: #d1e7dd;
+			}
+
+			[data-theme="dark"] .feedback.incorrect {
+				background: #4a1e24;
+				color: #f5c2c7;
 			}
 
 			.explanation {
@@ -332,27 +393,45 @@ const pageDescription = "Practice IPv6 addressing, autoconfiguration, and transi
 	<body>
 		<button id="theme-toggle" class="theme-toggle">🌙</button>
 
-		<nav style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); padding: 10px 0;">
-			<div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-				<div style="display: flex; gap: 20px; align-items: center;">
-					<a href="/" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">← Home</a>
-					<a href="/practice" style="color: var(--text-secondary); text-decoration: none;">← Back to Topics</a>
-				</div>
-				<a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Angel Dev</a>
+		<div class="container">
+			<div class="breadcrumb">
+				<a href="/">Home</a>
+				<span>→</span>
+				<a href="/practice/">Network Practice</a>
+				<span>→</span>
+				<span>IPv6</span>
 			</div>
-		</nav>
+		</div>
 
 		<header class="header">
 			<div class="container">
-				<h1>IPv6 Practice</h1>
-				<div class="progress-bar">
-					<div id="progress-fill" class="progress-fill"></div>
-				</div>
-				<div style="text-align: center; color: var(--text-secondary);">
-					<span id="progress-text">Question 0 of 0</span>
+				<h1>IPv6 Addressing Practice</h1>
+				<p>Master IPv6 address types, subnetting, autoconfiguration, and transition mechanisms</p>
+				<div class="stats">
+					<div class="stat">
+						<div class="stat-value">28</div>
+						<div class="stat-label">Questions</div>
+					</div>
+					<div class="stat">
+						<div class="stat-value">~35</div>
+						<div class="stat-label">Minutes</div>
+					</div>
+					<div class="stat">
+						<div class="stat-value">70%</div>
+						<div class="stat-label">Pass Score</div>
+					</div>
 				</div>
 			</div>
 		</header>
+
+		<div class="container">
+			<div class="progress-bar">
+				<div id="progress-fill" class="progress-fill"></div>
+			</div>
+			<div style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">
+				<span id="progress-text">Question 0 of 0</span>
+			</div>
+		</div>
 
 		<main class="container">
 			<div id="practice-container">

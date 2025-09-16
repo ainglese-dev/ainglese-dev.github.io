@@ -1,0 +1,646 @@
+{
+  "topic": "CIS Critical Security Controls",
+  "certification": ["CISSP", "Security+", "CIS Controls Assessment"],
+  "difficulty": "intermediate",
+  "timeEstimate": 35,
+  "totalQuestions": 30,
+  "passingScore": 75,
+  "description": "CIS Critical Security Controls v8 - 18 prioritized safeguards for cybersecurity",
+  "prerequisites": ["Basic cybersecurity concepts", "Security controls understanding"],
+  "learningObjectives": [
+    "Understand the 18 CIS Critical Security Controls",
+    "Apply Implementation Groups (IG1, IG2, IG3) appropriately",
+    "Prioritize security controls based on organizational size and risk"
+  ],
+  "questions": [
+    {
+      "id": "cis_001",
+      "question": "What is the primary purpose of CIS Control 1: Inventory and Control of Enterprise Assets?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Prevent unauthorized access", "Maintain an accurate inventory of authorized and unauthorized devices", "Monitor network traffic", "Implement access controls"],
+      "answer": {"correct": "Maintain an accurate inventory of authorized and unauthorized devices", "index": 1},
+      "explanation": "CIS Control 1 focuses on maintaining an accurate and up-to-date inventory of all enterprise assets (authorized and unauthorized devices) connected to the infrastructure so they can be found, monitored, and protected.",
+      "hints": [
+        "You can't protect what you don't know exists",
+        "This is the foundation control for asset management",
+        "Think about visibility into your environment"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 1",
+        "Asset Management Best Practices"
+      ],
+      "tags": ["asset-inventory", "control-1", "foundational"]
+    },
+    {
+      "id": "cis_002",
+      "question": "Which CIS Control specifically addresses managing software inventory and unauthorized software?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Control 1: Inventory and Control of Enterprise Assets", "Control 2: Inventory and Control of Software Assets", "Control 3: Data Protection", "Control 4: Secure Configuration"],
+      "answer": {"correct": "Control 2: Inventory and Control of Software Assets", "index": 1},
+      "explanation": "CIS Control 2 focuses on maintaining an inventory of authorized software and preventing unauthorized software from executing on enterprise assets.",
+      "hints": [
+        "This control is about software, not hardware",
+        "Think about application whitelisting and software management",
+        "It's the software counterpart to Control 1"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 2"
+      ],
+      "tags": ["software-inventory", "control-2", "unauthorized-software"]
+    },
+    {
+      "id": "cis_003",
+      "question": "A small business with 50 employees and basic IT infrastructure should focus on which CIS Implementation Group?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["IG1 (Implementation Group 1)", "IG2 (Implementation Group 2)", "IG3 (Implementation Group 3)", "All implementation groups equally"],
+      "answer": {"correct": "IG1 (Implementation Group 1)", "index": 0},
+      "explanation": "IG1 is designed for small to medium-sized businesses with limited cybersecurity expertise and resources. It provides essential cyber hygiene practices that can be implemented with minimal resources.",
+      "hints": [
+        "Consider the organization's size and resources",
+        "Small businesses need practical, achievable controls",
+        "Think about essential cyber hygiene"
+      ],
+      "references": [
+        "CIS Implementation Groups Guide",
+        "CIS Controls v8.1 Implementation Groups"
+      ],
+      "tags": ["implementation-groups", "ig1", "small-business", "resource-constraints"]
+    },
+    {
+      "id": "cis_004",
+      "question": "What is the main focus of CIS Control 3: Data Protection?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Backup and recovery procedures", "Develop processes to identify, classify, securely handle, retain, and dispose of data", "Encrypt all data at rest", "Implement data loss prevention tools"],
+      "answer": {"correct": "Develop processes to identify, classify, securely handle, retain, and dispose of data", "index": 1},
+      "explanation": "CIS Control 3 focuses on developing processes and technical controls to identify, classify, securely handle, retain, and dispose of data to protect it throughout its lifecycle.",
+      "hints": [
+        "This is about the complete data lifecycle",
+        "Think beyond just backup - consider classification and handling",
+        "Data protection includes disposal and retention"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 3",
+        "Data Classification Guidelines"
+      ],
+      "tags": ["data-protection", "control-3", "data-lifecycle", "data-classification"]
+    },
+    {
+      "id": "cis_005",
+      "question": "Which CIS Control addresses the secure configuration of enterprise assets and software?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Control 3: Data Protection", "Control 4: Secure Configuration of Enterprise Assets and Software", "Control 5: Account Management", "Control 6: Access Control Management"],
+      "answer": {"correct": "Control 4: Secure Configuration of Enterprise Assets and Software", "index": 1},
+      "explanation": "CIS Control 4 focuses on establishing, implementing, and actively managing the security configuration of enterprise assets and software using rigorous configuration management and change control processes.",
+      "hints": [
+        "This is about hardening systems and applications",
+        "Think about configuration baselines and standards",
+        "Security configuration management is key"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 4",
+        "Security Configuration Guides"
+      ],
+      "tags": ["secure-configuration", "control-4", "hardening", "configuration-management"]
+    },
+    {
+      "id": "cis_006",
+      "question": "A large enterprise with dedicated security team and mature IT infrastructure should implement which CIS Implementation Group?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["IG1 only", "IG2 only", "IG3 (includes IG1 and IG2)", "Custom implementation group"],
+      "answer": {"correct": "IG3 (includes IG1 and IG2)", "index": 2},
+      "explanation": "IG3 is designed for large enterprises with mature cybersecurity programs and dedicated security teams. It includes all controls from IG1 and IG2 plus additional advanced controls.",
+      "hints": [
+        "Large enterprises need comprehensive security",
+        "Implementation Groups are cumulative",
+        "IG3 includes the most comprehensive set of controls"
+      ],
+      "references": [
+        "CIS Implementation Groups Guide",
+        "Enterprise Security Architecture"
+      ],
+      "tags": ["implementation-groups", "ig3", "large-enterprise", "mature-security"]
+    },
+    {
+      "id": "cis_007",
+      "question": "What is the primary focus of CIS Control 5: Account Management?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Password policy enforcement", "Use processes and tools to track, control, prevent, correct, and secure access rights", "Multi-factor authentication implementation", "User training and awareness"],
+      "answer": {"correct": "Use processes and tools to track, control, prevent, correct, and secure access rights", "index": 1},
+      "explanation": "CIS Control 5 focuses on using processes and tools to assign, track, monitor, review, and audit account access rights for user, administrator, and service accounts throughout their lifecycle.",
+      "hints": [
+        "This is about the complete account lifecycle",
+        "Think about access rights management",
+        "Account management goes beyond just passwords"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 5",
+        "Identity and Access Management"
+      ],
+      "tags": ["account-management", "control-5", "access-rights", "account-lifecycle"]
+    },
+    {
+      "id": "cis_008",
+      "question": "Which CIS Control specifically addresses privileged access management?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Control 5: Account Management", "Control 6: Access Control Management", "Control 7: Continuous Vulnerability Management", "Control 8: Audit Log Management"],
+      "answer": {"correct": "Control 6: Access Control Management", "index": 1},
+      "explanation": "CIS Control 6 focuses on using centralized access control systems to limit and monitor user access, including privileged access management and the principle of least privilege.",
+      "hints": [
+        "Privileged access needs special management",
+        "Think about limiting and monitoring access",
+        "This control focuses on access control systems"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 6",
+        "Privileged Access Management"
+      ],
+      "tags": ["access-control", "control-6", "privileged-access", "least-privilege"]
+    },
+    {
+      "id": "cis_009",
+      "question": "What is the main objective of CIS Control 7: Continuous Vulnerability Management?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Install antivirus software", "Develop, implement, and manage a continuous vulnerability management plan", "Conduct annual penetration testing", "Monitor network traffic"],
+      "answer": {"correct": "Develop, implement, and manage a continuous vulnerability management plan", "index": 1},
+      "explanation": "CIS Control 7 focuses on developing, implementing, and managing a continuous vulnerability management plan to identify, prioritize, and remediate vulnerabilities in enterprise assets.",
+      "hints": [
+        "This is about ongoing vulnerability management",
+        "Think about the complete vulnerability lifecycle",
+        "Continuous process, not one-time activities"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 7",
+        "Vulnerability Management Programs"
+      ],
+      "tags": ["vulnerability-management", "control-7", "continuous-monitoring", "remediation"]
+    },
+    {
+      "id": "cis_010",
+      "question": "Which CIS Control addresses malware defenses?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Control 8: Audit Log Management", "Control 9: Email and Web Browser Protections", "Control 10: Malware Defenses", "Control 11: Data Recovery"],
+      "answer": {"correct": "Control 10: Malware Defenses", "index": 2},
+      "explanation": "CIS Control 10 specifically focuses on preventing or controlling the installation, spread, and execution of malicious applications, code, or scripts on enterprise assets.",
+      "hints": [
+        "This control is specifically about malware",
+        "Think about preventing malicious code execution",
+        "Antivirus and anti-malware tools are part of this"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 10",
+        "Malware Defense Strategies"
+      ],
+      "tags": ["malware-defenses", "control-10", "malicious-code", "endpoint-protection"]
+    },
+    {
+      "id": "cis_011",
+      "question": "What is the primary purpose of CIS Control 8: Audit Log Management?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Store logs for compliance purposes", "Collect, alert, review, and retain audit logs", "Backup system configurations", "Monitor user behavior"],
+      "answer": {"correct": "Collect, alert, review, and retain audit logs", "index": 1},
+      "explanation": "CIS Control 8 focuses on collecting, alerting, reviewing, and retaining audit logs of events that could help detect, understand, or recover from an attack.",
+      "hints": [
+        "This is about the complete log management lifecycle",
+        "Think about detection and incident response",
+        "Logs need to be collected, analyzed, and retained"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 8",
+        "Log Management Best Practices"
+      ],
+      "tags": ["audit-logs", "control-8", "log-management", "detection"]
+    },
+    {
+      "id": "cis_012",
+      "question": "A manufacturing company wants to protect their email systems from phishing attacks. Which CIS Control would be most relevant?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Control 8: Audit Log Management", "Control 9: Email and Web Browser Protections", "Control 10: Malware Defenses", "Control 14: Security Awareness and Skills Training"],
+      "answer": {"correct": "Control 9: Email and Web Browser Protections", "index": 1},
+      "explanation": "CIS Control 9 specifically addresses improving protections and detections of threats from email and web vectors, including phishing protection and email security controls.",
+      "hints": [
+        "Phishing attacks primarily come through email",
+        "Think about email-specific protections",
+        "This control focuses on communication vectors"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 9",
+        "Email Security Best Practices"
+      ],
+      "tags": ["email-protection", "control-9", "phishing", "web-browser-security"]
+    },
+    {
+      "id": "cis_013",
+      "question": "What does CIS Control 11: Data Recovery specifically address?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Data encryption", "Establish and maintain data recovery practices", "Data classification", "Data disposal"],
+      "answer": {"correct": "Establish and maintain data recovery practices", "index": 1},
+      "explanation": "CIS Control 11 focuses on establishing and maintaining data recovery practices sufficient to restore in-scope enterprise assets to a pre-incident and trusted state.",
+      "hints": [
+        "This is about getting back to normal after an incident",
+        "Think about backup and restore capabilities",
+        "Recovery implies restoring to a trusted state"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 11",
+        "Data Recovery and Backup Strategies"
+      ],
+      "tags": ["data-recovery", "control-11", "backup", "incident-recovery"]
+    },
+    {
+      "id": "cis_014",
+      "question": "Which CIS Control addresses network infrastructure management?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Control 11: Data Recovery", "Control 12: Network Infrastructure Management", "Control 13: Network Monitoring and Defense", "Control 14: Security Awareness and Skills Training"],
+      "answer": {"correct": "Control 12: Network Infrastructure Management", "index": 1},
+      "explanation": "CIS Control 12 focuses on establishing, implementing, and actively managing network devices to prevent attackers from exploiting vulnerable network services and access points.",
+      "hints": [
+        "This is about managing network devices and services",
+        "Think about network security and configuration",
+        "Infrastructure management includes routers, switches, etc."
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 12",
+        "Network Infrastructure Security"
+      ],
+      "tags": ["network-infrastructure", "control-12", "network-devices", "network-security"]
+    },
+    {
+      "id": "cis_015",
+      "question": "What is the primary focus of CIS Control 13: Network Monitoring and Defense?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Configure network devices", "Operate processes and tooling to establish and maintain network monitoring", "Implement firewalls", "Manage network infrastructure"],
+      "answer": {"correct": "Operate processes and tooling to establish and maintain network monitoring", "index": 1},
+      "explanation": "CIS Control 13 focuses on operating processes and tooling to establish and maintain comprehensive network monitoring and defense against security threats.",
+      "hints": [
+        "This is about monitoring and detecting threats",
+        "Think about network security monitoring",
+        "Defense implies active threat detection"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 13",
+        "Network Security Monitoring"
+      ],
+      "tags": ["network-monitoring", "control-13", "threat-detection", "network-defense"]
+    },
+    {
+      "id": "cis_016",
+      "question": "A company wants to improve their employees' ability to recognize and respond to security threats. Which CIS Control should they focus on?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Control 13: Network Monitoring and Defense", "Control 14: Security Awareness and Skills Training", "Control 15: Service Provider Management", "Control 16: Application Software Security"],
+      "answer": {"correct": "Control 14: Security Awareness and Skills Training", "index": 1},
+      "explanation": "CIS Control 14 focuses on establishing and maintaining a security awareness and skills training program for users to reduce risks to the enterprise from social engineering and unintentional user errors.",
+      "hints": [
+        "This is about human factors in security",
+        "Employee training and awareness is key",
+        "Think about reducing human-related risks"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 14",
+        "Security Awareness Training Programs"
+      ],
+      "tags": ["security-awareness", "control-14", "training", "human-factors"]
+    },
+    {
+      "id": "cis_017",
+      "question": "What does CIS Control 15: Service Provider Management specifically address?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Internal service management", "Develop a process to evaluate service providers", "Software development lifecycle", "Incident response planning"],
+      "answer": {"correct": "Develop a process to evaluate service providers", "index": 1},
+      "explanation": "CIS Control 15 focuses on developing a process to evaluate service providers who hold sensitive data or are responsible for enterprise's critical IT platforms or processes to ensure they implement appropriate security controls.",
+      "hints": [
+        "This is about third-party risk management",
+        "Think about vendors and outsourced services",
+        "Service providers need security evaluation"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 15",
+        "Third-Party Risk Management"
+      ],
+      "tags": ["service-providers", "control-15", "third-party-risk", "vendor-management"]
+    },
+    {
+      "id": "cis_018",
+      "question": "Which CIS Control addresses application software security throughout the development lifecycle?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Control 15: Service Provider Management", "Control 16: Application Software Security", "Control 17: Incident Response Management", "Control 18: Penetration Testing"],
+      "answer": {"correct": "Control 16: Application Software Security", "index": 1},
+      "explanation": "CIS Control 16 focuses on managing the security of in-house developed and acquired application software to prevent, detect, and correct security weaknesses before they can impact the enterprise.",
+      "hints": [
+        "This is about secure software development",
+        "Think about application security throughout the lifecycle",
+        "Both developed and acquired software need security management"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 16",
+        "Application Security Programs"
+      ],
+      "tags": ["application-security", "control-16", "software-development", "secure-coding"]
+    },
+    {
+      "id": "cis_019",
+      "question": "What is the primary purpose of CIS Control 17: Incident Response Management?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["Prevent all security incidents", "Establish a program to develop and maintain an incident response capability", "Conduct penetration testing", "Monitor network traffic"],
+      "answer": {"correct": "Establish a program to develop and maintain an incident response capability", "index": 1},
+      "explanation": "CIS Control 17 focuses on establishing a program to develop and maintain an incident response capability to prepare, detect, and quickly respond to an attack.",
+      "hints": [
+        "This is about being prepared for incidents",
+        "Think about the complete incident response program",
+        "Preparation and capability development are key"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 17",
+        "Incident Response Planning"
+      ],
+      "tags": ["incident-response", "control-17", "incident-management", "response-capability"]
+    },
+    {
+      "id": "cis_020",
+      "question": "What does CIS Control 18: Penetration Testing focus on?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Regular vulnerability scanning", "Test the effectiveness and resiliency of enterprise assets", "Install security monitoring tools", "Train security staff"],
+      "answer": {"correct": "Test the effectiveness and resiliency of enterprise assets", "index": 1},
+      "explanation": "CIS Control 18 focuses on testing the effectiveness and resiliency of enterprise assets through identifying and exploiting weaknesses in controls and simulating real-world attack scenarios.",
+      "hints": [
+        "This is about testing security controls",
+        "Think about simulating real attacks",
+        "Effectiveness testing goes beyond scanning"
+      ],
+      "references": [
+        "CIS Controls v8.1 - Control 18",
+        "Penetration Testing Methodologies"
+      ],
+      "tags": ["penetration-testing", "control-18", "security-testing", "resiliency-testing"]
+    },
+    {
+      "id": "cis_021",
+      "question": "Which Implementation Group (IG) would be most appropriate for a mid-sized company with some cybersecurity expertise and moderate risk tolerance?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["IG1 only", "IG2 (includes IG1)", "IG3 (includes IG1 and IG2)", "Custom implementation"],
+      "answer": {"correct": "IG2 (includes IG1)", "index": 1},
+      "explanation": "IG2 is designed for organizations with moderate cybersecurity expertise and resources. It includes all IG1 controls plus additional controls for enhanced security posture appropriate for mid-sized organizations.",
+      "hints": [
+        "Mid-sized companies fall between small and large enterprises",
+        "Some expertise suggests they can handle more than basic controls",
+        "Implementation Groups are cumulative"
+      ],
+      "references": [
+        "CIS Implementation Groups Guide",
+        "IG2 Guidance for Mid-sized Organizations"
+      ],
+      "tags": ["implementation-groups", "ig2", "mid-sized-organization", "moderate-risk"]
+    },
+    {
+      "id": "cis_022",
+      "question": "An organization has implemented asset inventory (Control 1) but struggles with unauthorized software. Which control should they prioritize next?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Control 2: Inventory and Control of Software Assets", "Control 3: Data Protection", "Control 4: Secure Configuration", "Control 5: Account Management"],
+      "answer": {"correct": "Control 2: Inventory and Control of Software Assets", "index": 0},
+      "explanation": "Control 2 directly addresses software inventory and unauthorized software management. It's the logical next step after hardware asset inventory and is foundational for many other controls.",
+      "hints": [
+        "They specifically mentioned unauthorized software issues",
+        "Think about the logical progression of foundational controls",
+        "Software inventory naturally follows hardware inventory"
+      ],
+      "references": [
+        "CIS Controls v8.1 Implementation Priority",
+        "Foundational Controls Sequence"
+      ],
+      "tags": ["control-prioritization", "control-2", "software-management", "unauthorized-software"]
+    },
+    {
+      "id": "cis_023",
+      "question": "What is a key difference between IG1 and IG2 Implementation Groups?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["IG1 is for small business, IG2 is for large enterprise", "IG2 includes additional safeguards for enhanced security", "IG2 requires third-party certification", "IG1 and IG2 are identical"],
+      "answer": {"correct": "IG2 includes additional safeguards for enhanced security", "index": 1},
+      "explanation": "IG2 includes all IG1 safeguards plus additional safeguards that provide enhanced security for organizations with greater risk exposure or more resources to invest in cybersecurity.",
+      "hints": [
+        "Implementation Groups are cumulative",
+        "IG2 builds upon IG1 with additional controls",
+        "Think about enhanced vs basic security posture"
+      ],
+      "references": [
+        "CIS Implementation Groups Comparison",
+        "IG1 vs IG2 Differences"
+      ],
+      "tags": ["implementation-groups", "ig1-vs-ig2", "enhanced-security", "safeguards"]
+    },
+    {
+      "id": "cis_024",
+      "question": "A healthcare organization needs to ensure they can recover patient data after a ransomware attack. Which CIS Controls are most relevant?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["Control 3: Data Protection only", "Control 11: Data Recovery only", "Control 3: Data Protection and Control 11: Data Recovery", "Control 17: Incident Response Management only"],
+      "answer": {"correct": "Control 3: Data Protection and Control 11: Data Recovery", "index": 2},
+      "explanation": "Both controls are essential: Control 3 ensures proper data classification and protection throughout the lifecycle, while Control 11 provides backup and recovery capabilities. Together they enable effective data recovery after incidents.",
+      "hints": [
+        "Data recovery requires both protection and backup strategies",
+        "Think about the complete data lifecycle",
+        "Multiple controls often work together"
+      ],
+      "references": [
+        "CIS Controls for Healthcare",
+        "Data Protection and Recovery Strategies"
+      ],
+      "tags": ["healthcare", "data-recovery", "control-3", "control-11", "ransomware"]
+    },
+    {
+      "id": "cis_025",
+      "question": "What is the recommended approach for implementing CIS Controls in a small organization with limited resources?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Implement all 18 controls simultaneously", "Start with IG1 safeguards and progress systematically", "Focus only on technical controls", "Outsource all security controls"],
+      "answer": {"correct": "Start with IG1 safeguards and progress systematically", "index": 1},
+      "explanation": "Small organizations should start with IG1 safeguards, which provide essential cyber hygiene with minimal resources, then progress systematically based on their risk profile and available resources.",
+      "hints": [
+        "Small organizations need practical, achievable approaches",
+        "IG1 is designed for resource-constrained environments",
+        "Systematic progression is better than trying to do everything"
+      ],
+      "references": [
+        "CIS Implementation Guide for Small Organizations",
+        "Resource-Constrained Implementation Strategies"
+      ],
+      "tags": ["small-organization", "ig1", "systematic-implementation", "resource-constraints"]
+    },
+    {
+      "id": "cis_026",
+      "question": "An organization wants to measure their progress in implementing CIS Controls. What approach should they use?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Count the number of controls implemented", "Use CIS Controls Assessment Specification (CIS-CASS)", "Conduct annual penetration testing only", "Survey employees about security awareness"],
+      "answer": {"correct": "Use CIS Controls Assessment Specification (CIS-CASS)", "index": 1},
+      "explanation": "CIS-CASS provides a standardized approach to assess and score the implementation of CIS Controls, enabling organizations to measure their cybersecurity posture objectively.",
+      "hints": [
+        "Measurement requires standardized assessment methods",
+        "CIS provides specific assessment tools",
+        "Think about objective measurement approaches"
+      ],
+      "references": [
+        "CIS Controls Assessment Specification",
+        "CIS Controls Measurement and Metrics"
+      ],
+      "tags": ["assessment", "cis-cass", "measurement", "scoring"]
+    },
+    {
+      "id": "cis_027",
+      "question": "Which of the following is NOT one of the three Implementation Groups in CIS Controls v8?",
+      "type": "multiple_choice",
+      "difficulty": "basic",
+      "points": 3,
+      "timeLimit": 90,
+      "options": ["IG1: Essential Cyber Hygiene", "IG2: Enhanced Security", "IG3: Advanced Security", "IG4: Expert Security"],
+      "answer": {"correct": "IG4: Expert Security", "index": 3},
+      "explanation": "CIS Controls v8 has only three Implementation Groups: IG1 (Essential Cyber Hygiene), IG2 (Enhanced Security), and IG3 (Advanced Security). There is no IG4.",
+      "hints": [
+        "There are only three Implementation Groups",
+        "Think about the progression: essential, enhanced, advanced",
+        "No expert level exists in the framework"
+      ],
+      "references": [
+        "CIS Controls v8.1 Implementation Groups",
+        "CIS Controls Framework Structure"
+      ],
+      "tags": ["implementation-groups", "framework-structure", "ig1-ig2-ig3"]
+    },
+    {
+      "id": "cis_028",
+      "question": "A cloud service provider wants to demonstrate security to customers. Which CIS Controls would be most relevant for their shared responsibility model?",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "points": 4,
+      "timeLimit": 150,
+      "options": ["Controls 1-6 (Foundational controls)", "Control 15: Service Provider Management", "Control 4: Secure Configuration and Control 12: Network Infrastructure Management", "All CIS Controls apply equally"],
+      "answer": {"correct": "Control 4: Secure Configuration and Control 12: Network Infrastructure Management", "index": 2},
+      "explanation": "Cloud providers are typically responsible for infrastructure security (Control 12) and secure configuration of underlying platforms (Control 4), while customers retain responsibility for their applications and data.",
+      "hints": [
+        "Think about what cloud providers actually control",
+        "Infrastructure and platform security are provider responsibilities",
+        "Shared responsibility means different controls for different parties"
+      ],
+      "references": [
+        "Cloud Security Shared Responsibility Model",
+        "CIS Controls for Cloud Providers"
+      ],
+      "tags": ["cloud-security", "shared-responsibility", "control-4", "control-12", "cloud-provider"]
+    },
+    {
+      "id": "cis_029",
+      "question": "What is the primary benefit of using CIS Controls compared to other security frameworks?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Compliance with all regulations", "Prioritized, actionable controls based on real-world attack data", "Lowest cost implementation", "Easiest to implement"],
+      "answer": {"correct": "Prioritized, actionable controls based on real-world attack data", "index": 1},
+      "explanation": "CIS Controls are prioritized based on analysis of actual attack data and provide specific, actionable safeguards that address the most common attack vectors effectively.",
+      "hints": [
+        "CIS Controls are based on real attack analysis",
+        "Think about practical, actionable guidance",
+        "Prioritization helps organizations focus on what matters most"
+      ],
+      "references": [
+        "CIS Controls Development Methodology",
+        "Attack Vector Analysis"
+      ],
+      "tags": ["cis-benefits", "prioritization", "attack-data", "actionable-controls"]
+    },
+    {
+      "id": "cis_030",
+      "question": "An organization has successfully implemented IG1 controls and wants to progress to IG2. What should be their approach?",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "points": 3,
+      "timeLimit": 120,
+      "options": ["Replace IG1 controls with IG2 controls", "Add IG2 safeguards while maintaining IG1 implementation", "Start over with a new implementation", "Skip to IG3 for better security"],
+      "answer": {"correct": "Add IG2 safeguards while maintaining IG1 implementation", "index": 1},
+      "explanation": "Implementation Groups are cumulative. Organizations should maintain their IG1 implementation and add the additional safeguards required for IG2 to enhance their security posture.",
+      "hints": [
+        "Implementation Groups are cumulative, not replacement",
+        "Build upon existing implementation",
+        "Think about enhancement, not replacement"
+      ],
+      "references": [
+        "CIS Controls Implementation Progression",
+        "IG1 to IG2 Migration Guide"
+      ],
+      "tags": ["implementation-progression", "ig1-to-ig2", "cumulative-controls", "enhancement"]
+    }
+  ]
+}

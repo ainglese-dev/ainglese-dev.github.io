@@ -1,0 +1,794 @@
+---
+const pageTitle = "ISO 27001 Practice Tool";
+const pageDescription = "Master ISO 27001 Information Security Management System requirements and Annex A controls with comprehensive practice questions.";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<style>
+			:root {
+				--bg-primary: #fafafa;
+				--bg-secondary: #ffffff;
+				--bg-tertiary: #f8f9fa;
+				--text-primary: #333;
+				--text-secondary: #666;
+				--border-color: #e0e0e0;
+				--accent-primary: #667eea;
+				--accent-secondary: #764ba2;
+				--accent-success: #25d366;
+				--accent-error: #dc3545;
+				--accent-warning: #ffc107;
+				--accent-info: #17a2b8;
+			}
+
+			[data-theme="dark"] {
+				--bg-primary: #1a1a1a;
+				--bg-secondary: #2d2d2d;
+				--bg-tertiary: #252525;
+				--text-primary: #e0e0e0;
+				--text-secondary: #b0b0b0;
+				--border-color: #404040;
+				--accent-primary: #7c8aff;
+				--accent-secondary: #8a5cc2;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+				line-height: 1.6;
+				color: var(--text-primary);
+				background: var(--bg-primary);
+				transition: background-color 0.3s ease, color 0.3s ease;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+
+			.breadcrumb {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 20px;
+				font-size: 0.9rem;
+			}
+
+			.breadcrumb a {
+				color: var(--accent-primary);
+				text-decoration: none;
+			}
+
+			.breadcrumb a:hover {
+				text-decoration: underline;
+			}
+
+			.breadcrumb span {
+				color: var(--text-secondary);
+			}
+
+			.header {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			.header h1 {
+				font-size: 2.2rem;
+				color: var(--accent-primary);
+				margin-bottom: 10px;
+			}
+
+			.header p {
+				color: var(--text-secondary);
+				font-size: 1.1rem;
+				margin-bottom: 20px;
+			}
+
+			.stats {
+				display: flex;
+				justify-content: center;
+				gap: 30px;
+				flex-wrap: wrap;
+			}
+
+			.stat {
+				text-align: center;
+			}
+
+			.stat-value {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: var(--accent-primary);
+			}
+
+			.stat-label {
+				font-size: 0.9rem;
+				color: var(--text-secondary);
+			}
+
+			.practice-container {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				margin-bottom: 30px;
+			}
+
+			.question-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+
+			.question-number {
+				font-size: 1.1rem;
+				color: var(--accent-primary);
+				font-weight: bold;
+			}
+
+			.question-info {
+				display: flex;
+				gap: 20px;
+				font-size: 0.9rem;
+				color: var(--text-secondary);
+			}
+
+			.question {
+				font-size: 1.1rem;
+				line-height: 1.6;
+				margin-bottom: 25px;
+				color: var(--text-primary);
+			}
+
+			.options {
+				margin-bottom: 25px;
+			}
+
+			.option {
+				display: flex;
+				align-items: flex-start;
+				gap: 12px;
+				padding: 15px;
+				margin-bottom: 10px;
+				border: 2px solid var(--border-color);
+				border-radius: 8px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				background: var(--bg-tertiary);
+			}
+
+			.option:hover {
+				border-color: var(--accent-primary);
+				background: var(--bg-secondary);
+			}
+
+			.option.selected {
+				border-color: var(--accent-primary);
+				background: var(--bg-secondary);
+				box-shadow: 0 2px 8px rgba(220, 53, 69, 0.1);
+			}
+
+			.option.correct {
+				border-color: var(--accent-success);
+				background: #d4edda;
+			}
+
+			.option.incorrect {
+				border-color: var(--accent-error);
+				background: #f8d7da;
+			}
+
+			.option input[type="radio"] {
+				margin: 0;
+				transform: scale(1.2);
+			}
+
+			.option-text {
+				flex: 1;
+				font-size: 1rem;
+			}
+
+			.controls {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 15px;
+				margin-bottom: 20px;
+			}
+
+			.btn {
+				padding: 12px 20px;
+				border: 2px solid;
+				border-radius: 6px;
+				font-family: inherit;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+			}
+
+			.btn-primary {
+				background: var(--accent-primary);
+				border-color: var(--accent-primary);
+				color: white;
+			}
+
+			.btn-primary:hover {
+				background: var(--accent-secondary);
+				border-color: var(--accent-secondary);
+			}
+
+			.btn:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+
+			.btn-secondary {
+				background: transparent;
+				border-color: var(--border-color);
+				color: var(--text-primary);
+			}
+
+			.btn-secondary:hover {
+				border-color: var(--accent-primary);
+				background: var(--accent-primary);
+				color: white;
+			}
+
+			.theme-toggle {
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				color: var(--text-primary);
+				padding: 8px 12px;
+				border-radius: 6px;
+				cursor: pointer;
+				font-family: inherit;
+				font-size: 0.9rem;
+				transition: all 0.3s ease;
+				z-index: 1000;
+			}
+
+			.theme-toggle:hover {
+				border-color: var(--accent-primary);
+				background: var(--accent-primary);
+				color: white;
+			}
+
+			.feedback {
+				background: var(--bg-tertiary);
+				border: 2px solid var(--border-color);
+				border-radius: 8px;
+				padding: 20px;
+				margin-top: 20px;
+				display: none;
+			}
+
+			.feedback.show {
+				display: block;
+			}
+
+			.feedback.correct {
+				border-color: var(--accent-success);
+				background: #d4edda;
+				color: #155724;
+			}
+
+			.feedback.incorrect {
+				border-color: var(--accent-error);
+				background: #f8d7da;
+				color: #721c24;
+			}
+
+			[data-theme="dark"] .feedback.correct {
+				background: #1e4f23;
+				color: #d1e7dd;
+			}
+
+			[data-theme="dark"] .feedback.incorrect {
+				background: #4a1e24;
+				color: #f5c2c7;
+			}
+
+			.feedback-header {
+				font-weight: bold;
+				margin-bottom: 10px;
+				font-size: 1.1rem;
+			}
+
+			.explanation {
+				line-height: 1.6;
+				margin-bottom: 15px;
+			}
+
+			.hints {
+				margin-top: 15px;
+			}
+
+			.hints-toggle {
+				background: none;
+				border: none;
+				color: var(--accent-primary);
+				cursor: pointer;
+				font-family: inherit;
+				text-decoration: underline;
+				padding: 0;
+				margin-bottom: 10px;
+			}
+
+			.hints-content {
+				display: none;
+				background: var(--bg-secondary);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 15px;
+				margin-top: 10px;
+			}
+
+			.hints-content.show {
+				display: block;
+			}
+
+			.hint {
+				margin-bottom: 8px;
+				padding-left: 15px;
+				position: relative;
+			}
+
+			.hint:before {
+				content: "💡";
+				position: absolute;
+				left: 0;
+			}
+
+			.score-summary {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				text-align: center;
+				margin-top: 30px;
+			}
+
+			.score-summary h2 {
+				color: var(--accent-primary);
+				margin-bottom: 20px;
+			}
+
+			.final-score {
+				font-size: 3rem;
+				font-weight: bold;
+				margin: 20px 0;
+			}
+
+			.final-score.pass {
+				color: var(--accent-success);
+			}
+
+			.final-score.fail {
+				color: var(--accent-error);
+			}
+
+			.progress-bar {
+				width: 100%;
+				height: 8px;
+				background: var(--border-color);
+				border-radius: 4px;
+				overflow: hidden;
+				margin: 20px 0;
+			}
+
+			.progress-fill {
+				height: 100%;
+				background: var(--accent-primary);
+				transition: width 0.5s ease;
+				border-radius: 4px;
+			}
+
+			@media (max-width: 768px) {
+				.header h1 {
+					font-size: 1.8rem;
+				}
+
+				.stats {
+					gap: 20px;
+				}
+
+				.question-header {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+
+				.controls {
+					flex-direction: column;
+					align-items: stretch;
+				}
+
+				.breadcrumb {
+					flex-wrap: wrap;
+				}
+
+				.theme-toggle {
+					top: 60px;
+					right: 10px;
+				}
+			}
+
+			.loading {
+				text-align: center;
+				padding: 40px;
+				color: var(--text-secondary);
+			}
+
+			.error {
+				text-align: center;
+				padding: 40px;
+				color: var(--accent-error);
+				background: var(--bg-secondary);
+				border: 2px solid var(--accent-error);
+				border-radius: 12px;
+				margin: 20px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="theme-toggle" class="theme-toggle">🌙</button>
+
+		<div class="container">
+			<div class="breadcrumb">
+				<a href="/">Home</a>
+				<span>→</span>
+				<a href="/security/">Security Practice</a>
+				<span>→</span>
+				<span>ISO 27001</span>
+			</div>
+
+			<div class="header">
+				<h1>ISO 27001 ISMS Practice</h1>
+				<p>Master Information Security Management System requirements and Annex A controls</p>
+				<div class="stats">
+					<div class="stat">
+						<div class="stat-value" id="total-questions">30</div>
+						<div class="stat-label">Questions</div>
+					</div>
+					<div class="stat">
+						<div class="stat-value">~40</div>
+						<div class="stat-label">Minutes</div>
+					</div>
+					<div class="stat">
+						<div class="stat-value">70%</div>
+						<div class="stat-label">Pass Score</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="progress-bar">
+				<div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+			</div>
+
+			<div id="loading" class="loading">
+				Loading questions...
+			</div>
+
+			<div id="error" class="error" style="display: none;">
+				<h3>Error Loading Questions</h3>
+				<p>There was a problem loading the practice questions. Please refresh the page and try again.</p>
+			</div>
+
+			<div id="practice-container" class="practice-container" style="display: none;">
+				<div class="question-header">
+					<div class="question-number" id="question-number">Question 1 of 30</div>
+					<div class="question-info">
+						<span id="difficulty">Advanced</span>
+						<span>•</span>
+						<span id="points">3 points</span>
+					</div>
+				</div>
+
+				<div class="question" id="question-text">
+					Loading question...
+				</div>
+
+				<div class="options" id="options-container">
+					<!-- Options will be populated here -->
+				</div>
+
+				<div class="controls">
+					<div>
+						<button id="hints-btn" class="btn btn-secondary">💡 Show Hints</button>
+					</div>
+					<div style="display: flex; gap: 10px;">
+						<button id="submit-btn" class="btn btn-primary" disabled>Submit Answer</button>
+						<button id="next-btn" class="btn btn-primary" style="display: none;">Next Question</button>
+					</div>
+				</div>
+
+				<div id="hints" class="hints">
+					<div class="hints-content" id="hints-content">
+						<!-- Hints will be populated here -->
+					</div>
+				</div>
+
+				<div id="feedback" class="feedback">
+					<div class="feedback-header" id="feedback-header"></div>
+					<div class="explanation" id="explanation"></div>
+				</div>
+			</div>
+
+			<div id="score-summary" class="score-summary" style="display: none;">
+				<h2>Practice Complete!</h2>
+				<div class="final-score" id="final-score">0%</div>
+				<div class="final-message" id="final-message"></div>
+				<div style="margin-top: 30px;">
+					<button id="restart-btn" class="btn btn-primary">Practice Again</button>
+					<a href="/security/" class="btn btn-secondary" style="margin-left: 15px; text-decoration: none; display: inline-block;">Back to Security Practice</a>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			let questions = [];
+			let currentQuestionIndex = 0;
+			let userAnswers = [];
+			let startTime = Date.now();
+
+			// Load questions from JSON
+			async function loadQuestions() {
+				try {
+					const response = await fetch('/data/questions/iso-27001.json');
+					const data = await response.json();
+					questions = data.questions;
+
+					if (questions.length === 0) {
+						throw new Error('No questions found');
+					}
+
+					document.getElementById('total-questions').textContent = questions.length;
+					document.getElementById('loading').style.display = 'none';
+					document.getElementById('practice-container').style.display = 'block';
+					displayQuestion();
+				} catch (error) {
+					console.error('Error loading questions:', error);
+					document.getElementById('loading').style.display = 'none';
+					document.getElementById('error').style.display = 'block';
+				}
+			}
+
+			function displayQuestion() {
+				const question = questions[currentQuestionIndex];
+				document.getElementById('question-number').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+				document.getElementById('question-text').textContent = question.question;
+				document.getElementById('difficulty').textContent = question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1);
+				document.getElementById('points').textContent = `${question.points} points`;
+
+				// Update progress bar
+				const progress = ((currentQuestionIndex) / questions.length) * 100;
+				document.getElementById('progress-fill').style.width = `${progress}%`;
+
+				// Clear previous options
+				const container = document.getElementById('options-container');
+				container.innerHTML = '';
+
+				// Create options
+				question.options.forEach((option, index) => {
+					const optionDiv = document.createElement('div');
+					optionDiv.className = 'option';
+					optionDiv.addEventListener('click', () => selectOption(index));
+
+					optionDiv.innerHTML = `
+						<input type="radio" name="answer" value="${index}" id="option-${index}">
+						<div class="option-text">${option}</div>
+					`;
+
+					container.appendChild(optionDiv);
+				});
+
+				// Populate hints
+				const hintsContent = document.getElementById('hints-content');
+				hintsContent.innerHTML = '';
+				question.hints.forEach(hint => {
+					const hintDiv = document.createElement('div');
+					hintDiv.className = 'hint';
+					hintDiv.textContent = hint;
+					hintsContent.appendChild(hintDiv);
+				});
+
+				// Reset UI state
+				document.getElementById('submit-btn').disabled = true;
+				document.getElementById('submit-btn').style.display = 'inline-block';
+				document.getElementById('next-btn').style.display = 'none';
+				document.getElementById('feedback').classList.remove('show', 'correct', 'incorrect');
+				document.getElementById('hints-content').classList.remove('show');
+				document.getElementById('hints-btn').textContent = '💡 Show Hints';
+			}
+
+			function selectOption(index) {
+				// Clear previous visual selections
+				document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+
+				// Add selected class to current option
+				const currentOption = document.getElementById(`option-${index}`);
+				if (currentOption) {
+					currentOption.closest('.option').classList.add('selected');
+					currentOption.checked = true;
+
+					// Enable submit button
+					const submitBtn = document.getElementById('submit-btn');
+					if (submitBtn) {
+						submitBtn.disabled = false;
+					}
+				}
+			}
+
+			function toggleHints() {
+				const hintsContent = document.getElementById('hints-content');
+				const hintsBtn = document.getElementById('hints-btn');
+
+				if (hintsContent.classList.contains('show')) {
+					hintsContent.classList.remove('show');
+					hintsBtn.textContent = '💡 Show Hints';
+				} else {
+					hintsContent.classList.add('show');
+					hintsBtn.textContent = '💡 Hide Hints';
+				}
+			}
+
+			function submitAnswer() {
+				const selectedOption = document.querySelector('input[name="answer"]:checked');
+				if (!selectedOption) return;
+
+				const userAnswer = parseInt(selectedOption.value);
+				const question = questions[currentQuestionIndex];
+				const isCorrect = userAnswer === question.answer.index;
+
+				// Store user answer
+				userAnswers.push({
+					questionIndex: currentQuestionIndex,
+					userAnswer: userAnswer,
+					correct: isCorrect,
+					timeSpent: Math.round((Date.now() - startTime) / 1000)
+				});
+
+				// Show feedback
+				const feedback = document.getElementById('feedback');
+				const feedbackHeader = document.getElementById('feedback-header');
+				const explanation = document.getElementById('explanation');
+
+				if (isCorrect) {
+					feedback.classList.add('show', 'correct');
+					feedbackHeader.textContent = '✅ Correct!';
+				} else {
+					feedback.classList.add('show', 'incorrect');
+					feedbackHeader.textContent = `❌ Incorrect. The correct answer is: ${question.options[question.answer.index]}`;
+				}
+
+				explanation.textContent = question.explanation;
+
+				// Highlight correct/incorrect options
+				document.querySelectorAll('.option').forEach((option, index) => {
+					if (index === question.answer.index) {
+						option.classList.add('correct');
+					} else if (index === userAnswer && !isCorrect) {
+						option.classList.add('incorrect');
+					}
+				});
+
+				// Switch buttons
+				document.getElementById('submit-btn').style.display = 'none';
+				document.getElementById('next-btn').style.display = 'inline-block';
+
+				// Reset timer for next question
+				startTime = Date.now();
+			}
+
+			function nextQuestion() {
+				currentQuestionIndex++;
+				if (currentQuestionIndex < questions.length) {
+					displayQuestion();
+				} else {
+					showResults();
+				}
+			}
+
+			function showResults() {
+				const correctAnswers = userAnswers.filter(answer => answer.correct).length;
+				const percentage = Math.round((correctAnswers / questions.length) * 100);
+				const passed = percentage >= 70;
+
+				document.getElementById('practice-container').style.display = 'none';
+				document.getElementById('score-summary').style.display = 'block';
+
+				const finalScore = document.getElementById('final-score');
+				const finalMessage = document.getElementById('final-message');
+
+				finalScore.textContent = `${percentage}%`;
+				finalScore.className = `final-score ${passed ? 'pass' : 'fail'}`;
+
+				if (passed) {
+					finalMessage.innerHTML = `
+						<p style="color: var(--accent-success); font-size: 1.2rem; font-weight: bold;">Excellent! You passed! 🎉</p>
+						<p>You got ${correctAnswers} out of ${questions.length} questions correct.</p>
+						<p>You have a solid understanding of ISO 27001 ISMS requirements.</p>
+					`;
+				} else {
+					finalMessage.innerHTML = `
+						<p style="color: var(--accent-error); font-size: 1.2rem; font-weight: bold;">Keep studying! 📚</p>
+						<p>You got ${correctAnswers} out of ${questions.length} questions correct.</p>
+						<p>Review the ISO 27001 standard and try again. You need 70% to pass.</p>
+					`;
+				}
+
+				// Update progress bar to 100%
+				document.getElementById('progress-fill').style.width = '100%';
+			}
+
+			function restartPractice() {
+				currentQuestionIndex = 0;
+				userAnswers = [];
+				startTime = Date.now();
+
+				document.getElementById('score-summary').style.display = 'none';
+				document.getElementById('practice-container').style.display = 'block';
+
+				displayQuestion();
+			}
+
+			// Theme toggle functionality
+			let currentTheme = 'light';
+
+			function toggleTheme() {
+				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+				localStorage.setItem('theme', currentTheme);
+			}
+
+			function updateThemeButton() {
+				const btn = document.getElementById('theme-toggle');
+				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+			}
+
+			// Initialize theme and load questions
+			document.addEventListener('DOMContentLoaded', function() {
+				const savedTheme = localStorage.getItem('theme') || 'light';
+				currentTheme = savedTheme;
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+
+				// Add event listeners
+				document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+				document.getElementById('hints-btn').addEventListener('click', toggleHints);
+				document.getElementById('submit-btn').addEventListener('click', submitAnswer);
+				document.getElementById('next-btn').addEventListener('click', nextQuestion);
+				document.getElementById('restart-btn').addEventListener('click', restartPractice);
+
+				// Load questions when DOM is ready
+				loadQuestions();
+			});
+		</script>
+	</body>
+</html>
