@@ -347,7 +347,38 @@ const defaultLang = 'es';
 				color: white;
 				border-color: var(--accent-primary);
 			}
-			
+
+			.hamburger {
+				display: none;
+				flex-direction: column;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 4px;
+				gap: 4px;
+				z-index: 1000;
+			}
+
+			.hamburger span {
+				width: 25px;
+				height: 3px;
+				background: var(--text-primary);
+				border-radius: 2px;
+				transition: all 0.3s ease;
+			}
+
+			.hamburger.active span:nth-child(1) {
+				transform: rotate(45deg) translate(6px, 6px);
+			}
+
+			.hamburger.active span:nth-child(2) {
+				opacity: 0;
+			}
+
+			.hamburger.active span:nth-child(3) {
+				transform: rotate(-45deg) translate(6px, -6px);
+			}
+
 			.container {
 				max-width: 1200px;
 				margin: 0 auto;
@@ -687,12 +718,50 @@ const defaultLang = 'es';
 			}
 			
 			@media (max-width: 768px) {
-				.nav-menu {
-					gap: 15px;
+				.hamburger {
+					display: flex;
 				}
-				
+
+				.nav-menu {
+					position: fixed;
+					top: 70px;
+					left: 0;
+					width: 100%;
+					background: var(--bg-secondary);
+					border-top: 1px solid var(--border-color);
+					flex-direction: column;
+					padding: 15px 20px;
+					max-height: 0;
+					overflow: hidden;
+					opacity: 0;
+					transition: all 0.3s ease;
+					box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+					z-index: 998;
+				}
+
+				.nav-menu.active {
+					max-height: 420px;
+					opacity: 1;
+				}
+
+				.nav-menu li {
+					margin-bottom: 6px;
+				}
+
+				.nav-menu li:last-child {
+					margin-bottom: 0;
+				}
+
 				.nav-menu a {
-					font-size: 0.9rem;
+					font-size: 1.1rem;
+					display: block;
+					padding: 8px 10px;
+					border-radius: 6px;
+					transition: background 0.3s ease;
+				}
+
+				.nav-menu a:hover {
+					background: var(--bg-tertiary);
 				}
 				
 				.controls {
@@ -1245,21 +1314,7 @@ const defaultLang = 'es';
 				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
 			}
 
-			document.addEventListener('DOMContentLoaded', function() {
-				const savedTheme = localStorage.getItem('theme') || 'light';
-				currentTheme = savedTheme;
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				
-				updateContent();
-				updateLanguageButton();
-				updateThemeButton();
-				
-				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
-				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
-				
-				// Initialize FAQ accordion
-				initFAQ();
-			});
+			// This DOMContentLoaded listener was removed and consolidated into the main one below
 			
 			function initFAQ() {
 				const faqItems = document.querySelectorAll('.faq-item');
@@ -1297,48 +1352,63 @@ const defaultLang = 'es';
 			
 			
 			// Enhanced language switching to include cookie content
+			// Helper function to safely set text content
+			function safeSetText(id, text) {
+				const element = document.getElementById(id);
+				if (element) {
+					element.textContent = text;
+				}
+			}
+
+			function safeSetAttribute(id, attr, value) {
+				const element = document.getElementById(id);
+				if (element) {
+					element.setAttribute(attr, value);
+				}
+			}
+
 			function switchLanguage(lang) {
 				const c = content[lang];
-				
+
 				document.documentElement.setAttribute('lang', lang);
 				localStorage.setItem('language', lang);
+
+				// Update all content safely
+				safeSetText('page-title', c.title);
+				safeSetAttribute('page-description', 'content', c.description);
+				safeSetText('hero-title', c.hero.title);
+				safeSetText('hero-subtitle', c.hero.subtitle);
+				safeSetText('hero-cta', c.hero.cta);
+				safeSetText('services-title', c.services.title);
+				safeSetText('basic-name', c.services.basic.name);
+				safeSetText('basic-price', c.services.basic.price);
+				safeSetText('standard-name', c.services.standard.name);
+				safeSetText('standard-price', c.services.standard.price);
+				safeSetText('premium-name', c.services.premium.name);
+				safeSetText('premium-price', c.services.premium.price);
+				safeSetText('network-title', c.services.network.title);
+				safeSetText('day0day1-name', c.services.network.day0day1.name);
+				safeSetText('day0day1-subtitle', c.services.network.day0day1.subtitle);
+				safeSetText('day0day1-price', c.services.network.day0day1.price);
+				safeSetText('day2-name', c.services.network.day2.name);
+				safeSetText('day2-subtitle', c.services.network.day2.subtitle);
+				safeSetText('day2-price', c.services.network.day2.price);
+				safeSetText('network-cta', c.services.network.cta);
+				safeSetText('services-cta', c.services.cta);
+				safeSetText('process-title', c.process.title);
+				safeSetText('contact-title', c.contact.title);
+				safeSetText('contact-subtitle', c.contact.subtitle);
+				safeSetText('contact-cta', c.contact.cta);
 				
-				// Update all content
-				document.getElementById('page-title').textContent = c.title;
-				document.getElementById('page-description').setAttribute('content', c.description);
-				document.getElementById('hero-title').textContent = c.hero.title;
-				document.getElementById('hero-subtitle').textContent = c.hero.subtitle;
-				document.getElementById('hero-cta').textContent = c.hero.cta;
-				document.getElementById('services-title').textContent = c.services.title;
-				document.getElementById('basic-name').textContent = c.services.basic.name;
-				document.getElementById('basic-price').textContent = c.services.basic.price;
-				document.getElementById('standard-name').textContent = c.services.standard.name;
-				document.getElementById('standard-price').textContent = c.services.standard.price;
-				document.getElementById('premium-name').textContent = c.services.premium.name;
-				document.getElementById('premium-price').textContent = c.services.premium.price;
-				document.getElementById('network-title').textContent = c.services.network.title;
-				document.getElementById('day0day1-name').textContent = c.services.network.day0day1.name;
-				document.getElementById('day0day1-subtitle').textContent = c.services.network.day0day1.subtitle;
-				document.getElementById('day0day1-price').textContent = c.services.network.day0day1.price;
-				document.getElementById('day2-name').textContent = c.services.network.day2.name;
-				document.getElementById('day2-subtitle').textContent = c.services.network.day2.subtitle;
-				document.getElementById('day2-price').textContent = c.services.network.day2.price;
-				document.getElementById('network-cta').textContent = c.services.network.cta;
-				document.getElementById('services-cta').textContent = c.services.cta;
-				document.getElementById('process-title').textContent = c.process.title;
-				document.getElementById('contact-title').textContent = c.contact.title;
-				document.getElementById('contact-subtitle').textContent = c.contact.subtitle;
-				document.getElementById('contact-cta').textContent = c.contact.cta;
-				
-				// Update navigation  
-				document.getElementById('nav-services').textContent = c.nav.services;
-				document.getElementById('nav-process').textContent = c.nav.process;
-				document.getElementById('nav-practice').textContent = c.nav.practice;
-				document.getElementById('nav-security').textContent = c.nav.security;
-				document.getElementById('nav-contact').textContent = c.nav.contact;
-				
-				document.getElementById('faq-title').textContent = c.faq.title;
-				document.getElementById('socials-title').textContent = c.socials.title;
+				// Update navigation safely
+				safeSetText('nav-services', c.nav.services);
+				safeSetText('nav-process', c.nav.process);
+				safeSetText('nav-practice', c.nav.practice);
+				safeSetText('nav-security', c.nav.security);
+				safeSetText('nav-contact', c.nav.contact);
+
+				safeSetText('faq-title', c.faq.title);
+				safeSetText('socials-title', c.socials.title);
 				
 				// Update features
 				const basicFeatures = document.querySelectorAll('.basic-feature');
@@ -1415,15 +1485,41 @@ const defaultLang = 'es';
 				}
 				
 				switchLanguage(savedLanguage);
+				updateContent();
 				updateLanguageButton();
 				updateThemeButton();
-				
+
 				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
 				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
-				
+
+				// Initialize hamburger menu
+				const hamburger = document.getElementById('hamburger-menu');
+				const navMenu = document.getElementById('nav-menu');
+
+				// Try alternative selectors as fallback
+				const targetHamburger = hamburger || document.querySelector('.hamburger');
+				const targetNavMenu = navMenu || document.querySelector('.nav-menu');
+
+				if (targetHamburger && targetNavMenu) {
+					targetHamburger.addEventListener('click', function(e) {
+						e.preventDefault();
+						targetHamburger.classList.toggle('active');
+						targetNavMenu.classList.toggle('active');
+					});
+				}
+
+				// Close menu when clicking nav links
+				const navLinks = document.querySelectorAll('.nav-menu a');
+				navLinks.forEach(link => {
+					link.addEventListener('click', function() {
+						hamburger.classList.remove('active');
+						navMenu.classList.remove('active');
+					});
+				});
+
 				// Initialize FAQ accordion
 				initFAQ();
-				
+
 				// Initialize WhatsApp Float
 				initWhatsAppFloat();
 			});
@@ -1434,7 +1530,12 @@ const defaultLang = 'es';
 		<nav class="nav-banner">
 			<div class="nav-content">
 				<a href="#hero" class="nav-logo">Angel Dev</a>
-				<ul class="nav-menu">
+				<button class="hamburger" id="hamburger-menu" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<ul class="nav-menu" id="nav-menu">
 					<li><a href="#services" id="nav-services">Servicios</a></li>
 					<li><a href="#process" id="nav-process">Proceso</a></li>
 					<li><a href="/practice" id="nav-practice">Network Practice</a></li>
