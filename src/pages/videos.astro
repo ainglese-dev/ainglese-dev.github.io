@@ -1,0 +1,528 @@
+---
+const pageTitle = "Technical Videos & Tutorials | Angel Network Services";
+const pageDescription = "Professional networking tutorials, implementation guides, and technical insights from real-world enterprise projects.";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title id="page-title">{pageTitle}</title>
+		<meta id="page-description" name="description" content={pageDescription} />
+		<style>
+			:root {
+				--bg-primary: #fafafa;
+				--bg-secondary: #ffffff;
+				--bg-tertiary: #f8f9fa;
+				--text-primary: #333;
+				--text-secondary: #666;
+				--text-light: rgba(255, 255, 255, 0.9);
+				--border-color: #e0e0e0;
+				--border-light: #f0f0f0;
+				--accent-primary: #667eea;
+				--accent-secondary: #764ba2;
+				--accent-success: #25d366;
+				--accent-success-hover: #128c7e;
+			}
+
+			[data-theme="dark"] {
+				--bg-primary: #1a1a1a;
+				--bg-secondary: #2d2d2d;
+				--bg-tertiary: #252525;
+				--text-primary: #e0e0e0;
+				--text-secondary: #b0b0b0;
+				--text-light: rgba(255, 255, 255, 0.9);
+				--border-color: #404040;
+				--border-light: #353535;
+				--accent-primary: #7c8aff;
+				--accent-secondary: #8a5cc2;
+				--accent-success: #25d366;
+				--accent-success-hover: #1ea853;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+				line-height: 1.6;
+				color: var(--text-primary);
+				background: var(--bg-primary);
+				transition: background-color 0.3s ease, color 0.3s ease;
+			}
+
+			.nav-banner {
+				background: var(--bg-secondary);
+				border-bottom: 1px solid var(--border-color);
+				padding: 15px 0;
+				position: sticky;
+				top: 0;
+				z-index: 999;
+				backdrop-filter: blur(10px);
+				background: rgba(255, 255, 255, 0.95);
+			}
+
+			[data-theme="dark"] .nav-banner {
+				background: rgba(45, 45, 45, 0.95);
+			}
+
+			.nav-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			.nav-logo {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				text-decoration: none;
+			}
+
+			.nav-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
+
+			.nav-menu a {
+				color: var(--text-secondary);
+				text-decoration: none;
+				font-weight: 500;
+				transition: color 0.3s;
+			}
+
+			.nav-menu a:hover {
+				color: var(--accent-primary);
+			}
+
+			.controls {
+				position: fixed;
+				top: 70px;
+				right: 15px;
+				z-index: 1000;
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+
+			.control-btn {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				border: 2px solid var(--border-color);
+				background: var(--bg-secondary);
+				color: var(--text-primary);
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				font-size: 0.9rem;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.control-btn:hover {
+				border-color: var(--accent-primary);
+				transform: scale(1.05);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+			}
+
+			.control-btn.active {
+				background: var(--accent-primary);
+				color: white;
+				border-color: var(--accent-primary);
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			.hero {
+				background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+				padding: 80px 0;
+				text-align: center;
+				border-bottom: 1px solid var(--border-color);
+			}
+
+			.hero h1 {
+				font-size: 3rem;
+				margin-bottom: 20px;
+				color: var(--text-primary);
+				background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.hero p {
+				font-size: 1.2rem;
+				color: var(--text-secondary);
+				max-width: 600px;
+				margin: 0 auto 40px;
+			}
+
+			.section {
+				padding: 80px 0;
+			}
+
+			.section-title {
+				text-align: center;
+				font-size: 2.5rem;
+				margin-bottom: 50px;
+				color: var(--text-primary);
+				position: relative;
+			}
+
+			.section-title:after {
+				content: '';
+				position: absolute;
+				bottom: -10px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 60px;
+				height: 3px;
+				background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+				border-radius: 2px;
+			}
+
+			.video-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 40px;
+				margin-bottom: 60px;
+			}
+
+			.video-card {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				overflow: hidden;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+			}
+
+			.video-card:hover {
+				border-color: var(--accent-primary);
+				box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+				transform: translateY(-5px);
+			}
+
+			.video-embed {
+				position: relative;
+				width: 100%;
+				height: 200px;
+				overflow: hidden;
+			}
+
+			.video-embed iframe {
+				width: 100%;
+				height: 100%;
+				border: none;
+			}
+
+			.video-content {
+				padding: 25px;
+			}
+
+			.video-title {
+				font-size: 1.3rem;
+				margin-bottom: 15px;
+				color: var(--text-primary);
+				font-weight: 600;
+			}
+
+			.video-description {
+				color: var(--text-secondary);
+				margin-bottom: 20px;
+				line-height: 1.6;
+			}
+
+			.video-category {
+				display: inline-block;
+				background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+				color: white;
+				padding: 6px 12px;
+				border-radius: 15px;
+				font-size: 0.85rem;
+				font-weight: 600;
+				margin-bottom: 15px;
+			}
+
+			.cta-button {
+				background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+				color: white;
+				padding: 12px 24px;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: 600;
+				display: inline-block;
+				transition: all 0.3s ease;
+				border: none;
+				cursor: pointer;
+			}
+
+			.cta-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				opacity: 0.9;
+			}
+
+			.contact-section {
+				background: var(--bg-tertiary);
+				text-align: center;
+				padding: 60px 0;
+			}
+
+			.contact-section h2 {
+				font-size: 2rem;
+				margin-bottom: 20px;
+				color: var(--text-primary);
+			}
+
+			.contact-section p {
+				color: var(--text-secondary);
+				margin-bottom: 30px;
+			}
+
+			/* Mobile responsiveness */
+			@media (max-width: 768px) {
+				.hero h1 {
+					font-size: 2rem;
+				}
+
+				.hero p {
+					font-size: 1rem;
+				}
+
+				.section {
+					padding: 50px 0;
+				}
+
+				.section-title {
+					font-size: 2rem;
+				}
+
+				.video-grid {
+					grid-template-columns: 1fr;
+					gap: 30px;
+				}
+
+				.video-embed {
+					height: 180px;
+				}
+
+				.video-content {
+					padding: 20px;
+				}
+
+				.controls {
+					top: 70px;
+					right: 10px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Navigation -->
+		<nav class="nav-banner">
+			<div class="nav-content">
+				<a href="/" class="nav-logo">Angel Dev</a>
+				<ul class="nav-menu">
+					<li><a href="/#services">Servicios</a></li>
+					<li><a href="/#process">Proceso</a></li>
+					<li><a href="/practice">Network Practice</a></li>
+					<li><a href="/security">Security Practice</a></li>
+					<li><a href="/videos" class="nav-active">Videos</a></li>
+					<li><a href="/#contact">Contacto</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Controls -->
+		<div class="controls">
+			<button id="lang-btn" class="control-btn active">EN</button>
+			<button id="theme-btn" class="control-btn">🌙</button>
+		</div>
+
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="container">
+				<h1 id="hero-title">Technical Videos & Tutorials</h1>
+				<p id="hero-subtitle">Professional networking knowledge from real-world enterprise implementations and practical experience</p>
+			</div>
+		</section>
+
+		<!-- Featured Videos Section -->
+		<section class="section">
+			<div class="container">
+				<h2 class="section-title" id="featured-title">Featured Content</h2>
+				<div class="video-grid" id="featured-videos">
+					<!-- SOC Fundamentals Series -->
+					<div class="video-card">
+						<div class="video-embed">
+							<iframe src="https://www.youtube.com/embed/PsF4dB2MIvU" title="SOC Fundamentals: Mastering Security Operations Center Essentials" allowfullscreen></iframe>
+						</div>
+						<div class="video-content">
+							<div class="video-category">Security Operations</div>
+							<h3 class="video-title">SOC Fundamentals: Security Operations Center Essentials</h3>
+							<p class="video-description">Comprehensive guide to mastering Security Operations Center fundamentals for effective cyber defense and threat detection in enterprise environments.</p>
+							<a href="/#contact" class="cta-button">Get Security Consulting</a>
+						</div>
+					</div>
+
+					<div class="video-card">
+						<div class="video-embed">
+							<iframe src="https://www.youtube.com/embed/V2tKsSErwYY" title="SOC Fundamentals Part 2: SOC Startup for Effective Cyber Defense" allowfullscreen></iframe>
+						</div>
+						<div class="video-content">
+							<div class="video-category">Security Operations</div>
+							<h3 class="video-title">SOC Startup & Implementation Strategy</h3>
+							<p class="video-description">Advanced SOC implementation strategies and startup procedures for building effective cyber defense capabilities from the ground up.</p>
+							<a href="/#contact" class="cta-button">SOC Implementation Help</a>
+						</div>
+					</div>
+
+					<div class="video-card">
+						<div class="video-embed">
+							<iframe src="https://www.youtube.com/embed/_zfp6U5Fxbo" title="Cisco Firepower Threat Defense (vFTD) Implementation" allowfullscreen></iframe>
+						</div>
+						<div class="video-content">
+							<div class="video-category">Network Security</div>
+							<h3 class="video-title">Cisco Firepower vFTD Implementation</h3>
+							<p class="video-description">Complete implementation guide for Cisco Firepower Threat Defense virtual appliances, including advanced network protection and threat detection configuration.</p>
+							<a href="/#contact" class="cta-button">Firepower Implementation</a>
+						</div>
+					</div>
+
+					<div class="video-card">
+						<div class="video-embed">
+							<iframe src="https://www.youtube.com/embed/aISY1hWwYNs" title="Essential SOC Security Controls Explained" allowfullscreen></iframe>
+						</div>
+						<div class="video-content">
+							<div class="video-category">Security Controls</div>
+							<h3 class="video-title">Essential SOC Security Controls</h3>
+							<p class="video-description">Critical security controls every enterprise needs to protect against cyber threats, with practical implementation strategies for business environments.</p>
+							<a href="/#contact" class="cta-button">Security Assessment</a>
+						</div>
+					</div>
+
+					<div class="video-card">
+						<div class="video-embed">
+							<iframe src="https://www.youtube.com/embed/MoKvQpc2JAQ" title="Python Global Time Zones Event Creation Tutorial" allowfullscreen></iframe>
+						</div>
+						<div class="video-content">
+							<div class="video-category">Development & Automation</div>
+							<h3 class="video-title">Python Global Time Zones & Events</h3>
+							<p class="video-description">Professional Python development tutorial for creating global event management systems with time zone handling and country flags integration.</p>
+							<a href="/#contact" class="cta-button">Automation Consulting</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section id="contact" class="contact-section">
+			<div class="container">
+				<h2 id="contact-title">Need Professional Implementation?</h2>
+				<p id="contact-subtitle">Turn knowledge into action with enterprise-grade network services</p>
+				<a href="/#contact" class="cta-button" id="contact-cta">Discuss Your Project</a>
+			</div>
+		</section>
+
+		<script>
+			// Theme and language functionality
+			let currentTheme = localStorage.getItem('theme') || 'dark';
+			let currentLanguage = localStorage.getItem('language') || 'es';
+
+			const content = {
+				es: {
+					title: "Videos Técnicos y Tutoriales | Servicios de Seguridad y Redes Angel",
+					description: "Tutoriales de seguridad y redes profesionales, guías SOC, implementación Cisco Firepower y desarrollo Python para empresas.",
+					heroTitle: "Videos Técnicos y Tutoriales",
+					heroSubtitle: "Conocimiento especializado en seguridad, SOC, redes empresariales y automatización desde experiencia práctica real",
+					featuredTitle: "Contenido Destacado",
+					contactTitle: "¿Necesitas Implementación Profesional?",
+					contactSubtitle: "Convierte conocimiento en acción con servicios especializados de seguridad y redes empresariales",
+					contactCta: "Discutir Tu Proyecto"
+				},
+				en: {
+					title: "Technical Videos & Tutorials | Angel Security & Network Services",
+					description: "Professional security and networking tutorials, SOC guides, Cisco Firepower implementation, and Python development for enterprises.",
+					heroTitle: "Technical Videos & Tutorials",
+					heroSubtitle: "Specialized knowledge in security, SOC operations, enterprise networking, and automation from real-world practical experience",
+					featuredTitle: "Featured Content",
+					contactTitle: "Need Professional Implementation?",
+					contactSubtitle: "Turn knowledge into action with specialized enterprise security and network services",
+					contactCta: "Discuss Your Project"
+				}
+			};
+
+			function updateContent() {
+				const c = content[currentLanguage];
+				document.getElementById('page-title').textContent = c.title;
+				document.getElementById('page-description').setAttribute('content', c.description);
+				document.getElementById('hero-title').textContent = c.heroTitle;
+				document.getElementById('hero-subtitle').textContent = c.heroSubtitle;
+				document.getElementById('featured-title').textContent = c.featuredTitle;
+				document.getElementById('contact-title').textContent = c.contactTitle;
+				document.getElementById('contact-subtitle').textContent = c.contactSubtitle;
+				document.getElementById('contact-cta').textContent = c.contactCta;
+			}
+
+			function toggleLanguage() {
+				currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+				localStorage.setItem('language', currentLanguage);
+				updateContent();
+				updateLanguageButton();
+			}
+
+			function updateLanguageButton() {
+				const btn = document.getElementById('lang-btn');
+				btn.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
+			}
+
+			function toggleTheme() {
+				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+				localStorage.setItem('theme', currentTheme);
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+			}
+
+			function updateThemeButton() {
+				const btn = document.getElementById('theme-btn');
+				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+			}
+
+			document.addEventListener('DOMContentLoaded', function() {
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateContent();
+				updateLanguageButton();
+				updateThemeButton();
+
+				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
+				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+			});
+		</script>
+	</body>
+</html>

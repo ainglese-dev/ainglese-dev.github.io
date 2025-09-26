@@ -327,31 +327,37 @@ const defaultLang = 'es';
 			
 			.controls {
 				position: fixed;
-				top: 80px;
-				right: 20px;
+				top: 70px;
+				right: 15px;
 				z-index: 1000;
 				display: flex;
+				flex-direction: column;
 				gap: 10px;
 			}
-			
+
 			.control-btn {
-				background: var(--bg-secondary);
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
 				border: 2px solid var(--border-color);
+				background: var(--bg-secondary);
 				color: var(--text-primary);
-				padding: 8px 12px;
-				border-radius: 6px;
 				cursor: pointer;
-				font-family: inherit;
-				font-size: 0.9rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 600;
 				transition: all 0.3s ease;
+				font-size: 0.9rem;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 			}
-			
+
 			.control-btn:hover {
 				border-color: var(--accent-primary);
-				background: var(--accent-primary);
-				color: white;
+				transform: scale(1.05);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 			}
-			
+
 			.control-btn.active {
 				background: var(--accent-primary);
 				color: white;
@@ -879,7 +885,7 @@ const defaultLang = 'es';
 				}
 
 				.nav-menu.active {
-					max-height: 420px;
+					max-height: 480px;
 					opacity: 1;
 				}
 
@@ -1110,6 +1116,7 @@ const defaultLang = 'es';
 						process: "Proceso",
 						practice: "Network Practice",
 						security: "Security Practice",
+						videos: "Videos",
 						contact: "Contacto"
 					},
 					faq: {
@@ -1261,6 +1268,7 @@ const defaultLang = 'es';
 						process: "Process",
 						practice: "Network Practice",
 						security: "Security Practice",
+						videos: "Videos",
 						contact: "Contact"
 					},
 					faq: {
@@ -1554,6 +1562,7 @@ const defaultLang = 'es';
 				safeSetText('nav-process', c.nav.process);
 				safeSetText('nav-practice', c.nav.practice);
 				safeSetText('nav-security', c.nav.security);
+				safeSetText('nav-videos', c.nav.videos);
 				safeSetText('nav-contact', c.nav.contact);
 
 				safeSetText('faq-title', c.faq.title);
@@ -1672,6 +1681,7 @@ const defaultLang = 'es';
 					<li><a href="#process" id="nav-process">Proceso</a></li>
 					<li><a href="/practice" id="nav-practice">Network Practice</a></li>
 					<li><a href="/security" id="nav-security">Security Practice</a></li>
+					<li><a href="/videos" id="nav-videos">Videos</a></li>
 					<li><a href="#contact" id="nav-contact">Contacto</a></li>
 				</ul>
 			</div>
