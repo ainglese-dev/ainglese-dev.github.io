@@ -1,0 +1,422 @@
+---
+const pageTitle = "ACI Automation Guides | Angel Inglese";
+const pageDescription = "Practical guides and patterns for Cisco ACI automation at scale";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<style>
+			:root {
+				--bg-primary: #fafafa;
+				--bg-secondary: #ffffff;
+				--text-primary: #333;
+				--text-secondary: #666;
+				--border-color: #e0e0e0;
+				--accent-primary: #667eea;
+				--accent-secondary: #764ba2;
+				--code-bg: #f5f5f5;
+			}
+
+			[data-theme="dark"] {
+				--bg-primary: #1a1a1a;
+				--bg-secondary: #2d2d2d;
+				--text-primary: #e0e0e0;
+				--text-secondary: #b0b0b0;
+				--border-color: #404040;
+				--accent-primary: #7c8aff;
+				--accent-secondary: #8a5cc2;
+				--code-bg: #252525;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+				line-height: 1.8;
+				color: var(--text-primary);
+				background: var(--bg-primary);
+			}
+
+			.container {
+				max-width: 900px;
+				margin: 0 auto;
+				padding: 40px 20px;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 20px;
+				background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin-top: 40px;
+				margin-bottom: 20px;
+				color: var(--accent-primary);
+			}
+
+			h3 {
+				font-size: 1.3rem;
+				margin-top: 30px;
+				margin-bottom: 15px;
+				color: var(--accent-secondary);
+			}
+
+			.intro {
+				margin-bottom: 40px;
+				color: var(--text-secondary);
+				font-size: 1.1rem;
+			}
+
+			.guide-section {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				margin-bottom: 30px;
+			}
+
+			pre {
+				background: var(--code-bg);
+				padding: 20px;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 20px 0;
+				border-left: 4px solid var(--accent-primary);
+			}
+
+			code {
+				font-family: 'Monaco', 'Menlo', monospace;
+				font-size: 0.9rem;
+			}
+
+			.tip {
+				background: var(--code-bg);
+				border-left: 4px solid var(--accent-secondary);
+				padding: 15px 20px;
+				margin: 20px 0;
+				border-radius: 4px;
+			}
+
+			.tip strong {
+				color: var(--accent-secondary);
+			}
+
+			ul, ol {
+				margin-left: 30px;
+				margin-bottom: 20px;
+			}
+
+			li {
+				margin-bottom: 10px;
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 30px;
+				color: var(--accent-primary);
+				text-decoration: none;
+				font-weight: 600;
+			}
+
+			.back-link:hover {
+				text-decoration: underline;
+			}
+
+			a {
+				color: var(--accent-primary);
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<a href="/" class="back-link">← Back to Home</a>
+
+			<h1>ACI Automation Guides</h1>
+			<p class="intro">
+				Battle-tested patterns and practices from managing 110+ production ACI devices.
+				These guides focus on real-world scenarios and production-grade automation.
+			</p>
+
+			<!-- Guide 1: Terraform Multi-Tenant Pattern -->
+			<div class="guide-section">
+				<h2>1. Terraform Multi-Tenant Pattern</h2>
+				<p>
+					Scalable approach for managing multiple ACI tenants with Terraform modules.
+					This pattern supports 10+ tenants with consistent configuration.
+				</p>
+
+				<h3>Directory Structure</h3>
+				<pre><code>terraform/
+├── modules/
+│   └── aci-tenant/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+├── environments/
+│   ├── prod/
+│   │   ├── main.tf
+│   │   └── tenants.tfvars
+│   └── dev/
+│       ├── main.tf
+│       └── tenants.tfvars
+└── .github/
+    └── workflows/
+        └── terraform.yml</code></pre>
+
+				<h3>Module Definition (modules/aci-tenant/main.tf)</h3>
+				<pre><code>resource "aci_tenant" "tenant" {
+  name        = var.tenant_name
+  description = var.description
+}
+
+resource "aci_vrf" "vrf" {
+  for_each   = var.vrfs
+  tenant_dn  = aci_tenant.tenant.id
+  name       = each.key
+  description = each.value.description
+}
+
+resource "aci_bridge_domain" "bd" {
+  for_each              = var.bridge_domains
+  tenant_dn             = aci_tenant.tenant.id
+  name                  = each.key
+  relation_fv_rs_ctx    = aci_vrf.vrf[each.value.vrf].id
+  arp_flood             = each.value.arp_flood
+  unicast_route         = each.value.unicast_route
+}</code></pre>
+
+				<h3>Usage (environments/prod/main.tf)</h3>
+				<pre><code>module "prod_tenant_01" {
+  source       = "../../modules/aci-tenant"
+  tenant_name  = "prod-tenant-01"
+  description  = "Production tenant for app cluster 01"
+
+  vrfs = {
+    "prod-vrf" = {
+      description = "Production VRF"
+    }
+  }
+
+  bridge_domains = {
+    "web-bd" = {
+      vrf         = "prod-vrf"
+      arp_flood   = false
+      unicast_route = true
+    }
+    "app-bd" = {
+      vrf         = "prod-vrf"
+      arp_flood   = false
+      unicast_route = true
+    }
+  }
+}</code></pre>
+
+				<div class="tip">
+					<strong>💡 Pro Tip:</strong> Use Terraform workspaces for environment separation,
+					but maintain separate state files for production. Never share state between prod and non-prod.
+				</div>
+			</div>
+
+			<!-- Guide 2: Python Day-2 Health Checks -->
+			<div class="guide-section">
+				<h2>2. Automated Health Checks with Python</h2>
+				<p>
+					Proactive monitoring script that runs daily via cron/Jenkins.
+					Checks fabric health, fault summary, and policy misconfigurations.
+				</p>
+
+				<pre><code>#!/usr/bin/env python3
+"""
+ACI Fabric Health Check
+Runs daily checks and reports to Slack/Email
+"""
+from acitoolkit.acitoolkit import Session
+import requests
+import os
+
+APIC_URL = os.getenv('APIC_URL')
+APIC_USER = os.getenv('APIC_USER')
+APIC_PASS = os.getenv('APIC_PASS')
+
+def check_fabric_health(session):
+    """Check overall fabric health score"""
+    url = f"{APIC_URL}/api/node/mo/topology/health.json"
+    resp = session.get(url)
+    data = resp.json()
+
+    health_score = int(data['imdata'][0]['fabricHealthTotal']['attributes']['cur'])
+
+    return {
+        'score': health_score,
+        'status': 'healthy' if health_score >= 95 else 'warning' if health_score >= 80 else 'critical'
+    }
+
+def check_critical_faults(session):
+    """Get count of critical faults"""
+    query = 'query-target-filter=eq(faultInst.severity,"critical")'
+    url = f"{APIC_URL}/api/class/faultInst.json?{query}"
+    resp = session.get(url)
+    data = resp.json()
+
+    return {
+        'count': len(data['imdata']),
+        'faults': [f['faultInst']['attributes']['descr'] for f in data['imdata'][:5]]
+    }
+
+def main():
+    session = Session(APIC_URL, APIC_USER, APIC_PASS)
+    session.login()
+
+    health = check_fabric_health(session)
+    faults = check_critical_faults(session)
+
+    print(f"Fabric Health: {health['score']} - {health['status']}")
+    print(f"Critical Faults: {faults['count']}")
+
+    if faults['count'] > 0:
+        print("\\nTop 5 Critical Faults:")
+        for fault in faults['faults']:
+            print(f"  - {fault}")
+
+    session.logout()
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+				<div class="tip">
+					<strong>💡 Pro Tip:</strong> Store credentials in HashiCorp Vault or AWS Secrets Manager.
+					Never commit credentials to Git, even in encrypted form.
+				</div>
+			</div>
+
+			<!-- Guide 3: GitOps CI/CD Pipeline -->
+			<div class="guide-section">
+				<h2>3. GitOps CI/CD Pipeline for ACI</h2>
+				<p>
+					Complete GitLab/GitHub Actions pipeline for ACI changes.
+					Includes validation, planning, approval gates, and automated rollback.
+				</p>
+
+				<h3>Pipeline Stages</h3>
+				<ol>
+					<li><strong>Validate:</strong> Terraform fmt, validate, and tflint</li>
+					<li><strong>Plan:</strong> Generate plan and post to PR comments</li>
+					<li><strong>Approval:</strong> Manual approval gate for production</li>
+					<li><strong>Apply:</strong> Execute changes with audit logging</li>
+					<li><strong>Verify:</strong> Post-change validation checks</li>
+				</ol>
+
+				<h3>GitHub Actions Workflow</h3>
+				<pre><code>name: ACI Terraform Pipeline
+
+on:
+  pull_request:
+    paths:
+      - 'terraform/**'
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Validate
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+  plan:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Terraform Plan
+        env:
+          APIC_USERNAME: \${{ secrets.APIC_USERNAME }}
+          APIC_PASSWORD: \${{ secrets.APIC_PASSWORD }}
+          APIC_URL: \${{ secrets.APIC_URL }}
+        run: |
+          terraform init
+          terraform plan -out=tfplan
+          terraform show -no-color tfplan > plan.txt
+
+      - name: Comment PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const plan = fs.readFileSync('plan.txt', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## Terraform Plan\\n```\\n' + plan + '\\n```'
+            });
+
+  apply:
+    needs: plan
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Terraform Apply
+        env:
+          APIC_USERNAME: \${{ secrets.APIC_USERNAME }}
+          APIC_PASSWORD: \${{ secrets.APIC_PASSWORD }}
+          APIC_URL: \${{ secrets.APIC_URL }}
+        run: |
+          terraform init
+          terraform apply -auto-approve</code></pre>
+
+				<div class="tip">
+					<strong>💡 Pro Tip:</strong> Always use GitHub Environments with required reviewers
+					for production deployments. Set up branch protection rules to enforce the workflow.
+				</div>
+			</div>
+
+			<!-- Additional Resources -->
+			<div class="guide-section">
+				<h2>Additional Resources</h2>
+				<ul>
+					<li><a href="https://github.com/CiscoDevNet/terraform-provider-aci" target="_blank">Terraform ACI Provider Docs</a></li>
+					<li><a href="https://github.com/datacenter/acitoolkit" target="_blank">ACI Toolkit Python Library</a></li>
+					<li><a href="https://developer.cisco.com/docs/aci/" target="_blank">Cisco ACI Developer Center</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

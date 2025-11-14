@@ -1,0 +1,355 @@
+---
+const pageTitle = "ACI Automation Tools | Angel Inglese";
+const pageDescription = "Interactive Cisco ACI configuration validators and automation tools";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<style>
+			:root {
+				--bg-primary: #fafafa;
+				--bg-secondary: #ffffff;
+				--text-primary: #333;
+				--text-secondary: #666;
+				--border-color: #e0e0e0;
+				--accent-primary: #667eea;
+				--accent-secondary: #764ba2;
+				--accent-success: #25d366;
+				--code-bg: #f5f5f5;
+			}
+
+			[data-theme="dark"] {
+				--bg-primary: #1a1a1a;
+				--bg-secondary: #2d2d2d;
+				--text-primary: #e0e0e0;
+				--text-secondary: #b0b0b0;
+				--border-color: #404040;
+				--accent-primary: #7c8aff;
+				--accent-secondary: #8a5cc2;
+				--code-bg: #252525;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+				line-height: 1.6;
+				color: var(--text-primary);
+				background: var(--bg-primary);
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 40px 20px;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 20px;
+				background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.intro {
+				margin-bottom: 40px;
+				color: var(--text-secondary);
+			}
+
+			.tool-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 30px;
+				margin-bottom: 40px;
+			}
+
+			.tool-card {
+				background: var(--bg-secondary);
+				border: 2px solid var(--border-color);
+				border-radius: 12px;
+				padding: 30px;
+				transition: border-color 0.3s;
+			}
+
+			.tool-card:hover {
+				border-color: var(--accent-primary);
+			}
+
+			.tool-card h2 {
+				font-size: 1.5rem;
+				margin-bottom: 15px;
+				color: var(--accent-primary);
+			}
+
+			.tool-card p {
+				margin-bottom: 20px;
+				color: var(--text-secondary);
+			}
+
+			textarea, input {
+				width: 100%;
+				padding: 12px;
+				margin-bottom: 15px;
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				background: var(--code-bg);
+				color: var(--text-primary);
+				font-family: 'Monaco', 'Menlo', monospace;
+				font-size: 0.9rem;
+			}
+
+			textarea {
+				min-height: 150px;
+				resize: vertical;
+			}
+
+			button {
+				background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+				color: white;
+				border: none;
+				padding: 12px 24px;
+				border-radius: 6px;
+				cursor: pointer;
+				font-weight: 600;
+				transition: transform 0.2s;
+			}
+
+			button:hover {
+				transform: translateY(-2px);
+			}
+
+			.result {
+				margin-top: 15px;
+				padding: 15px;
+				border-radius: 6px;
+				background: var(--code-bg);
+				border-left: 4px solid var(--accent-success);
+			}
+
+			.error {
+				border-left-color: #ff4444;
+			}
+
+			pre {
+				background: var(--code-bg);
+				padding: 15px;
+				border-radius: 6px;
+				overflow-x: auto;
+				margin-top: 15px;
+			}
+
+			code {
+				font-family: 'Monaco', 'Menlo', monospace;
+				font-size: 0.9rem;
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 30px;
+				color: var(--accent-primary);
+				text-decoration: none;
+				font-weight: 600;
+			}
+
+			.back-link:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<a href="/" class="back-link">← Back to Home</a>
+
+			<h1>ACI Automation Tools</h1>
+			<p class="intro">
+				Interactive tools for validating and generating Cisco ACI configurations.
+				All validation happens client-side - no data sent to servers.
+			</p>
+
+			<div class="tool-grid">
+				<!-- Tenant Name Validator -->
+				<div class="tool-card">
+					<h2>Tenant Name Validator</h2>
+					<p>Validate ACI tenant names against Cisco naming conventions</p>
+					<input
+						type="text"
+						id="tenant-name"
+						placeholder="Enter tenant name (e.g., prod-tenant-01)"
+					/>
+					<button onclick="validateTenantName()">Validate</button>
+					<div id="tenant-result"></div>
+				</div>
+
+				<!-- Subnet Calculator -->
+				<div class="tool-card">
+					<h2>BD Subnet Helper</h2>
+					<p>Calculate Bridge Domain subnet details</p>
+					<input
+						type="text"
+						id="subnet-input"
+						placeholder="Enter subnet (e.g., 10.1.1.0/24)"
+					/>
+					<button onclick="calculateSubnet()">Calculate</button>
+					<div id="subnet-result"></div>
+				</div>
+
+				<!-- Terraform EPG Generator -->
+				<div class="tool-card">
+					<h2>Terraform EPG Snippet</h2>
+					<p>Generate Terraform code for ACI EPG</p>
+					<input
+						type="text"
+						id="epg-name"
+						placeholder="EPG name"
+					/>
+					<input
+						type="text"
+						id="bd-name"
+						placeholder="Bridge Domain name"
+					/>
+					<button onclick="generateEPG()">Generate</button>
+					<div id="epg-result"></div>
+				</div>
+
+				<!-- Python Contract Generator -->
+				<div class="tool-card">
+					<h2>Python Contract Code</h2>
+					<p>Generate Python code for ACI contract creation</p>
+					<input
+						type="text"
+						id="contract-name"
+						placeholder="Contract name"
+					/>
+					<input
+						type="text"
+						id="filter-name"
+						placeholder="Filter name"
+					/>
+					<button onclick="generateContract()">Generate</button>
+					<div id="contract-result"></div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function validateTenantName() {
+				const input = document.getElementById('tenant-name').value;
+				const result = document.getElementById('tenant-result');
+
+				// ACI naming rules: 1-64 chars, alphanumeric + _ - .
+				const regex = /^[a-zA-Z0-9_.-]{1,64}$/;
+
+				if (!input) {
+					result.className = 'result error';
+					result.innerHTML = 'Please enter a tenant name';
+					return;
+				}
+
+				if (regex.test(input)) {
+					result.className = 'result';
+					result.innerHTML = `✅ Valid tenant name<br>
+						<strong>Length:</strong> ${input.length}/64 chars<br>
+						<strong>Pattern:</strong> Matches ACI naming convention`;
+				} else {
+					result.className = 'result error';
+					let errors = [];
+					if (input.length > 64) errors.push('Exceeds 64 character limit');
+					if (!/^[a-zA-Z0-9_.-]+$/.test(input)) errors.push('Contains invalid characters');
+					result.innerHTML = `❌ Invalid tenant name<br>${errors.join('<br>')}`;
+				}
+			}
+
+			function calculateSubnet() {
+				const input = document.getElementById('subnet-input').value;
+				const result = document.getElementById('subnet-result');
+
+				const match = input.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)\/(\d+)$/);
+
+				if (!match) {
+					result.className = 'result error';
+					result.innerHTML = 'Invalid subnet format. Use CIDR notation (e.g., 10.1.1.0/24)';
+					return;
+				}
+
+				const [,o1,o2,o3,o4,cidr] = match.map(Number);
+				const mask = cidr;
+				const hosts = Math.pow(2, 32 - mask) - 2;
+				const netmask = ((0xFFFFFFFF << (32 - mask)) >>> 0).toString(16).match(/.{1,2}/g).map(h => parseInt(h, 16)).join('.');
+
+				result.className = 'result';
+				result.innerHTML = `
+					<strong>Network:</strong> ${input}<br>
+					<strong>Netmask:</strong> ${netmask}<br>
+					<strong>Usable IPs:</strong> ${hosts}<br>
+					<strong>Gateway suggestion:</strong> ${o1}.${o2}.${o3}.${o4 + 1}
+				`;
+			}
+
+			function generateEPG() {
+				const epgName = document.getElementById('epg-name').value;
+				const bdName = document.getElementById('bd-name').value;
+				const result = document.getElementById('epg-result');
+
+				if (!epgName || !bdName) {
+					result.className = 'result error';
+					result.innerHTML = 'Please fill in all fields';
+					return;
+				}
+
+				const code = `resource "aci_application_epg" "${epgName}" {
+  application_profile_dn = aci_application_profile.app.id
+  name                   = "${epgName}"
+  relation_fv_rs_bd      = aci_bridge_domain.${bdName}.id
+
+  # Optional: Add VMM domain binding
+  # relation_fv_rs_dom_att = [aci_vmm_domain.vmware.id]
+}`;
+
+				result.className = 'result';
+				result.innerHTML = '<pre><code>' + code + '</code></pre>';
+			}
+
+			function generateContract() {
+				const contractName = document.getElementById('contract-name').value;
+				const filterName = document.getElementById('filter-name').value;
+				const result = document.getElementById('contract-result');
+
+				if (!contractName || !filterName) {
+					result.className = 'result error';
+					result.innerHTML = 'Please fill in all fields';
+					return;
+				}
+
+				const code = `from cobra.model.vz import BrCP, Subj, RsSubjFiltAtt
+
+# Create contract
+contract = BrCP(tenant, name="${contractName}")
+
+# Create subject
+subject = Subj(contract, name="${contractName}_subj")
+
+# Attach filter
+filter_att = RsSubjFiltAtt(subject, tnVzFilterName="${filterName}")
+
+# Commit to APIC
+config_req = ConfigRequest()
+config_req.addMo(tenant)
+moDir.commit(config_req)`;
+
+				result.className = 'result';
+				result.innerHTML = '<pre><code>' + code + '</code></pre>';
+			}
+		</script>
+	</body>
+</html>
