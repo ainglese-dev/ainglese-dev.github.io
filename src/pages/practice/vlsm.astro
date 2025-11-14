@@ -444,44 +444,6 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 				margin-bottom: 10px;
 			}
 			
-			.controls {
-				position: fixed;
-				top: 70px;
-				right: 15px;
-				z-index: 1000;
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-			}
-
-			.control-btn {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				border: 2px solid var(--border-color);
-				background: var(--bg-secondary);
-				color: var(--text-primary);
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				font-size: 0.9rem;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			}
-
-			.control-btn:hover {
-				border-color: var(--accent-primary);
-				transform: scale(1.05);
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-			}
-
-			.control-btn.active {
-				background: var(--accent-primary);
-				color: white;
-				border-color: var(--accent-primary);
-			}
 			
 			
 			.hint {
@@ -506,15 +468,6 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 					align-items: flex-start;
 				}
 
-				.controls {
-					flex-direction: column;
-					align-items: stretch;
-				}
-
-				.controls {
-					top: 70px;
-					right: 10px;
-				}
 
 				.option {
 					padding: 12px;
@@ -528,12 +481,6 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 		</style>
 	</head>
 	<body>
-		<!-- Controls -->
-		<div class="controls">
-			<button id="lang-btn" class="control-btn active">EN</button>
-			<button id="theme-btn" class="control-btn">🌙</button>
-		</div>
-
 		<div class="container">
 			<div class="breadcrumb">
 				<a href="/">Home</a>
@@ -836,35 +783,10 @@ const pageDescription = "Practice Variable Length Subnet Masking (VLSM) calculat
 				displayQuestion();
 			}
 
-			// Theme toggle functionality
-			let currentTheme = 'light';
-
-			function toggleTheme() {
-				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				updateThemeButton();
-				localStorage.setItem('theme', currentTheme);
-			}
-
-			function updateThemeButton() {
-				const btn = document.getElementById('theme-btn');
-				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-			}
-
-			function updateLanguageButton() {
-				const btn = document.getElementById('lang-btn');
-				btn.textContent = 'EN'; // Practice pages are English-only for now
-			}
-
 			// Initialize theme and load questions
 			document.addEventListener('DOMContentLoaded', function() {
-				const savedTheme = localStorage.getItem('theme') || 'dark';
-				currentTheme = savedTheme;
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				updateThemeButton();
-
-				// Add event listeners
-				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+				// Force dark theme (static, no toggle)
+				document.documentElement.setAttribute('data-theme', 'dark');
 				document.getElementById('hints-btn').addEventListener('click', toggleHints);
 				document.getElementById('submit-btn').addEventListener('click', submitAnswer);
 				document.getElementById('next-btn').addEventListener('click', nextQuestion);

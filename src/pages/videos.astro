@@ -111,45 +111,6 @@ const pageDescription = "Professional networking tutorials, implementation guide
 				color: var(--accent-primary);
 			}
 
-			.controls {
-				position: fixed;
-				top: 70px;
-				right: 15px;
-				z-index: 1000;
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-			}
-
-			.control-btn {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				border: 2px solid var(--border-color);
-				background: var(--bg-secondary);
-				color: var(--text-primary);
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				font-size: 0.9rem;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			}
-
-			.control-btn:hover {
-				border-color: var(--accent-primary);
-				transform: scale(1.05);
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-			}
-
-			.control-btn.active {
-				background: var(--accent-primary);
-				color: white;
-				border-color: var(--accent-primary);
-			}
-
 			.container {
 				max-width: 1200px;
 				margin: 0 auto;
@@ -358,12 +319,6 @@ const pageDescription = "Professional networking tutorials, implementation guide
 			</div>
 		</nav>
 
-		<!-- Controls -->
-		<div class="controls">
-			<button id="lang-btn" class="control-btn active">EN</button>
-			<button id="theme-btn" class="control-btn">🌙</button>
-		</div>
-
 		<!-- Hero Section -->
 		<section class="hero">
 			<div class="container">
@@ -490,38 +445,12 @@ const pageDescription = "Professional networking tutorials, implementation guide
 				document.getElementById('contact-cta').textContent = c.contactCta;
 			}
 
-			function toggleLanguage() {
-				currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
-				localStorage.setItem('language', currentLanguage);
-				updateContent();
-				updateLanguageButton();
-			}
-
-			function updateLanguageButton() {
-				const btn = document.getElementById('lang-btn');
-				btn.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
-			}
-
-			function toggleTheme() {
-				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-				localStorage.setItem('theme', currentTheme);
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				updateThemeButton();
-			}
-
-			function updateThemeButton() {
-				const btn = document.getElementById('theme-btn');
-				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-			}
-
 			document.addEventListener('DOMContentLoaded', function() {
-				document.documentElement.setAttribute('data-theme', currentTheme);
+				// Force dark theme and English language (static, no toggles)
+				document.documentElement.setAttribute('data-theme', 'dark');
+				currentLanguage = 'en';
+				currentTheme = 'dark';
 				updateContent();
-				updateLanguageButton();
-				updateThemeButton();
-
-				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
-				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
 			});
 		</script>
 	</body>

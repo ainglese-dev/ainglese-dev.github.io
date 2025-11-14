@@ -214,92 +214,16 @@ const pageDescription = "Interactive Cisco ACI configuration validators and auto
 				color: var(--accent-primary);
 			}
 
-			.controls {
-				position: fixed;
-				top: 70px;
-				right: 15px;
-				z-index: 1000;
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-			}
-
-			.control-btn {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				border: 2px solid var(--border-color);
-				background: var(--bg-secondary);
-				color: var(--text-primary);
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				font-size: 0.9rem;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			}
-
-			.control-btn:hover {
-				border-color: var(--accent-primary);
-				transform: scale(1.05);
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-			}
-
 			@media (max-width: 768px) {
 				.nav-menu {
 					display: none;
 				}
-
-				.controls {
-					top: 70px;
-					right: 10px;
-				}
 			}
 		</style>
 		<script>
-			// Theme and language functionality
-			let currentTheme = 'light';
-			let currentLanguage = 'en';
-
-			function toggleTheme() {
-				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				updateThemeButton();
-				localStorage.setItem('theme', currentTheme);
-			}
-
-			function updateThemeButton() {
-				const btn = document.getElementById('theme-btn');
-				if (btn) btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-			}
-
-			function toggleLanguage() {
-				currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
-				localStorage.setItem('language', currentLanguage);
-				updateLanguageButton();
-			}
-
-			function updateLanguageButton() {
-				const btn = document.getElementById('lang-btn');
-				if (btn) btn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
-			}
-
+			// Force dark theme (static, no toggle)
 			document.addEventListener('DOMContentLoaded', function() {
-				const savedTheme = localStorage.getItem('theme') || 'light';
-				const savedLanguage = localStorage.getItem('language') || 'en';
-				currentTheme = savedTheme;
-				currentLanguage = savedLanguage;
-
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				updateThemeButton();
-				updateLanguageButton();
-
-				const themeBtn = document.getElementById('theme-btn');
-				const langBtn = document.getElementById('lang-btn');
-				if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-				if (langBtn) langBtn.addEventListener('click', toggleLanguage);
+				document.documentElement.setAttribute('data-theme', 'dark');
 			});
 		</script>
 	</head>
@@ -318,12 +242,6 @@ const pageDescription = "Interactive Cisco ACI configuration validators and auto
 				</ul>
 			</div>
 		</nav>
-
-		<!-- Controls -->
-		<div class="controls">
-			<button id="lang-btn" class="control-btn">EN</button>
-			<button id="theme-btn" class="control-btn">🌙</button>
-		</div>
 
 		<div class="container">
 
