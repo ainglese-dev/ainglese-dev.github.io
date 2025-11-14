@@ -183,7 +183,7 @@ const pageDescription = "Practical guides and patterns for Cisco ACI automation 
         └── terraform.yml</code></pre>
 
 				<h3>Module Definition (modules/aci-tenant/main.tf)</h3>
-				<pre><code>resource "aci_tenant" "tenant" {
+				<pre is:raw><code>resource "aci_tenant" "tenant" {
   name        = var.tenant_name
   description = var.description
 }
@@ -205,7 +205,7 @@ resource "aci_bridge_domain" "bd" {
 }</code></pre>
 
 				<h3>Usage (environments/prod/main.tf)</h3>
-				<pre><code>module "prod_tenant_01" {
+				<pre is:raw><code>module "prod_tenant_01" {
   source       = "../../modules/aci-tenant"
   tenant_name  = "prod-tenant-01"
   description  = "Production tenant for app cluster 01"
@@ -244,7 +244,7 @@ resource "aci_bridge_domain" "bd" {
 					Checks fabric health, fault summary, and policy misconfigurations.
 				</p>
 
-				<pre><code>#!/usr/bin/env python3
+				<pre is:raw><code>#!/usr/bin/env python3
 """
 ACI Fabric Health Check
 Runs daily checks and reports to Slack/Email
@@ -326,7 +326,7 @@ if __name__ == "__main__":
 				</ol>
 
 				<h3>GitHub Actions Workflow</h3>
-				<pre><code>name: ACI Terraform Pipeline
+				<pre is:raw><code>name: ACI Terraform Pipeline
 
 on:
   pull_request:
@@ -364,9 +364,9 @@ jobs:
 
       - name: Terraform Plan
         env:
-          APIC_USERNAME: \${{ secrets.APIC_USERNAME }}
-          APIC_PASSWORD: \${{ secrets.APIC_PASSWORD }}
-          APIC_URL: \${{ secrets.APIC_URL }}
+          APIC_USERNAME: \$\{\{ secrets.APIC_USERNAME \}\}
+          APIC_PASSWORD: \$\{\{ secrets.APIC_PASSWORD \}\}
+          APIC_URL: \$\{\{ secrets.APIC_URL \}\}
         run: |
           terraform init
           terraform plan -out=tfplan
@@ -395,9 +395,9 @@ jobs:
 
       - name: Terraform Apply
         env:
-          APIC_USERNAME: \${{ secrets.APIC_USERNAME }}
-          APIC_PASSWORD: \${{ secrets.APIC_PASSWORD }}
-          APIC_URL: \${{ secrets.APIC_URL }}
+          APIC_USERNAME: \$\{\{ secrets.APIC_USERNAME \}\}
+          APIC_PASSWORD: \$\{\{ secrets.APIC_PASSWORD \}\}
+          APIC_URL: \$\{\{ secrets.APIC_URL \}\}
         run: |
           terraform init
           terraform apply -auto-approve</code></pre>
