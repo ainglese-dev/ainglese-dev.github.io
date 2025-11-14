@@ -230,17 +230,11 @@ const pageDescription = "Real-world Cisco ACI automation projects and enterprise
 				color: var(--accent-primary);
 			}
 
-			.controls {
+			.theme-toggle {
 				position: fixed;
-				top: 70px;
-				right: 15px;
+				top: 80px;
+				right: 20px;
 				z-index: 1000;
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-			}
-
-			.control-btn {
 				width: 50px;
 				height: 50px;
 				border-radius: 50%;
@@ -253,11 +247,11 @@ const pageDescription = "Real-world Cisco ACI automation projects and enterprise
 				justify-content: center;
 				font-weight: 600;
 				transition: all 0.3s ease;
-				font-size: 0.9rem;
+				font-size: 1.2rem;
 				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 			}
 
-			.control-btn:hover {
+			.theme-toggle:hover {
 				border-color: var(--accent-primary);
 				transform: scale(1.05);
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -268,16 +262,15 @@ const pageDescription = "Real-world Cisco ACI automation projects and enterprise
 					display: none;
 				}
 
-				.controls {
+				.theme-toggle {
 					top: 70px;
-					right: 10px;
+					right: 15px;
 				}
 			}
 		</style>
 		<script>
-			// Theme and language functionality
-			let currentTheme = 'light';
-			let currentLanguage = 'en';
+			// Dark mode toggle
+			let currentTheme = 'dark';
 
 			function toggleTheme() {
 				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -287,35 +280,18 @@ const pageDescription = "Real-world Cisco ACI automation projects and enterprise
 			}
 
 			function updateThemeButton() {
-				const btn = document.getElementById('theme-btn');
+				const btn = document.getElementById('theme-toggle');
 				if (btn) btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
 			}
 
-			function toggleLanguage() {
-				currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
-				localStorage.setItem('language', currentLanguage);
-				updateLanguageButton();
-			}
-
-			function updateLanguageButton() {
-				const btn = document.getElementById('lang-btn');
-				if (btn) btn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
-			}
-
 			document.addEventListener('DOMContentLoaded', function() {
-				const savedTheme = localStorage.getItem('theme') || 'light';
-				const savedLanguage = localStorage.getItem('language') || 'en';
+				const savedTheme = localStorage.getItem('theme') || 'dark';
 				currentTheme = savedTheme;
-				currentLanguage = savedLanguage;
-
 				document.documentElement.setAttribute('data-theme', currentTheme);
 				updateThemeButton();
-				updateLanguageButton();
 
-				const themeBtn = document.getElementById('theme-btn');
-				const langBtn = document.getElementById('lang-btn');
+				const themeBtn = document.getElementById('theme-toggle');
 				if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-				if (langBtn) langBtn.addEventListener('click', toggleLanguage);
 			});
 		</script>
 	</head>
@@ -335,11 +311,8 @@ const pageDescription = "Real-world Cisco ACI automation projects and enterprise
 			</div>
 		</nav>
 
-		<!-- Controls -->
-		<div class="controls">
-			<button id="lang-btn" class="control-btn">EN</button>
-			<button id="theme-btn" class="control-btn">🌙</button>
-		</div>
+		<!-- Dark Mode Toggle -->
+		<button id="theme-toggle" class="theme-toggle">☀️</button>
 
 		<div class="container">
 
