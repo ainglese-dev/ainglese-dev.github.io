@@ -182,11 +182,166 @@ const pageDescription = "Real-world Cisco ACI automation projects and enterprise
 				border-radius: 4px;
 				margin: 20px 0;
 			}
+			.nav-banner {
+				background: var(--bg-secondary);
+				border-bottom: 1px solid var(--border-color);
+				padding: 15px 0;
+				position: sticky;
+				top: 0;
+				z-index: 999;
+				backdrop-filter: blur(10px);
+				background: rgba(255, 255, 255, 0.95);
+			}
+
+			[data-theme="dark"] .nav-banner {
+				background: rgba(45, 45, 45, 0.95);
+			}
+
+			.nav-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			.nav-logo {
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: var(--text-primary);
+				text-decoration: none;
+			}
+
+			.nav-menu {
+				display: flex;
+				gap: 30px;
+				list-style: none;
+			}
+
+			.nav-menu a {
+				color: var(--text-secondary);
+				text-decoration: none;
+				font-weight: 500;
+				transition: color 0.3s;
+			}
+
+			.nav-menu a:hover {
+				color: var(--accent-primary);
+			}
+
+			.controls {
+				position: fixed;
+				top: 70px;
+				right: 15px;
+				z-index: 1000;
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+
+			.control-btn {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				border: 2px solid var(--border-color);
+				background: var(--bg-secondary);
+				color: var(--text-primary);
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				font-size: 0.9rem;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.control-btn:hover {
+				border-color: var(--accent-primary);
+				transform: scale(1.05);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+			}
+
+			@media (max-width: 768px) {
+				.nav-menu {
+					display: none;
+				}
+
+				.controls {
+					top: 70px;
+					right: 10px;
+				}
+			}
 		</style>
+		<script>
+			// Theme and language functionality
+			let currentTheme = 'light';
+			let currentLanguage = 'en';
+
+			function toggleTheme() {
+				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+				localStorage.setItem('theme', currentTheme);
+			}
+
+			function updateThemeButton() {
+				const btn = document.getElementById('theme-btn');
+				if (btn) btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+			}
+
+			function toggleLanguage() {
+				currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+				localStorage.setItem('language', currentLanguage);
+				updateLanguageButton();
+			}
+
+			function updateLanguageButton() {
+				const btn = document.getElementById('lang-btn');
+				if (btn) btn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
+			}
+
+			document.addEventListener('DOMContentLoaded', function() {
+				const savedTheme = localStorage.getItem('theme') || 'light';
+				const savedLanguage = localStorage.getItem('language') || 'en';
+				currentTheme = savedTheme;
+				currentLanguage = savedLanguage;
+
+				document.documentElement.setAttribute('data-theme', currentTheme);
+				updateThemeButton();
+				updateLanguageButton();
+
+				const themeBtn = document.getElementById('theme-btn');
+				const langBtn = document.getElementById('lang-btn');
+				if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+				if (langBtn) langBtn.addEventListener('click', toggleLanguage);
+			});
+		</script>
 	</head>
 	<body>
+		<!-- Navigation Banner -->
+		<nav class="nav-banner">
+			<div class="nav-content">
+				<a href="/" class="nav-logo">Angel Dev</a>
+				<ul class="nav-menu">
+					<li><a href="/#services">Services</a></li>
+					<li><a href="/tools">Tools</a></li>
+					<li><a href="/guides">Guides</a></li>
+					<li><a href="/work">Case Studies</a></li>
+					<li><a href="https://github.com/ainglese-dev" target="_blank">GitHub</a></li>
+					<li><a href="/#contact">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Controls -->
+		<div class="controls">
+			<button id="lang-btn" class="control-btn">EN</button>
+			<button id="theme-btn" class="control-btn">🌙</button>
+		</div>
+
 		<div class="container">
-			<a href="/" class="back-link">← Back to Home</a>
 
 			<h1>Case Studies</h1>
 			<p class="intro">
