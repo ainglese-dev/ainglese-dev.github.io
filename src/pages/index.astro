@@ -356,45 +356,6 @@ const defaultLang = 'en';
 				color: var(--accent-primary);
 			}
 			
-			.controls {
-				position: fixed;
-				top: 70px;
-				right: 15px;
-				z-index: 1000;
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-			}
-
-			.control-btn {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				border: 2px solid var(--border-color);
-				background: var(--bg-secondary);
-				color: var(--text-primary);
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				font-size: 0.9rem;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			}
-
-			.control-btn:hover {
-				border-color: var(--accent-primary);
-				transform: scale(1.05);
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-			}
-
-			.control-btn.active {
-				background: var(--accent-primary);
-				color: white;
-				border-color: var(--accent-primary);
-			}
-
 			.hamburger {
 				display: none;
 				flex-direction: column;
@@ -939,12 +900,7 @@ const defaultLang = 'en';
 				.nav-menu a:hover {
 					background: var(--bg-tertiary);
 				}
-				
-				.controls {
-					top: 70px;
-					right: 10px;
-				}
-				
+
 				.hero h1 {
 					font-size: 2rem;
 				}
@@ -1353,21 +1309,8 @@ const defaultLang = 'en';
 				}
 			};
 
-			let currentLang = 'en';
-			let currentTheme = 'light';
-
-			function toggleLanguage() {
-				currentLang = currentLang === 'es' ? 'en' : 'es';
-				updateContent();
-				updateLanguageButton();
-			}
-
-			function toggleTheme() {
-				currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-				document.documentElement.setAttribute('data-theme', currentTheme);
-				updateThemeButton();
-				localStorage.setItem('theme', currentTheme);
-			}
+			// Language is static (English only)
+			const currentLang = 'en';
 
 			function updateContent() {
 				const c = content[currentLang];
@@ -1481,19 +1424,6 @@ const defaultLang = 'en';
 				});
 			}
 
-			function updateLanguageButton() {
-				const btn = document.getElementById('lang-btn');
-				btn.textContent = currentLang === 'es' ? 'EN' : 'ES';
-				btn.classList.toggle('active', currentLang === 'es');
-			}
-
-			function updateThemeButton() {
-				const btn = document.getElementById('theme-btn');
-				btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-			}
-
-			// This DOMContentLoaded listener was removed and consolidated into the main one below
-			
 			function initFAQ() {
 				const faqItems = document.querySelectorAll('.faq-item');
 				
@@ -1641,28 +1571,16 @@ const defaultLang = 'en';
 				whatsappLinks.forEach(link => {
 					link.href = whatsappLink;
 				});
-				
-				updateLanguageButton();
 			}
-			
+
 			// Initialize everything when DOM loads
 			document.addEventListener('DOMContentLoaded', function() {
-				const savedLanguage = localStorage.getItem('language') || 'en';
-				const savedTheme = localStorage.getItem('theme') || 'light';
-				
-				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
-					document.documentElement.setAttribute('data-theme', 'dark');
-				} else {
-					document.documentElement.setAttribute('data-theme', savedTheme);
-				}
-				
-				switchLanguage(savedLanguage);
-				updateContent();
-				updateLanguageButton();
-				updateThemeButton();
+				// Force dark theme (static, no toggle)
+				document.documentElement.setAttribute('data-theme', 'dark');
 
-				document.getElementById('lang-btn').addEventListener('click', toggleLanguage);
-				document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+				// Initialize with English content
+				switchLanguage('en');
+				updateContent();
 
 				// Initialize hamburger menu
 				const hamburger = document.getElementById('hamburger-menu');
@@ -1717,12 +1635,6 @@ const defaultLang = 'en';
 				</ul>
 			</div>
 		</nav>
-
-		<!-- Controls -->
-		<div class="controls">
-			<button id="lang-btn" class="control-btn active">EN</button>
-			<button id="theme-btn" class="control-btn">🌙</button>
-		</div>
 
 		<!-- Hero Section -->
 		<section id="hero" class="hero">
